@@ -1,0 +1,126 @@
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    color: $value if($enable-important-utilities, !important, null);
+
+    @if $link-shade-percentage != 0 {
+      &:hover,
+      &:focus {
+        color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage)) if($enable-important-utilities, !important, null);
+      }
+    }
+  }
+}
+
+// Extend Bootstrap - Atas Nalar - For link color classes
+@each $color, $value in $grays {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+      color: $value !important;
+  }
+
+  .link-hover-#{$color} {
+      &:hover {
+      color: $value !important;
+      }
+  }
+}
+@each $color, $value in $colors {
+  .link-#{$color} {
+      color: $value !important;
+  }
+
+  .link-hover-#{$color} {
+      &:hover {
+      color: $value !important;
+      }
+  }
+}
+@each $color, $value in $primarys {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $secondarys {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $tertiarys {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $infos {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $successs {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $warnings {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $dangers {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $blues {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $indigos {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $purples {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $pinks {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $reds {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $oranges {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $yellows {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $greens {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $teals {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}
+@each $color, $value in $cyans {
+  .link-#{$color} {
+      color: $value !important;
+  }
+}

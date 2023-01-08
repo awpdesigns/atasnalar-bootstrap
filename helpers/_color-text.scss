@@ -1,0 +1,113 @@
+// Extend Bootstrap - Atas Nalar - For text color classes
+@each $color, $value in $grays {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $theme-colors {
+    .text-#{$color} {
+        color: $value !important;
+    }
+
+    .text-hover-#{$color} {
+        &:hover {
+        color: $value !important;
+        }
+    }
+}
+@each $color, $value in $colors {
+    .text-#{$color} {
+        color: $value !important;
+    }
+
+    .text-hover-#{$color} {
+        &:hover {
+        color: $value !important;
+        }
+    }
+}
+@each $color, $value in $primarys {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $secondarys {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $tertiarys {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $infos {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $successs {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $warnings {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $dangers {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $blues {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $indigos {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $purples {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $pinks {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $reds {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $oranges {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $yellows {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $greens {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $teals {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
+@each $color, $value in $cyans {
+    .text-#{$color} {
+        color: $value !important;
+    }
+}

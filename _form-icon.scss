@@ -1,0 +1,47 @@
+.has-icon {
+    position: relative;
+    .form-control {
+        padding-left: $spacer * 2.375;
+    }
+    .emoji-control {
+        padding-right: 2.375rem;
+    }
+    .icon-control {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        text-align: center;
+        width: $spacer * 2.375;
+        height: $spacer * 2.375;
+        line-height: $spacer * 2.375;
+        font-size: $font-size-base * 1.15;
+        color: var(--#{$prefix}gray-500);
+    }
+    .icon-emoji {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        right: .25rem;
+        text-align: center;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        font-size: 1.15rem;
+        color: var(--#{$prefix}gray-500);
+        cursor: pointer;
+    }
+    .toggle-password {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        text-align: center;
+        width: $spacer * 2.375;
+        height: $spacer * 2.375;
+        line-height: $spacer * 2.375;
+        font-size: $font-size-base * 1.15;
+        top: $spacer * 1.75;
+        right: $spacer * .25;
+        cursor: pointer;
+    }
+}
+

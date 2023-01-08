@@ -1,0 +1,94 @@
+// scss-docs-start chevron-mixins
+@mixin chevron-down {
+    border-style: solid;
+    border-width: $chevron-border-width;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+  }
+
+  @mixin chevron-up {
+    border-style: solid;
+    border-width: $chevron-border-width;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+
+  @mixin chevron-end {
+    border-style: solid;
+    border-width: $chevron-border-width;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+
+  @mixin chevron-start {
+    border-style: solid;
+    border-width: $chevron-border-width;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+  }
+
+  @mixin chevron($direction: down) {
+    @if $enable-chevron {
+      &::after {
+        display: inline-block;
+        position: relative;
+        vertical-align: $chevron-vertical-align;
+        content: "";
+        width: $chevron-size;
+        height: $chevron-size;
+        left: 0.45em;
+        top: 0.5em;
+        margin-right: 0.75em;
+        @if $direction == down {
+          @include chevron-down();
+        } @else if $direction == up {
+          top: 0.675em;
+          @include chevron-up();
+        } @else if $direction == end {
+          left: 0.35em;
+          top: -0.125em;
+          @include chevron-end();
+        }
+      }
+
+      @if $direction == start {
+        &::after {
+          display: none;
+        }
+
+        &::before {
+          display: inline-block;
+          position: relative;
+          vertical-align: $chevron-vertical-align;
+          content: "";
+          width: $chevron-size;
+          height: $chevron-size;
+          right: 0.35em;
+          top: -0.125em;
+          margin-left: 0.75em;
+          @include chevron-start();
+        }
+
+          &:empty::before {
+          margin-left: 0;
+          }
+      }
+
+      &:empty::after {
+        margin-right: 0;
+      }
+    }
+  }
+  // scss-docs-end chevron-mixins

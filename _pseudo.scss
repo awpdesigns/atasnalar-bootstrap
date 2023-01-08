@@ -1,0 +1,13 @@
+// Placeholder
+::placeholder {
+    font-style: italic;
+}
+// Selection
+::selection {
+    background: var(--#{$prefix}primary);
+    color: var(--#{$prefix}white);
+}
+// Link with empty content
+a[href^="http"]:empty::before {
+    content: attr(href);
+}

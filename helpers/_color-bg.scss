@@ -1,0 +1,124 @@
+// stylelint-disable function-name-case
+
+// All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
+@each $color, $value in $theme-colors {
+  $color-rgb: to-rgb($value);
+  .text-bg-#{$color} {
+    color: color-contrast($value) if($enable-important-utilities, !important, null);
+    background-color: RGBA($color-rgb, var(--#{$prefix}bg-opacity, 1)) if($enable-important-utilities, !important, null);
+  }
+}
+
+// Extend Bootstrap - Atas Nalar - For background color classes
+@each $color, $value in $grays {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+
+  .bg-hover-#{$color} {
+      &:hover {
+          background-color: $value !important;
+      }
+  }
+}
+@each $color, $value in $colors {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+
+  .bg-hover-#{$color} {
+      &:hover {
+          background-color: $value !important;
+      }
+  }
+}
+@each $color, $value in $primarys {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $secondarys {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $tertiarys {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $infos {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $successs {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $warnings {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $dangers {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $blues {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $indigos {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $purples {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $pinks {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $reds {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $oranges {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $yellows {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $greens {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $teals {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}
+@each $color, $value in $cyans {
+  .bg-#{$color} {
+      background-color: $value !important;
+  }
+}

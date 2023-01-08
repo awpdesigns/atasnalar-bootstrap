@@ -1,0 +1,32 @@
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+
+    > * {
+        position: relative;
+        display: inline-block;
+        color: var(--#{$prefix}body-color);
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 9999px;
+            height: 1px;
+            background: var(--#{$prefix}gray-100);
+        }
+
+        &:before {
+            right: 100%;
+            margin-right: $spacer;
+        }
+
+        &:after {
+            left: 100%;
+            margin-left: $spacer;
+        }
+    }
+}

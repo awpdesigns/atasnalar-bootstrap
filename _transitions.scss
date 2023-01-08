@@ -1,0 +1,82 @@
+// scss-docs-start scale-classes
+.pull {
+  @include transition($transition-scale);
+
+  &:hover {
+    @include transition($transition-scale);
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
+}
+.push {
+  @include transition($transition-scale);
+
+  &:hover {
+    @include transition($transition-scale);
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+}
+}
+// scss-docs-end scale-classes
+
+// scss-docs-start hover-classes
+.hover-up {
+  @include transition($transition-y);
+
+  &:hover {
+    @include transition($transition-y);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+  }
+}
+
+.hover-down {
+  @include transition($transition-y);
+
+  &:hover {
+        @include transition($transition-y);
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+}
+}
+// scss-docs-end hover-classes
+
+.fade {
+  @include transition($transition-fade);
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}
+
+// scss-docs-start collapse-classes
+.collapse {
+  &:not(.show) {
+    display: none;
+  }
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  @include transition($transition-collapse);
+
+  &.collapse-horizontal {
+    width: 0;
+    height: auto;
+    @include transition($transition-collapse-width);
+  }
+}
+// scss-docs-end collapse-classes

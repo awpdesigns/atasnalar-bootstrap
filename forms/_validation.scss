@@ -1,0 +1,39 @@
+// Form validation
+//
+// Provide feedback to users when form field values are valid or invalid. Works
+// primarily for client-side validation via scoped `:invalid` and `:valid`
+// pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
+// server-side validation.
+
+// scss-docs-start form-validation-states-loop
+@each $state, $data in $form-validation-states {
+  @include form-validation-state($state, $data...);
+}
+// scss-docs-end form-validation-states-loop
+
+// scss-docs-start form-validation-states - Atas nalar Form Icon
+.was-validated .form-check-input:valid, .form-check-input.is-valid, .was-validated .form-control:valid, .form-control.is-valid, .was-validated .form-check-input:valid~.form-check-label, .form-check-input.is-valid~.form-check-label {
+  color: var(--#{$prefix}heading-color);
+  border-color: var(--#{$prefix}input-border-color);
+}
+
+// Input Validation with Toggle Password Activated
+.was-validated [data-toggle-password="true"]:invalid~.toggle-password, [data-toggle-password="true"].is-invalid~.toggle-password, .was-validated [data-toggle-password="true"]:valid~.toggle-password, [data-toggle-password="true"].is-valid~.toggle-password {
+  padding-right: $spacer * 3.25;
+}
+
+.was-validated [data-toggle-password="true"]:valid, [data-toggle-password="true"].is-valid, .was-validated [data-toggle-password="true"]:invalid, [data-toggle-password="true"].is-invalid {
+  padding-right: $spacer * 3.5 !important;
+}
+
+.was-validated .emoji-control:invalid, .emoji-control.is-invalid, .was-validated .emoji-control:valid, .emoji-control.is-valid {
+  padding-right: $spacer * 3.25;
+}
+
+.was-validated .emoji-control:valid, .emoji-control.is-valid, .was-validated .emoji-control:invalid, .emoji-control.is-invalid {
+  padding-right: $spacer * 3.5 !important;
+}
+
+.was-validated textarea.form-control.emoji-control:valid, textarea.form-control.emoji-control.is-valid, .was-validated textarea.form-control.emoji-control:invalid, textarea.form-control.emoji-control.is-invalid {
+  background-position: top calc(0.375em + 0.1875rem) right calc(1.65em + 0.1875rem);
+}

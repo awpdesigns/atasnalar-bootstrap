@@ -1,0 +1,203 @@
+/*!
+  *  Project Name: Social Share
+  *  Description: Social Share Component/Widget
+  *  Author: Atas Nalar
+  *  Version: 1.0
+  *  License: GNU General Public License v3.0 or later
+  *  License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+// Import Utilities
+@import "functions";
+// Import Variables
+@import "variables";
+// Import Utilities & Mixins
+@import "maps";
+@import "utilities";
+@import "mixins";
+
+:root {
+    --social-share-white: var(--#{$prefix}white);
+    --social-share-light: var(--#{$prefix}primary-100);
+    --social-share-dark: var(--#{$prefix}primary);
+    --social-share-rgb: var(--#{$prefix}primary-rgb);
+    --social-share-success: var(--#{$prefix}primary);
+}
+
+[data-#{$prefix}theme="dark"] #an-social-share a {
+    background-color: rgba(var(--social-share-rgb), 0.2) !important;
+}
+[data-#{$prefix}theme="dark"] #an-social-share a:hover {
+    background-color: rgba(var(--social-share-rgb), 0.7) !important;
+    color: var(--#{$prefix}primary-300);
+}
+[data-#{$prefix}theme="dark"] #an-social-share a i {
+    color: var(--#{$prefix}primary-300);
+}
+
+#an-social-share .bxl-line {
+    width: 16px;
+}
+
+#an-social-share a .bxl-line svg {
+    fill: var(--social-share-dark);
+}
+
+#an-social-share a:hover .bxl-line svg {
+    fill: var(--social-share-white);
+}
+
+/* Alert Copied */
+.an-share-alert-copied {
+    background-color: var(--social-share-success);
+    border: 1px solid var(--social-share-success);
+    color: var(--social-share-white);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    width: fit-content;
+    position: fixed;
+    top: 1.25rem;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: var(--#{$prefix}border-radius);
+    z-index: 99999;
+}
+
+#an-social-share-modal #an-social-share:not([data-display="icon"]) a {
+    width: 100%;
+}
+
+#an-social-share-modal #an-social-share[data-display="icon"] {
+    align-items: center;
+    justify-content: center;
+}
+#an-social-share-modal #an-social-share[data-display="icon"] a {
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+#an-social-share-modal #an-social-share:not([data-display="icon"]) {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div#an-social-share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+ul#an-social-share.show {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-color: var(--#{$prefix}light);
+    border-radius: var(--#{$prefix}border-radius-xl);
+    margin-top: 0.5rem !important;
+}
+
+ul#an-social-share.show[data-display="icon"] {
+    flex-direction: row;
+}
+
+[data-#{$prefix}theme="dark"] ul#an-social-share.show {
+    background-color: var(--#{$prefix}light);
+    border: 1px solid rgba(var(--#{$prefix}primary-rgb), 0.7);
+}
+
+[data-#{$prefix}theme="dark"] ul#an-social-share.show a {
+    color: var(--#{$prefix}primary);
+}
+
+#an-social-share[data-style="rounded-0"] a {
+    border-radius: 0 !important;
+}
+
+#an-social-share[data-style="rounded-pill"] a {
+    border-radius: var(--#{$prefix}border-radius-pill) !important;
+}
+
+#an-social-share[data-display="text"] i:not(.bxs-share-alt) {
+    display: none !important;
+}
+
+#an-social-share[data-display="icon"] a::after {
+    content: "" !important;
+    margin-left: 0 !important;
+}
+#an-social-share[data-display="icon"] a {
+    display: inline-flex !important;
+    max-width: 3rem;
+}
+
+#an-social-share a[class^="an-share-"] {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    min-width: 2.25rem;
+    min-height: 2.5rem;
+    padding: 0 .75rem;
+    background-color: var(--social-share-light);
+    transition: transform 0.3s ease;
+    border-radius: var(--#{$prefix}border-radius);
+}
+
+#an-social-share a[class^="an-share-"]::after {
+    content: attr(aria-label);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: .25rem;
+}
+
+#an-social-share a[class^="an-share-"]:hover {
+    background-color: var(--social-share-dark);
+    transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01);
+}
+
+#an-social-share a[class^="an-share-"] i {
+    font-size: inherit;
+    color: var(--social-share-dark);
+}
+
+#an-social-share a[class^="an-share-"]:hover::after,
+#an-social-share a[class^="an-share-"]:hover i {
+    color: var(--social-share-white);
+}
+
+#an-social-share a[class^="an-share-"]:focus,
+#an-social-share a[class^="an-share-"]:focus i {
+    background: var(--social-share-dark);
+    color: var(--social-share-white);
+}
+
+#an-social-share a[class^="an-share-"]:focus-visible {
+    outline: 2px solid var(--social-share-dark);
+}
+
+/* Media Breakpoints */
+@media only screen and (max-width: 576px) {
+    div#an-social-share:not([data-display="icon"]) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    div#an-social-share:not([data-display="icon"]) a[class^="an-share-"] {
+        width: 100%;
+    }
+    div#an-social-share[data-display="icon"] .an-share-title {
+        width: 100%;
+    }
+    ul#an-social-share[data-display="icon"] {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,324 @@
+:root,
+[data-#{$prefix}theme="light"] {
+  // Note: Custom variable values only support SassScript inside `#{}`.
+
+  // Colors
+  //
+  // Generate palettes for full colors, grays, and theme colors.
+
+  @each $color, $value in $colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  // Customized by Atas Nalar
+  @each $color, $value in $all-colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $grays {
+    --#{$prefix}gray-#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  // Customized by Atas Nalar
+  @each $color, $value in $colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-text {
+    --#{$prefix}#{$color}-text: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-bg-subtle {
+    --#{$prefix}#{$color}-bg-subtle: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-border-subtle {
+    --#{$prefix}#{$color}-border-subtle: #{$value};
+  }
+
+  --#{$prefix}white-rgb: #{to-rgb($white)};
+  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+
+  // Fonts
+
+  // Note: Use `inspect` for lists so that quoted items keep the quotes.
+  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+  --#{$prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
+  --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
+  --#{$prefix}gradient: #{$gradient};
+
+  // Root and body
+  // scss-docs-start root-body-variables
+  @if $font-size-root != null {
+    --#{$prefix}root-font-size: #{$font-size-root};
+  }
+  --#{$prefix}body-font-family: #{inspect($font-family-base)};
+  @include rfs($font-size-base, --#{$prefix}body-font-size);
+  --#{$prefix}body-font-weight: #{$font-weight-base};
+  --#{$prefix}body-line-height: #{$line-height-base};
+  --#{$prefix}body-color: #{$body-color};
+
+  --#{$prefix}emphasis-color: #{$body-emphasis-color};
+  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+
+  --#{$prefix}secondary-color: #{$body-secondary-color};
+  --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
+  --#{$prefix}secondary-bg: #{$body-secondary-bg};
+  --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+
+  --#{$prefix}tertiary-color: #{$body-tertiary-color};
+  --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
+  --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
+  --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+
+  @if $body-text-align != null {
+    --#{$prefix}body-text-align: #{$body-text-align};
+  }
+  --#{$prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  // scss-docs-end root-body-variables
+
+  @if $headings-color != null {
+    --#{$prefix}heading-color: #{$headings-color};
+  }
+
+  --#{$prefix}link-color: #{$link-color};
+  --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+  --#{$prefix}link-decoration: #{$link-decoration};
+
+  --#{$prefix}link-hover-color: #{$link-hover-color};
+  --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+
+  @if $link-hover-decoration != null {
+    --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
+  }
+
+  --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}highlight-bg: #{$mark-bg};
+
+  // scss-docs-start root-border-var
+  --#{$prefix}border-width: #{$border-width};
+  --#{$prefix}border-style: #{$border-style};
+  --#{$prefix}border-color: #{$border-color};
+  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+
+  --#{$prefix}border-radius: #{$border-radius};
+  --#{$prefix}border-radius-sm: #{$border-radius-sm};
+  --#{$prefix}border-radius-lg: #{$border-radius-lg};
+  --#{$prefix}border-radius-xl: #{$border-radius-xl};
+  --#{$prefix}border-radius-2xl: #{$border-radius-2xl};
+  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  // scss-docs-end root-border-var
+
+  --#{$prefix}box-shadow: #{$box-shadow};
+  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
+  --#{$prefix}box-shadow-md: #{$box-shadow-md};
+  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
+  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  --#{$prefix}box-shadow-primary: #{$box-shadow-primary};
+  --#{$prefix}box-shadow-sm-primary: #{$box-shadow-sm-primary};
+  --#{$prefix}box-shadow-md-primary: #{$box-shadow-md-primary};
+  --#{$prefix}box-shadow-lg-primary: #{$box-shadow-lg-primary};
+  --#{$prefix}box-shadow-inset-primary: #{$box-shadow-inset-primary};
+  --#{$prefix}box-shadow-secondary: #{$box-shadow-secondary};
+  --#{$prefix}box-shadow-sm-secondary: #{$box-shadow-sm-secondary};
+  --#{$prefix}box-shadow-md-secondary: #{$box-shadow-md-secondary};
+  --#{$prefix}box-shadow-lg-secondary: #{$box-shadow-lg-secondary};
+  --#{$prefix}box-shadow-inset-secondary: #{$box-shadow-inset-secondary};
+  --#{$prefix}box-shadow-tertiary: #{$box-shadow-tertiary};
+  --#{$prefix}box-shadow-sm-tertiary: #{$box-shadow-sm-tertiary};
+  --#{$prefix}box-shadow-md-tertiary: #{$box-shadow-md-tertiary};
+  --#{$prefix}box-shadow-lg-tertiary: #{$box-shadow-lg-tertiary};
+  --#{$prefix}box-shadow-inset-tertiary: #{$box-shadow-inset-tertiary};
+  --#{$prefix}box-shadow-success: #{$box-shadow-success};
+  --#{$prefix}box-shadow-sm-success: #{$box-shadow-sm-success};
+  --#{$prefix}box-shadow-md-success: #{$box-shadow-md-success};
+  --#{$prefix}box-shadow-lg-success: #{$box-shadow-lg-success};
+  --#{$prefix}box-shadow-inset-success: #{$box-shadow-inset-success};
+  --#{$prefix}box-shadow-info: #{$box-shadow-info};
+  --#{$prefix}box-shadow-sm-info: #{$box-shadow-sm-info};
+  --#{$prefix}box-shadow-md-info: #{$box-shadow-md-info};
+  --#{$prefix}box-shadow-lg-info: #{$box-shadow-lg-info};
+  --#{$prefix}box-shadow-inset-info: #{$box-shadow-inset-info};
+  --#{$prefix}box-shadow-warning: #{$box-shadow-warning};
+  --#{$prefix}box-shadow-sm-warning: #{$box-shadow-sm-warning};
+  --#{$prefix}box-shadow-md-warning: #{$box-shadow-md-warning};
+  --#{$prefix}box-shadow-lg-warning: #{$box-shadow-lg-warning};
+  --#{$prefix}box-shadow-inset-warning: #{$box-shadow-inset-warning};
+  --#{$prefix}box-shadow-danger: #{$box-shadow-danger};
+  --#{$prefix}box-shadow-sm-danger: #{$box-shadow-sm-danger};
+  --#{$prefix}box-shadow-md-danger: #{$box-shadow-md-danger};
+  --#{$prefix}box-shadow-lg-danger: #{$box-shadow-lg-danger};
+  --#{$prefix}box-shadow-inset-danger: #{$box-shadow-inset-danger};
+  --#{$prefix}box-shadow-blue: #{$box-shadow-blue};
+  --#{$prefix}box-shadow-sm-blue: #{$box-shadow-sm-blue};
+  --#{$prefix}box-shadow-md-blue: #{$box-shadow-md-blue};
+  --#{$prefix}box-shadow-lg-blue: #{$box-shadow-lg-blue};
+  --#{$prefix}box-shadow-inset-blue: #{$box-shadow-inset-blue};
+  --#{$prefix}box-shadow-indigo: #{$box-shadow-indigo};
+  --#{$prefix}box-shadow-sm-indigo: #{$box-shadow-sm-indigo};
+  --#{$prefix}box-shadow-md-indigo: #{$box-shadow-md-indigo};
+  --#{$prefix}box-shadow-lg-indigo: #{$box-shadow-lg-indigo};
+  --#{$prefix}box-shadow-inset-indigo: #{$box-shadow-inset-indigo};
+  --#{$prefix}box-shadow-purple: #{$box-shadow-purple};
+  --#{$prefix}box-shadow-sm-purple: #{$box-shadow-sm-purple};
+  --#{$prefix}box-shadow-md-purple: #{$box-shadow-md-purple};
+  --#{$prefix}box-shadow-lg-purple: #{$box-shadow-lg-purple};
+  --#{$prefix}box-shadow-inset-purple: #{$box-shadow-inset-purple};
+  --#{$prefix}box-shadow-pink: #{$box-shadow-pink};
+  --#{$prefix}box-shadow-sm-pink: #{$box-shadow-sm-pink};
+  --#{$prefix}box-shadow-md-pink: #{$box-shadow-md-pink};
+  --#{$prefix}box-shadow-lg-pink: #{$box-shadow-lg-pink};
+  --#{$prefix}box-shadow-inset-pink: #{$box-shadow-inset-pink};
+  --#{$prefix}box-shadow-red: #{$box-shadow-red};
+  --#{$prefix}box-shadow-sm-red: #{$box-shadow-sm-red};
+  --#{$prefix}box-shadow-md-red: #{$box-shadow-md-red};
+  --#{$prefix}box-shadow-lg-red: #{$box-shadow-lg-red};
+  --#{$prefix}box-shadow-inset-red: #{$box-shadow-inset-red};
+  --#{$prefix}box-shadow-orange: #{$box-shadow-orange};
+  --#{$prefix}box-shadow-sm-orange: #{$box-shadow-sm-orange};
+  --#{$prefix}box-shadow-md-orange: #{$box-shadow-md-orange};
+  --#{$prefix}box-shadow-lg-orange: #{$box-shadow-lg-orange};
+  --#{$prefix}box-shadow-inset-orange: #{$box-shadow-inset-orange};
+  --#{$prefix}box-shadow-yellow: #{$box-shadow-yellow};
+  --#{$prefix}box-shadow-sm-yellow: #{$box-shadow-sm-yellow};
+  --#{$prefix}box-shadow-md-yellow: #{$box-shadow-md-yellow};
+  --#{$prefix}box-shadow-lg-yellow: #{$box-shadow-lg-yellow};
+  --#{$prefix}box-shadow-inset-yellow: #{$box-shadow-inset-yellow};
+  --#{$prefix}box-shadow-green: #{$box-shadow-green};
+  --#{$prefix}box-shadow-sm-green: #{$box-shadow-sm-green};
+  --#{$prefix}box-shadow-md-green: #{$box-shadow-md-green};
+  --#{$prefix}box-shadow-lg-green: #{$box-shadow-lg-green};
+  --#{$prefix}box-shadow-inset-green: #{$box-shadow-inset-green};
+  --#{$prefix}box-shadow-teal: #{$box-shadow-teal};
+  --#{$prefix}box-shadow-sm-teal: #{$box-shadow-sm-teal};
+  --#{$prefix}box-shadow-md-teal: #{$box-shadow-md-teal};
+  --#{$prefix}box-shadow-lg-teal: #{$box-shadow-lg-teal};
+  --#{$prefix}box-shadow-inset-teal: #{$box-shadow-inset-teal};
+  --#{$prefix}box-shadow-cyan: #{$box-shadow-cyan};
+  --#{$prefix}box-shadow-sm-cyan: #{$box-shadow-sm-cyan};
+  --#{$prefix}box-shadow-md-cyan: #{$box-shadow-md-cyan};
+  --#{$prefix}box-shadow-lg-cyan: #{$box-shadow-lg-cyan};
+  --#{$prefix}box-shadow-inset-cyan: #{$box-shadow-inset-cyan};
+  --#{$prefix}box-shadow-dark: #{$box-shadow-dark};
+  --#{$prefix}box-shadow-sm-dark: #{$box-shadow-sm-dark};
+  --#{$prefix}box-shadow-md-dark: #{$box-shadow-md-dark};
+  --#{$prefix}box-shadow-lg-dark: #{$box-shadow-lg-dark};
+  --#{$prefix}box-shadow-inset-dark: #{$box-shadow-inset-dark};
+  --#{$prefix}box-shadow-white: #{$box-shadow-white};
+  --#{$prefix}box-shadow-sm-white: #{$box-shadow-sm-white};
+  --#{$prefix}box-shadow-md-white: #{$box-shadow-md-white};
+  --#{$prefix}box-shadow-lg-white: #{$box-shadow-lg-white};
+  --#{$prefix}box-shadow-inset-white: #{$box-shadow-inset-white};
+
+  --#{$prefix}emphasis-color: #{$emphasis-color};
+
+  // scss-docs-start form-control-vars
+  --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
+  --#{$prefix}form-control-disabled-bg: var(--#{$prefix}gray-500); // var(--#{$prefix}secondary-bg)
+  // scss-docs-end form-control-vars
+
+  --#{$prefix}highlight-bg: #{$mark-bg};
+
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark, true) {
+    $dark: #3a4358;
+    .text-dark {
+      --#{$prefix}dark: #{$dark};
+      --#{$prefix}dark-rgb: #{to-rgb($dark)};
+    }
+    .btn-dark {
+      --#{$prefix}btn-bg: #{$dark};
+    }
+    .btn-outline-dark {
+      --#{$prefix}btn-color: #{$dark};
+      --#{$prefix}btn-border-color: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-hover-color: #fff;
+      --#{$prefix}btn-hover-bg: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-hover-border-color: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-focus-shadow-rgb: 22, 29, 49;
+      --#{$prefix}btn-active-color: #fff;
+      --#{$prefix}btn-active-bg: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-active-border-color: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-active-shadow: 0;
+      --#{$prefix}btn-disabled-color: var(--#{$prefix}btn-color);
+      --#{$prefix}btn-disabled-bg: transparent;
+      --#{$prefix}btn-disabled-border-color: var(--#{$prefix}btn-color);
+    }
+    // scss-docs-start root-dark-mode-vars
+    --#{$prefix}body-color: #{$body-color-dark};
+    --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
+    --#{$prefix}body-bg: #{$body-bg-dark};
+    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
+
+    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+
+    --#{$prefix}secondary-color: #{$body-secondary-color-dark};
+    --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+    --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
+    --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
+
+    --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
+    --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+    --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+    --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+
+    --#{$prefix}emphasis-color: #{$emphasis-color-dark};
+
+    --#{$prefix}primary-text: #{$primary-text-dark};
+    --#{$prefix}secondary-text: #{$secondary-text-dark};
+    --#{$prefix}success-text: #{$success-text-dark};
+    --#{$prefix}info-text: #{$info-text-dark};
+    --#{$prefix}warning-text: #{$warning-text-dark};
+    --#{$prefix}danger-text: #{$danger-text-dark};
+    --#{$prefix}light-text: #{$light-text-dark};
+    --#{$prefix}dark-text: #{$dark-text-dark};
+
+    --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-dark};
+    --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-dark};
+    --#{$prefix}success-bg-subtle: #{$success-bg-subtle-dark};
+    --#{$prefix}info-bg-subtle: #{$info-bg-subtle-dark};
+    --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-dark};
+    --#{$prefix}danger-bg-subtle: #{$danger-bg-subtle-dark};
+    --#{$prefix}light-bg-subtle: #{$light-bg-subtle-dark};
+    --#{$prefix}dark-bg-subtle: #{$dark-bg-subtle-dark};
+
+    --#{$prefix}primary-border-subtle: #{$primary-border-subtle-dark};
+    --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-dark};
+    --#{$prefix}success-border-subtle: #{$success-border-subtle-dark};
+    --#{$prefix}info-border-subtle: #{$info-border-subtle-dark};
+    --#{$prefix}warning-border-subtle: #{$warning-border-subtle-dark};
+    --#{$prefix}danger-border-subtle: #{$danger-border-subtle-dark};
+    --#{$prefix}light-border-subtle: #{$light-border-subtle-dark};
+    --#{$prefix}dark-border-subtle: #{$dark-border-subtle-dark};
+
+    --#{$prefix}heading-color: #{$headings-color-dark};
+
+    --#{$prefix}link-color: #{$link-color-dark};
+    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
+    --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+
+    --#{$prefix}code-color: #{$code-color-dark};
+
+    --#{$prefix}border-color: #{$border-color-dark};
+    --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    // scss-docs-end root-dark-mode-vars
+  }
+}
