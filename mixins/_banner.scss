@@ -1,13 +1,15 @@
 @mixin Banner($file) {
   /*!
-    * Re-implemented for products by Atas Nalar. Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code and make it more readable.
+    * Re-implemented for products by Atas Nalar. 
+    * Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code and make it more readable for us and to be applied on our project/products.
     *
-    * Note: This file is a bundle of all customization. It is not recommended to edit this file. Because it will be overwritten when you update the template.
+    * Note: This file is a bundle of all customization between Sass & JS, we don't recommend editing the Sass files directly in this folder. Because it will be overwritten by us  when "New Updates" from Bootstrap are released.
     *
     * Credits:
-    * Bootstrap #{$file} v5.3.0 (https://getbootstrap.com/)
+    * Bootstrap #{$file} v5.2.3 (https://getbootstrap.com/)
     * Copyright 2011-2022 The Bootstrap Authors
     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
     *
    */
 }
+
