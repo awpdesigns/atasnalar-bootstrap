@@ -9,12 +9,9 @@
     "watch:sass": "sass --watch --no-source-map --load-path=node_modules scss:css",
     "build:prefix": "autoprefixer css/*.css",
     "watch:prefix": "autoprefixer --watch css/*.css",
-    "build:css": "minify css/*.css --output css/*.min.css",
-    "watch:css": "minify --watch css/*.css --output css/*.min.css",
-    "build:js": "minify js/*.js --output js/*.min.js",
-    "watch:js": "minify --watch js/*.js --output js/*.min.js",
     "build": "npm-run-all build:*",
     "watch": "npm-run-all watch:*",
+    "compress": "minify css/atasnalar-bootstrap.css > css/atasnalar-bootstrap.min.css && minify css/social-share.css > css/social-share.min.css && minify js/bootstrap.bundle.js > js/bootstrap.bundle.min.js && minify js/social-share.js > js/social-share.min.js",
     "start": "npm-run-all build watch"
   },
   "repository": {
@@ -26,8 +23,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "minify": "^9.1.0",
-    "sass": "^1.49.8",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.49.8"
   },
   "bugs": {
     "url": "https://github.com/awpdesigns/atasnalar-bootstrap/issues"

@@ -46,14 +46,11 @@
   color: var(--social-share-white);
   padding: 1rem 1.5rem;
   text-align: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   position: fixed;
   top: 1.25rem;
   right: 50%;
-  -webkit-transform: translateX(50%);
-          transform: translateX(50%);
+  transform: translateX(50%);
   border-radius: var(--border-radius);
   z-index: 99999;
 }
@@ -63,59 +60,34 @@
 }
 
 #an-social-share-modal #an-social-share[data-display=icon] {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 #an-social-share-modal #an-social-share[data-display=icon] a {
   min-width: 3.5rem;
   min-height: 3.5rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   font-size: 1.25rem;
 }
 
 #an-social-share-modal #an-social-share:not([data-display=icon]) {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 div#an-social-share {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
   gap: 0.5rem;
 }
 
 ul#an-social-share.show {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 0.75rem;
   border-color: var(--light);
@@ -124,10 +96,7 @@ ul#an-social-share.show {
 }
 
 ul#an-social-share.show[data-display=icon] {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 [data-theme=dark] ul#an-social-share.show {
@@ -157,42 +126,27 @@ ul#an-social-share.show[data-display=icon] {
 }
 
 #an-social-share[data-display=icon] a {
-  display: -webkit-inline-box !important;
-  display: -ms-inline-flexbox !important;
   display: inline-flex !important;
   max-width: 3rem;
 }
 
 #an-social-share a[class^=an-share-] {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-decoration: none;
   min-width: 2.25rem;
   min-height: 2.5rem;
   padding: 0 0.75rem;
   background-color: var(--social-share-light);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   border-radius: var(--border-radius);
 }
 
 #an-social-share a[class^=an-share-]::after {
   content: attr(aria-label);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin-left: 0.25rem;
 }
 
@@ -228,13 +182,8 @@ ul#an-social-share.show[data-display=icon] {
 /* Media Breakpoints */
 @media only screen and (max-width: 576px) {
   div#an-social-share:not([data-display=icon]) {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
   div#an-social-share:not([data-display=icon]) a[class^=an-share-] {
     width: 100%;
@@ -243,9 +192,6 @@ ul#an-social-share.show[data-display=icon] {
     width: 100%;
   }
   ul#an-social-share[data-display=icon] {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
