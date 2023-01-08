@@ -1,15 +1,13 @@
 @mixin Banner($file) {
   /*!
-    * ANTerCV 1.0.0 by Atas Nalar (https://atasnalar.com)
-    * Licensed under General Public License v3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+    *  Re-implemented for products by Atas Nalar. Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code and make it more readable.
     *
-    * Note: This file is a bundle of all ANTerCV styles. It is not recommended to edit this file.
+    * Note: This file is a bundle of all customization. It is not recommended to edit this file. Because it will be overwritten when you update the template.
     *
     * Credits:
     * Bootstrap #{$file} v5.3.0 (https://getbootstrap.com/)
     * Copyright 2011-2022 The Bootstrap Authors
     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
     *
-    * Update: Re-implemented for products by Atas Nalar (https://atasnalar.com). Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code and make it more readable.
    */
 }
