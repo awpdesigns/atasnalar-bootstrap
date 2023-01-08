@@ -1,0 +1,19 @@
+{
+  "name": "atasnalar-bootstrap",
+  "version": "1.0.0",
+  "description": "This Sass is based on Bootstrap ^5.2.3. we don't recommend editing the Sass files directly in this folder. This file has been re-implemented by Atas Nalar with some changes and will be overwritten by us when \"New Updates\" from Bootstrap are released.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awpdesigns/atasnalar-bootstrap.git"
+  },
+  "author": "Atas Nalar <atasnalar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awpdesigns/atasnalar-bootstrap/issues"
+  },
+  "homepage": "https://github.com/awpdesigns/atasnalar-bootstrap#readme"
+}
