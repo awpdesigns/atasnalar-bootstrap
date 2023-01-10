@@ -4461,6 +4461,10 @@ textarea.form-control-lg {
   background-position: top calc(0.375em + 0.1875rem) right calc(1.65em + 0.1875rem);
 }
 
+.was-validated .form-check-input:invalid ~ .form-check-label .form-check-radio, .form-check-input.is-invalid ~ .form-check-label .form-check-radio {
+  border-color: var(--input-border-color);
+}
+
 .has-icon {
   position: relative;
 }
