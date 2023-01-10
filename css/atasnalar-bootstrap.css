@@ -3957,7 +3957,7 @@ textarea.form-control-lg {
   color: var(--gray);
 }
 .radio-box .form-check-label .form-check-image {
-  min-height: 1.5rem;
+  max-height: 1.5rem;
 }
 .radio-box .form-check-label .form-check-description {
   color: var(--body-color);
