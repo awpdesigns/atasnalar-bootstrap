@@ -1,5 +1,10 @@
 # atasnalar-bootstrap
 
+By default we set prefix to empty.
+If you set the prefix in your custom Sass file, Please check all variable value in your inlined CSS (If you use inline CSS) or your CSS file (If you use external CSS file) and add prefix that you have set in your custom Sass file to the variable value.
+
+Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. Except for toggle switch theme mode that will automatically change when you change prefix.
+
 == Usage ==
 1. Install via NPM: npm install atasnalar-bootstrap
 2. Import Atas Nalar - Bootstrap Sass file to your main Sass file: @import "node_modules/atasnalar-bootstrap/scss/atasnalar-bootstrap";
