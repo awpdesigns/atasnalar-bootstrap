@@ -8340,6 +8340,40 @@ textarea.form-control-lg {
   border-radius: var(--tooltip-border-radius);
 }
 
+.typing-text {
+  position: relative;
+  overflow: hidden;
+  color: var(--primary);
+}
+.typing-text .typing {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.typing-text .typing.text-intro {
+  color: var(--body-color);
+}
+.typing-text .typing.text-value::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--body-bg);
+  border-left: 2px solid;
+  animation: animate steps(12) infinite;
+  animation-duration: var(--typing-time);
+}
+
+@keyframes animate {
+  40%, 60% {
+    left: calc(100% + 4px);
+  }
+  100% {
+    left: 0%;
+  }
+}
 .popover {
   --popover-zindex: 1070;
   --popover-max-width: 276px;

@@ -7139,3 +7139,39 @@
                     }
                 }, 10);
         });
+
+  /**
+     * --------------------------------------------------------------------------
+     * Bootstrap (v5.2.3): typing-text.js
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     * Re-implemented by Atas Nalar (https://atasnalar.com)
+     * --------------------------------------------------------------------------
+     */
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+  var text = document.querySelector(".text-value"),
+      textArray = text.getAttribute("data-typing-text").split(","),
+      textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
+      textIndex = 0;
+
+  text.textContent = textArray[0];
+  // Set css animation duration to pseudo::before of text
+  text.style.setProperty("--typing-time", textTimePeriod + "ms");
+
+  var textLoad = () => {
+      for (var i = 0; i < textArray.length; i++) {
+          setTimeout(() => {
+              text.textContent = textArray[textIndex];
+              textIndex++;
+              if (textIndex >= textArray.length) {
+                  textIndex = 0;
+              }
+          }, textTimePeriod * i);
+      }
+  }
+
+  textLoad();
+  setInterval(textLoad, textTimePeriod * textArray.length);

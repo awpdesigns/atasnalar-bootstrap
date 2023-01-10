@@ -22,6 +22,7 @@ Sass Files:
 - Added: New Component (Circular Progress Bar)
 - Added: New Component (Preloader)
 - Added: New Component (Toggle Switch Theme Mode => Light/Dark)
+- Added: New Component (Typing Text Animation) with support for multiple text,custom speed, variable color & theme color.
 - Added: New Dropdown Toggle Icon (chevron as default, caret as alternative with class .toggle-caret)
 - Added: New Divider with Text (Separator) with class .strike (Ex: <div class="strike"><span>Text</span></div>)
 - Added: Icon support for input, textarea, select.
