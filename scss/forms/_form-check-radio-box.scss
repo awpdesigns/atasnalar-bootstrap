@@ -47,6 +47,7 @@
         width: 100%;
         padding: $spacer;
         background-color: var(--#{$prefix}light);
+        border: 1px solid var(--#{$prefix}border-color);
         border-radius: $border-radius-lg;
         cursor: pointer;
         height: auto;
@@ -57,7 +58,7 @@
             height: 1rem;
             margin-right: $spacer * .5;
             border-radius: $border-radius-pill;
-            background-color: var(--#{$prefix}white);
+            background-color: var(--#{$prefix}body-bg);
             border: 4px solid var(--#{$prefix}gray-200);
             transition: all .3s ease;
         }
@@ -102,6 +103,20 @@
                 color: var(--#{$prefix}primary);
             }
         }
+    }
+}
+
+[data-theme="dark"] {
+    .radio-box .form-check-label:hover {
+        background-color: var(--#{$prefix}primary-bg-subtle);
+        border-color: var(--#{$prefix}primary-border-subtle);
+    }
+    .radio-box .form-check-input:checked+.form-check-label {
+        background-color: var(--#{$prefix}primary-bg-subtle);
+        box-shadow: inset 0 0 0 1px var(--#{$prefix}primary-border-subtle);
+    }
+    .radio-box .form-check-input:checked+.form-check-label .form-check-radio {
+        background-color: var(--#{$prefix}body-color);
     }
 }
 

@@ -3932,6 +3932,7 @@ textarea.form-control-lg {
   width: 100%;
   padding: 1rem;
   background-color: var(--light);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   cursor: pointer;
   height: auto;
@@ -3942,7 +3943,7 @@ textarea.form-control-lg {
   height: 1rem;
   margin-left: 0.5rem;
   border-radius: 50rem;
-  background-color: var(--white);
+  background-color: var(--body-bg);
   border: 4px solid var(--gray-200);
   transition: all 0.3s ease;
 }
@@ -3979,6 +3980,18 @@ textarea.form-control-lg {
 }
 .radio-box .form-check-label:hover .form-check-content {
   color: var(--primary);
+}
+
+[data-theme=dark] .radio-box .form-check-label:hover {
+  background-color: var(--primary-bg-subtle);
+  border-color: var(--primary-border-subtle);
+}
+[data-theme=dark] .radio-box .form-check-input:checked + .form-check-label {
+  background-color: var(--primary-bg-subtle);
+  box-shadow: inset 0 0 0 1px var(--primary-border-subtle);
+}
+[data-theme=dark] .radio-box .form-check-input:checked + .form-check-label .form-check-radio {
+  background-color: var(--body-color);
 }
 
 @keyframes slidedown {
