@@ -43,8 +43,9 @@ Sass Files:
 and more...
 
 JS Files:
-- Added: Animation to Circular Progress Bar
-- Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code. Ex: (data-bs-target -> data-target, data-bs-tooltip -> data-tooltip, data-bs-placement -> data-placement, shown.bs.tooltip -> shown.tooltip, etc.)
+- Added: New JS function for toggle switch theme mode (light/dark)
+- Added: New JS function for Animation to Circular Progress Bar
+- Modified: Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code. Ex: (data-bs-target -> data-target, data-bs-tooltip -> data-tooltip, data-bs-placement -> data-placement, shown.bs.tooltip -> shown.tooltip, etc.)
 
  == Credits ==
  * Bootstrap v5.3.0 (https://getbootstrap.com/)
