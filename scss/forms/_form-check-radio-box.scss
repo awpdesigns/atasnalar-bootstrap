@@ -1,0 +1,121 @@
+.radio-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer * .5;
+    padding: 0;
+
+    .box {
+        position: relative;
+    }
+
+    .form-check-input {
+        position: absolute;
+        top: $spacer * 1.25;
+        left: $spacer;
+        float: none;
+        margin: 0;
+        opacity: 0;
+        z-index: -1;
+
+        &:checked {
+            + .form-check-label {
+                color: var(--#{$prefix}primary);
+                font-weight: $font-weight-medium;
+                background-color: var(--#{$prefix}primary-100);
+                box-shadow: inset 0 0 0 1px var(--#{$prefix}primary-300);
+
+                .form-check-radio {
+                    border-color: var(--#{$prefix}primary);
+                }
+
+                .form-check-content {
+                    color: var(--#{$prefix}primary);
+                }
+
+                .form-check-description {
+                    animation: slidedown .3s ease forwards;
+                }
+            }
+        }
+    }
+
+    .form-check-label {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: $spacer;
+        background-color: var(--#{$prefix}light);
+        border-radius: $border-radius-lg;
+        cursor: pointer;
+        height: auto;
+        transition: all .3s ease;
+
+        .form-check-radio {
+            width: 1rem;
+            height: 1rem;
+            margin-right: $spacer * .5;
+            border-radius: $border-radius-pill;
+            background-color: var(--#{$prefix}white);
+            border: 4px solid var(--#{$prefix}gray-200);
+            transition: all .3s ease;
+        }
+
+        .form-check-content {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: $spacer * .5;
+            font-size: $font-size-sm;
+            color: var(--#{$prefix}gray);
+        }
+
+        .form-check-image {
+            min-height: 1.5rem;
+        }
+
+        .form-check-description {
+            color: var(--#{$prefix}body-color);
+            margin: 0 0 0 1.5rem;
+            font-size: $font-size-sm;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease;
+            transform: translateY(-1.5rem);
+
+            strong {
+                color: var(--#{$prefix}primary);
+            }
+        }
+
+        &:hover {
+            background-color: var(--#{$prefix}primary-100);
+
+            .form-check-radio {
+                border-color: var(--#{$prefix}primary-300);
+            }
+
+            .form-check-content {
+                color: var(--#{$prefix}primary);
+            }
+        }
+    }
+}
+
+@keyframes slidedown {
+    0% {
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1.5rem);
+    }
+    100% {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        margin-top: .5rem;
+    }
+}
