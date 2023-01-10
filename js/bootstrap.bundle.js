@@ -7106,3 +7106,36 @@
     return index_umd;
 
   }));
+
+  /**
+     * --------------------------------------------------------------------------
+     * Bootstrap (v5.2.3): progress-circular.js
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     * Re-implemented by Atas Nalar (https://atasnalar.com)
+     * --------------------------------------------------------------------------
+     */
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+  var progress = document.querySelectorAll('.progress-circle');
+        progress.forEach((item) => {
+            var progressValue = item.getAttribute('data-value'),
+                progressColor = item.getAttribute('data-color'),
+                progressBGColor = item.getAttribute('data-bg-color');
+
+            var progressTextValue = document.querySelector('.progress-value');
+            progressTextValue.innerHTML = `${progressValue}%`;
+
+            var progressStartValue = 0,
+                progressInterval = setInterval(() => {
+                    if (progressStartValue >= progressValue) {
+                        clearInterval(progressInterval);
+                    } else {
+                        progressStartValue++;
+                        item.style.background = `conic-gradient(${progressColor} ${progressStartValue * 3.6}deg, ${progressBGColor} 0deg)`;
+                        item.querySelector('.progress-value').innerHTML = `${progressStartValue}%`;
+                    }
+                }, 10);
+        });

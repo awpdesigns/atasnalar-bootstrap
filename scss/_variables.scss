@@ -1452,6 +1452,19 @@ $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 // scss-docs-end progress-variables
 
+// Progress bars circular
+
+// scss-docs-start progress-circular-variables
+$progress-circular-min-width:       10rem !default;
+$progress-circular-min-height:      $progress-circular-min-width !default;
+$progress-circular-width:           85% !default;
+$progress-circular-height:          $progress-circular-width !default;
+$progress-circular-font-size:       $font-size-base !default;
+$progress-circular-value-color:     var(--#{$prefix}body-color) !default;
+$progress-circular-value-bg:        var(--#{$prefix}body-bg) !default;
+$progress-circular-border-radius:   50% !default;
+// scss-docs-end progress-circular-variables
+
 
 // List group
 
