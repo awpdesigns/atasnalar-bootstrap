@@ -1,6 +1,7 @@
 .has-icon {
     position: relative;
-    .form-control {
+    .form-control,
+    .form-select {
         padding-left: $spacer * 2.375;
     }
     .emoji-control {

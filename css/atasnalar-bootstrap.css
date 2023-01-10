@@ -4464,7 +4464,8 @@ textarea.form-control-lg {
 .has-icon {
   position: relative;
 }
-.has-icon .form-control {
+.has-icon .form-control,
+.has-icon .form-select {
   padding-left: 2.375rem;
 }
 .has-icon .emoji-control {
