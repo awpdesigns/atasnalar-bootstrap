@@ -225,7 +225,7 @@
 
   // scss-docs-start form-control-vars
   --#{$prefix}form-control-bg: var(--#{$prefix}body-bg);
-  --#{$prefix}form-control-disabled-bg: var(--#{$prefix}gray-500); // var(--#{$prefix}secondary-bg)
+  --#{$prefix}form-control-disabled-bg: var(--#{$prefix}gray-100); // var(--#{$prefix}secondary-bg)
   // scss-docs-end form-control-vars
 
   --#{$prefix}highlight-bg: #{$mark-bg};
@@ -314,6 +314,9 @@
     --#{$prefix}link-hover-color: #{$link-hover-color-dark};
     --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+
+    --#{$prefix}form-control-bg: #{$body-bg-dark};
+    --#{$prefix}form-control-disabled-bg: var(--#{$prefix}dark-bg-subtle);
 
     --#{$prefix}code-color: #{$code-color-dark};
 

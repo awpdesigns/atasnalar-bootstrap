@@ -7175,3 +7175,32 @@
 
   textLoad();
   setInterval(textLoad, textTimePeriod * textArray.length);
+
+  /**
+     * --------------------------------------------------------------------------
+     * Bootstrap (v5.2.3): toggle-theme.js
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     * Re-implemented by Atas Nalar (https://atasnalar.com)
+     * --------------------------------------------------------------------------
+     */
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+  var toggle = document.querySelector('.toggle-theme');
+  var target = document.querySelector('html');
+  var prefix = toggle.getAttribute('data-prefix') || '';
+  var getMode = localStorage.getItem('mode');
+  if (getMode && getMode === 'dark') {
+      target.setAttribute('data-' + prefix + 'theme', 'dark');
+      toggle.classList.add('active');
+  } else {
+      target.setAttribute('data-' + prefix + 'theme', 'light');
+      toggle.classList.remove('active');
+  }
+  toggle.addEventListener('click', function () {
+      toggle.classList.toggle('active');
+      target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
+      localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
+  });

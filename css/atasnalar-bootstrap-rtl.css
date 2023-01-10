@@ -392,7 +392,7 @@
   --box-shadow-inset-white: inset 0 1px 2px rgba(var(--white-rgb), 0.075);
   --emphasis-color: #161D31;
   --form-control-bg: var(--body-bg);
-  --form-control-disabled-bg: var(--gray-500);
+  --form-control-disabled-bg: var(--gray-100);
   --highlight-bg: #fff3cd;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -447,6 +447,8 @@
   --link-hover-color: #b0c3f8;
   --link-color-rgb: 137, 166, 245;
   --link-hover-color-rgb: 176, 195, 248;
+  --form-control-bg: #161D31;
+  --form-control-disabled-bg: var(--dark-bg-subtle);
   --code-color: #e685b5;
   --border-color: #424e5a;
   --border-color-translucent: rgba(255, 255, 255, 0.15);
@@ -3982,6 +3984,9 @@ textarea.form-control-lg {
   color: var(--primary);
 }
 
+[data-theme=dark] .radio-box .form-check-label {
+  background-color: var(--body-bg);
+}
 [data-theme=dark] .radio-box .form-check-label:hover {
   background-color: var(--primary-bg-subtle);
   border-color: var(--primary-border-subtle);
