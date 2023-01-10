@@ -3901,6 +3901,7 @@ textarea.form-control-lg {
 }
 .radio-box .box {
   position: relative;
+  width: 100%;
 }
 .radio-box .form-check-input {
   position: absolute;

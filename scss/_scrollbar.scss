@@ -1,30 +1,22 @@
-
-$scrollbar-width: 8px;
-$scrollbar-height: 8px;
-$scrollbar-track-color: var(--#{$prefix}gray-300);
-$scrollbar-handle-color: var(--#{$prefix}primary-400);
-$scrollbar-handle-hover-color: var(--#{$prefix}primary);
-$scrollbar-border-radius: 1rem;
-
 /* Scrollbar - Width */
 ::-webkit-scrollbar {
-    width: $scrollbar-width;
-    height: $scrollbar-height;
+    width: 8px;
+    height: 8px;
 }
 
 /* Scrollbar - Track */
 ::-webkit-scrollbar-track {
-    background: $scrollbar-track-color;
-    border-radius: $scrollbar-border-radius;
+    background: var(--#{$prefix}gray-300);
+    border-radius: 1rem;
 }
 
 /* Scrollbar - Handle */
 ::-webkit-scrollbar-thumb {
-    background: $scrollbar-handle-color;
-    border-radius: $scrollbar-border-radius;
+    background: var(--#{$prefix}primary-400);
+    border-radius: 1rem;
 }
 
 /* Scrollbar - Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: $scrollbar-handle-hover-color;
+    background: var(--#{$prefix}primary);
 }
