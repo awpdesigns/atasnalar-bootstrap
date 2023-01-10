@@ -106,7 +106,7 @@
     }
 }
 
-[data-theme="dark"] {
+[data-#{$prefix}theme="dark"] {
     .radio-box .form-check-label:hover {
         background-color: var(--#{$prefix}primary-bg-subtle);
         border-color: var(--#{$prefix}primary-border-subtle);
