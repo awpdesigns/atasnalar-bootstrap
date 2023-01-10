@@ -1,13 +1,16 @@
 # atasnalar-bootstrap
 
-== Customization ==
+== Usage ==
+1. Install via NPM: npm install atasnalar-bootstrap
+2. Import Atas Nalar - Bootstrap Sass file to your main Sass file: @import "node_modules/atasnalar-bootstrap/scss/atasnalar-bootstrap";
+3. Import Customized Bootstrap JavaScript file to your main JavaScript file: (Expanded = bootstrap.bundle.js, Minified = bootstrap.bundle.min.js) => import 'node_modules/atasnalar-bootstrap/js/bootstrap.bundle.min.js';
 
+== Customization ==
 This Sass is based on Bootstrap ^5.3.0. Big thanks to all Bootstrap author & contributor.
 
 For information, we don't recommend editing all files directly. This file has been re-implemented by Atas Nalar with some changes in Sass & JavaScript files and will be overwritten by us when "New Updates" from Bootstrap are released.
 
 == New Features & Implementation ==
-
 Sass Files:
 - Extend: Theme Color (tertiary)
 - Extend: Pallete for Theme Color (primary, secondary, tertiary, success, info, warning, danger, light, dark)
@@ -38,7 +41,7 @@ JS Files:
 - Added: Animation to Circular Progress Bar
 - Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code. Ex: (data-bs-target -> data-target, data-bs-tooltip -> data-tooltip, data-bs-placement -> data-placement, shown.bs.tooltip -> shown.tooltip, etc.)
 
-Credits:
+ == Credits ==
  * Bootstrap v5.3.0 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
