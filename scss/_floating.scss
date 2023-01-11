@@ -12,13 +12,7 @@
 }
 
 // Back to top button
-.back-to-top {
+#back-to-top {
     display: none;
-    margin-left: $spacer * .5;
-    color: var(--#{$prefix}primary);
-
-    &:hover {
-        color: var(--#{$prefix}white);
-        background-color: var(--#{$prefix}primary);
-    }
+    margin: 0 $spacer * .5;
 }

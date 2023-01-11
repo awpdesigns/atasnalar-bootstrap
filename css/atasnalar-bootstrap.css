@@ -3609,7 +3609,7 @@ progress {
   margin: -0.375rem -0.75rem;
   margin-inline-end: 0.75rem;
   color: var(--body-color);
-  background-color: var(--gray-100);
+  background-color: var(--tertiary-bg);
   pointer-events: none;
   border-color: inherit;
   border-style: solid;
@@ -3624,7 +3624,7 @@ progress {
   }
 }
 .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: var(--gray-200);
+  background-color: var(--secondary-bg);
 }
 
 .form-control-plaintext {
@@ -4059,7 +4059,7 @@ textarea.form-control-lg {
   height: 0.5rem;
   color: transparent;
   cursor: pointer;
-  background-color: var(--gray-100);
+  background-color: var(--tertiary-bg);
   border-color: transparent;
   border-radius: 1rem;
   box-shadow: inset 0 1px 2px rgba(var(--body-color-rgb), 0.075);
@@ -4087,7 +4087,7 @@ textarea.form-control-lg {
   height: 0.5rem;
   color: transparent;
   cursor: pointer;
-  background-color: var(--gray-100);
+  background-color: var(--tertiary-bg);
   border-color: transparent;
   border-radius: 1rem;
   box-shadow: inset 0 1px 2px rgba(var(--body-color-rgb), 0.075);
@@ -4096,10 +4096,10 @@ textarea.form-control-lg {
   pointer-events: none;
 }
 .form-range:disabled::-webkit-slider-thumb {
-  background-color: var(--gray-200);
+  background-color: var(--secondary-bg);
 }
 .form-range:disabled::-moz-range-thumb {
-  background-color: var(--gray-200);
+  background-color: var(--secondary-bg);
 }
 
 .form-floating {
@@ -4221,7 +4221,7 @@ textarea.form-control-lg {
   color: var(--body-color);
   text-align: center;
   white-space: nowrap;
-  background-color: var(--gray-100);
+  background-color: var(--tertiary-bg);
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
 }
@@ -7062,16 +7062,16 @@ textarea.form-control-lg {
   --pagination-border-color: var(--border-color);
   --pagination-border-radius: var(--border-radius);
   --pagination-hover-color: var(--link-hover-color);
-  --pagination-hover-bg: var(--gray-100);
+  --pagination-hover-bg: var(--tertiary-bg);
   --pagination-hover-border-color: var(--border-color);
   --pagination-focus-color: var(--link-hover-color);
-  --pagination-focus-bg: var(--gray-200);
+  --pagination-focus-bg: var(--secondary-bg);
   --pagination-focus-box-shadow: 0 0 0 0.15rem rgba(58, 106, 238, 0.15);
   --pagination-active-color: #fff;
   --pagination-active-bg: #3a6aee;
   --pagination-active-border-color: #3a6aee;
-  --pagination-disabled-color: var(--gray-500);
-  --pagination-disabled-bg: var(--gray-200);
+  --pagination-disabled-color: var(--secondary-color);
+  --pagination-disabled-bg: var(--secondary-bg);
   --pagination-disabled-border-color: var(--border-color);
   display: flex;
   padding-left: 0;
@@ -7487,12 +7487,12 @@ textarea.form-control-lg {
   --list-group-border-radius: var(--border-radius);
   --list-group-item-padding-x: 1rem;
   --list-group-item-padding-y: 0.5rem;
-  --list-group-action-color: var(--gray-500);
+  --list-group-action-color: var(--secondary-color);
   --list-group-action-hover-color: var(--emphasis-color);
-  --list-group-action-hover-bg: var(--gray-100);
+  --list-group-action-hover-bg: var(--tertiary-bg);
   --list-group-action-active-color: var(--body-color);
-  --list-group-action-active-bg: var(--gray-200);
-  --list-group-disabled-color: var(--gray-500);
+  --list-group-action-active-bg: var(--secondary-bg);
+  --list-group-disabled-color: var(--secondary-color);
   --list-group-disabled-bg: var(--body-bg);
   --list-group-active-color: #fff;
   --list-group-active-bg: #3a6aee;
@@ -8704,7 +8704,7 @@ textarea.form-control-lg {
   margin-left: 15%;
   list-style: none;
 }
-.carousel-indicators [data-bs-target] {
+.carousel-indicators [data-target] {
   box-sizing: content-box;
   flex: 0 1 auto;
   width: 30px;
@@ -8723,7 +8723,7 @@ textarea.form-control-lg {
   transition: opacity 0.6s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-  .carousel-indicators [data-bs-target] {
+  .carousel-indicators [data-target] {
     transition: none;
   }
 }
@@ -8746,7 +8746,7 @@ textarea.form-control-lg {
 .carousel-dark .carousel-control-next-icon {
   filter: invert(1) grayscale(100);
 }
-.carousel-dark .carousel-indicators [data-bs-target] {
+.carousel-dark .carousel-indicators [data-target] {
   background-color: var(--dark);
 }
 .carousel-dark .carousel-caption {
@@ -8757,7 +8757,7 @@ textarea.form-control-lg {
 [data-theme=dark] .carousel .carousel-control-next-icon {
   filter: invert(1) grayscale(100);
 }
-[data-theme=dark] .carousel .carousel-indicators [data-bs-target] {
+[data-theme=dark] .carousel .carousel-indicators [data-target] {
   background-color: var(--dark);
 }
 [data-theme=dark] .carousel .carousel-caption {
@@ -9495,14 +9495,9 @@ img:after {
   align-items: center;
 }
 
-.back-to-top {
+#back-to-top {
   display: none;
-  margin-left: 0.5rem;
-  color: var(--primary);
-}
-.back-to-top:hover {
-  color: var(--white);
-  background-color: var(--primary);
+  margin: 0 0.5rem;
 }
 
 ::placeholder {
@@ -9532,7 +9527,7 @@ a[href^=http]:empty::before {
 .strike > * {
   position: relative;
   display: inline-block;
-  color: var(--body-color);
+  color: var(--border-color);
 }
 .strike > *:before, .strike > *:after {
   content: "";
@@ -9540,7 +9535,7 @@ a[href^=http]:empty::before {
   top: 50%;
   width: 9999px;
   height: 1px;
-  background: var(--gray-100);
+  background: var(--border-color);
 }
 .strike > *:before {
   right: 100%;
@@ -10852,7 +10847,8 @@ a[href^=http]:empty::before {
   justify-content: center;
   align-items: center;
   left: -40px;
-  background: var(--white);
+  background: var(--body-bg);
+  color: var(--body-color);
   width: 40px;
   height: 40px;
   border-top-left-radius: 1rem;
@@ -10861,19 +10857,19 @@ a[href^=http]:empty::before {
   box-shadow: 0 0.25rem 0.5rem rgba(var(--body-color-rgb), 0.08);
 }
 .color-switcher .color-switcher-toggle:hover {
-  background: var(--gray-100);
+  background: var(--tertiary-bg);
 }
 .color-switcher .color-switcher-toggle.active {
-  background: var(--gray-100);
+  background: var(--tertiary-bg);
 }
 .color-switcher .color-switcher-content {
-  background: var(--white);
+  background: var(--body-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
   padding: 0;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.25rem 0.5rem rgba(var(--body-color-rgb), 0.08);
   text-align: center;
   width: 0;
   opacity: 0;
@@ -10922,7 +10918,7 @@ a[href^=http]:empty::before {
   border-radius: 50%;
   left: 0;
   top: 0;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--tertiary-bg);
 }
 .color-switcher .color-switcher-content .color-switcher-list li .color-switcher-item::before {
   content: attr(data-color-name);
@@ -10931,8 +10927,8 @@ a[href^=http]:empty::before {
   left: -0.75rem;
   display: flex;
   font-size: 0.75rem;
-  color: var(--white);
-  background-color: var(--dark);
+  color: var(--body-bg);
+  background-color: var(--body-color);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   display: none;

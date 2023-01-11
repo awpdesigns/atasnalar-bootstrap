@@ -150,7 +150,7 @@
 // Optional indicator pips/controls
 //
 // Add a container (such as a list) with the following class and add an item (ideally a focusable control,
-// like a button) with data-bs-target for each slide your carousel holds.
+// like a button) with data-target for each slide your carousel holds.
 
 .carousel-indicators {
   position: absolute;
@@ -167,7 +167,7 @@
   margin-left: $carousel-control-width;
   list-style: none;
 
-  [data-bs-target] {
+  [data-target] {
     box-sizing: content-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
@@ -216,7 +216,7 @@
     filter: $carousel-dark-control-icon-filter;
   }
 
-  .carousel-indicators [data-bs-target] {
+  .carousel-indicators [data-target] {
     background-color: $carousel-dark-indicator-active-bg;
   }
 

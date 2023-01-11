@@ -7,7 +7,7 @@
     > * {
         position: relative;
         display: inline-block;
-        color: var(--#{$prefix}body-color);
+        color: var(--#{$prefix}border-color);
 
         &:before,
         &:after {
@@ -16,7 +16,7 @@
             top: 50%;
             width: 9999px;
             height: 1px;
-            background: var(--#{$prefix}gray-100);
+            background: var(--#{$prefix}border-color);
         }
 
         &:before {

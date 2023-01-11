@@ -880,7 +880,7 @@ $input-group-addon-padding-y:           $input-padding-y !default;
 $input-group-addon-padding-x:           $input-padding-x !default;
 $input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
-$input-group-addon-bg:                  var(--#{$prefix}gray-100) !default; // tertiary-bg !default;
+$input-group-addon-bg:                  var(--#{$prefix}tertiary-bg) !default;
 $input-group-addon-border-color:        $input-border-color !default;
 // scss-docs-end input-group-variables
 
@@ -932,7 +932,7 @@ $form-select-transition:          $input-transition !default;
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
 $form-range-track-cursor:         pointer !default;
-$form-range-track-bg:             var(--#{$prefix}gray-100) !default; // tertiary-bg !default;
+$form-range-track-bg:             var(--#{$prefix}tertiary-bg) !default; // tertiary-bg !default;
 $form-range-track-border-radius:  1rem !default;
 $form-range-track-box-shadow:     $box-shadow-inset !default;
 
@@ -945,14 +945,14 @@ $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($dark, .1) !defau
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
-$form-range-thumb-disabled-bg:             var(--#{$prefix}gray-200) !default; // secondary-bg !default;
+$form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-bg) !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 // scss-docs-end form-range-variables
 
 // scss-docs-start form-file-variables
 $form-file-button-color:          $input-color !default;
-$form-file-button-bg:             var(--#{$prefix}gray-100) !default; // tertiary-bg !default; (#f8f9fa)
-$form-file-button-hover-bg:       var(--#{$prefix}gray-200) !default; // secondary-bg !default; (#e9ecef)
+$form-file-button-bg:             var(--#{$prefix}tertiary-bg) !default;
+$form-file-button-hover-bg:       var(--#{$prefix}secondary-bg) !default;
 // scss-docs-end form-file-variables
 
 // scss-docs-start form-floating-variables
@@ -1182,20 +1182,20 @@ $pagination-margin-start:           calc($pagination-border-width * -1) !default
 $pagination-border-color:           var(--#{$prefix}border-color) !default;
 
 $pagination-focus-color:            var(--#{$prefix}link-hover-color) !default;
-$pagination-focus-bg:               var(--#{$prefix}gray-200) !default; // secondary-bg !default;
+$pagination-focus-bg:               var(--#{$prefix}secondary-bg) !default; // secondary-bg !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            var(--#{$prefix}link-hover-color) !default;
-$pagination-hover-bg:               var(--#{$prefix}gray-100) !default; // tertiary-bg !default;
+$pagination-hover-bg:               var(--#{$prefix}tertiary-bg) !default; // tertiary-bg !default;
 $pagination-hover-border-color:     var(--#{$prefix}border-color) !default; // Todo in v6: remove this?
 
 $pagination-active-color:           $component-active-color !default;
 $pagination-active-bg:              $component-active-bg !default;
 $pagination-active-border-color:    $component-active-bg !default;
 
-$pagination-disabled-color:         var(--#{$prefix}gray-500) !default; // secondary-color !default;
-$pagination-disabled-bg:            var(--#{$prefix}gray-200) !default; // secondary-bg !default;
+$pagination-disabled-color:         var(--#{$prefix}secondary-color) !default; // secondary-color !default;
+$pagination-disabled-bg:            var(--#{$prefix}secondary-bg) !default; // secondary-bg !default;
 $pagination-disabled-border-color:  var(--#{$prefix}border-color) !default;
 
 $pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -1482,19 +1482,19 @@ $list-group-item-bg-scale:          -80% !default; // Deprecated in v5.3.0
 $list-group-item-color-scale:       40% !default; // Deprecated in v5.3.0
 // fusv-enable
 
-$list-group-hover-bg:               var(--#{$prefix}gray-100) !default; // tertiary-bg !default;
+$list-group-hover-bg:               var(--#{$prefix}tertiary-bg) !default; // tertiary-bg !default;
 $list-group-active-color:           $component-active-color !default;
 $list-group-active-bg:              $component-active-bg !default;
 $list-group-active-border-color:    $list-group-active-bg !default;
 
-$list-group-disabled-color:         var(--#{$prefix}gray-500) !default; // secondary-color !default;
+$list-group-disabled-color:         var(--#{$prefix}secondary-color) !default; // secondary-color !default;
 $list-group-disabled-bg:            $list-group-bg !default;
 
-$list-group-action-color:           var(--#{$prefix}gray-500) !default; // secondary-color !default;
+$list-group-action-color:           var(--#{$prefix}secondary-color) !default; // secondary-color !default;
 $list-group-action-hover-color:     var(--#{$prefix}emphasis-color) !default;
 
 $list-group-action-active-color:    var(--#{$prefix}body-color) !default;
-$list-group-action-active-bg:       var(--#{$prefix}gray-200) !default; // secondary-bg !default;
+$list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default; // secondary-bg !default;
 // scss-docs-end list-group-variables
 
 
