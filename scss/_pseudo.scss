@@ -4,8 +4,12 @@
 }
 // Selection
 ::selection {
-    background: var(--#{$prefix}primary);
-    color: var(--#{$prefix}white);
+    background: var(--#{$prefix}primary-100);
+    color: var(--#{$prefix}primary);
+}
+[data-#{$prefix}theme="dark"] ::selection {
+    background: var(--#{$prefix}primary-800);
+    color: var(--#{$prefix}primary);
 }
 // Link with empty content
 a[href^="http"]:empty::before {

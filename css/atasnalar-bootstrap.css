@@ -9510,8 +9510,13 @@ img:after {
 }
 
 ::selection {
-  background: var(--primary);
-  color: var(--white);
+  background: var(--primary-100);
+  color: var(--primary);
+}
+
+[data-theme=dark] ::selection {
+  background: var(--primary-800);
+  color: var(--primary);
 }
 
 a[href^=http]:empty::before {
