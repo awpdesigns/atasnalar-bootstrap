@@ -7109,17 +7109,13 @@
 
   /**
      * --------------------------------------------------------------------------
-     * Bootstrap (v5.3.0): progress-circular.js
+     * Bootstrap (v5.2.3): progress-circular.js
      * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
-     */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-  var progress = document.querySelectorAll('.progress-circle');
+  */
+  if (document.querySelector('.progress-circle')) {
+    var progress = document.querySelectorAll('.progress-circle');
         progress.forEach((item) => {
             var progressValue = item.getAttribute('data-value'),
                 progressColor = item.getAttribute('data-color'),
@@ -7139,6 +7135,7 @@
                     }
                 }, 10);
         });
+  }
 
   /**
      * --------------------------------------------------------------------------
@@ -7146,35 +7143,32 @@
      * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
-     */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-  var text = document.querySelector(".text-value"),
-      textArray = text.getAttribute("data-typing-text").split(","),
-      textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
-      textIndex = 0;
+  */
+  if (document.querySelector(".typing-text .text-value")) {
+    var text = document.querySelector(".typing-text .text-value"),
+        textArray = text.getAttribute("data-typing-text").split(","),
+        textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
+        textIndex = 0;
 
-  text.textContent = textArray[0];
-  // Set css animation duration to pseudo::before of text
-  text.style.setProperty("--typing-time", textTimePeriod + "ms");
+    text.textContent = textArray[0];
+    // Set css animation duration to pseudo::before of text
+    text.style.setProperty("--typing-time", textTimePeriod + "ms");
 
-  var textLoad = () => {
-      for (var i = 0; i < textArray.length; i++) {
-          setTimeout(() => {
-              text.textContent = textArray[textIndex];
-              textIndex++;
-              if (textIndex >= textArray.length) {
-                  textIndex = 0;
-              }
-          }, textTimePeriod * i);
-      }
+    var textLoad = () => {
+        for (var i = 0; i < textArray.length; i++) {
+            setTimeout(() => {
+                text.textContent = textArray[textIndex];
+                textIndex++;
+                if (textIndex >= textArray.length) {
+                    textIndex = 0;
+                }
+            }, textTimePeriod * i);
+        }
+    }
+
+    textLoad();
+    setInterval(textLoad, textTimePeriod * textArray.length);
   }
-
-  textLoad();
-  setInterval(textLoad, textTimePeriod * textArray.length);
 
   /**
      * --------------------------------------------------------------------------
@@ -7182,25 +7176,22 @@
      * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
-     */
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-  var toggle = document.querySelector('.toggle-theme');
-  var target = document.querySelector('html');
-  var prefix = toggle.getAttribute('data-prefix') || '';
-  var getMode = localStorage.getItem('mode');
-  if (getMode && getMode === 'dark') {
-      target.setAttribute('data-' + prefix + 'theme', 'dark');
-      toggle.classList.add('active');
-  } else {
-      target.setAttribute('data-' + prefix + 'theme', 'light');
-      toggle.classList.remove('active');
+  */
+  if (document.querySelector('.toggle-theme')) {
+    var toggle = document.querySelector('.toggle-theme');
+    var target = document.querySelector('html');
+    var prefix = toggle.getAttribute('data-prefix') || '';
+    var getMode = localStorage.getItem('mode');
+    if (getMode && getMode === 'dark') {
+        target.setAttribute('data-' + prefix + 'theme', 'dark');
+        toggle.classList.add('active');
+    } else {
+        target.setAttribute('data-' + prefix + 'theme', 'light');
+        toggle.classList.remove('active');
+    }
+    toggle.addEventListener('click', function () {
+        toggle.classList.toggle('active');
+        target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
+        localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
+    });
   }
-  toggle.addEventListener('click', function () {
-      toggle.classList.toggle('active');
-      target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
-      localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
-  });

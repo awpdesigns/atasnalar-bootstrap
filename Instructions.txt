@@ -50,6 +50,7 @@ If you set the prefix in your custom Sass file, Please check all variable value 
 
 /* ==  Typed Text Animation - Structure == */
     Can use variable class, add it to .typing-text (ex: typing-text text-green)
+    Note: Currently only support 1 component per page.
     <div class="typing-text">
         <span class="typing text-intro">I'm a</span>
         <span class="typing text-value" data-typing-text="{value-multiple-separated-coma}" data-typing-time="{value-millisecond}"></span>

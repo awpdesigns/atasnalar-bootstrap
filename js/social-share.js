@@ -281,14 +281,24 @@ function copyText(el) {
 }
 
 // Copy to clipboard other element with target id
-// Example: <a href="javascript:void(0)" onclick="copyThat('#target-id')">Copy</a>
+// Example: <button class="btn btn-primary onClick="copyThat('#target-id', 'text/html');">Copy</button>
 // <p id="target-id">Content</p>
-function copyThat(target) {
-    var content = jQuery(target).text();
-    var temp = jQuery("<input>");
+function copyThat(target, type) {
+    if (type === 'html') {
+        var content = jQuery(target).html();
+        var temp = jQuery("<textarea>");
+    } else {
+        var content = jQuery(target).text();
+        var temp = jQuery("<input>");
+    }
     temp.attr('readonly', 'readonly');
     jQuery("body").append(temp);
-    temp.val(content.replace(/<br ?\/?>/g, "\n")).select();
+    if (type === 'html') {
+        // Remove attribute style
+        temp.val(content.replace(/style="[^"]*"/g, '')).select();
+    } else {
+        temp.val(content.replace(/<br ?\/?>/g, "\n")).select();
+    }
     document.execCommand("copy");
     temp.remove();
 
