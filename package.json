@@ -3,6 +3,16 @@
   "version": "1.0.4",
   "description": "This Sass is based on Bootstrap ^5.3.0.",
   "main": "index.js",
+  "keywords": [
+    "bootstrap",
+    "sass",
+    "scss",
+    "css",
+    "rtl",
+    "rtlcss",
+    "atasnalar",
+    "atasnalar-bootstrap"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:sass": "sass --no-source-map --load-path=node_modules scss:css",
