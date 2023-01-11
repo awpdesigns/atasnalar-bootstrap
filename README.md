@@ -59,4 +59,4 @@ JS Files:
  == Documentation ==
 
  * Bootstrap - Default: https://getbootstrap.com/docs/
- * Atas Nalar - Bootstrap: Full Documentation: On the way... | Simple Documentation: https://atasnalar.github.io/atasnalar-bootstrap/blob/master/instructions.txt
+ * Atas Nalar - Bootstrap: Full Documentation: On the way... | Simple Documentation: https://github.com/awpdesigns/atasnalar-bootstrap/blob/master/Instructions.txt
