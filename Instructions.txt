@@ -1,0 +1,123 @@
+By default we set prefix to empty.
+If you set the prefix in your custom Sass file, Please check all variable value in your inlined CSS (If you use inline CSS) or your CSS file (If you use external CSS file) and add prefix that you have set in your custom Sass file to the variable value.
+
+/* ==  Toggle Theme - Structure == */
+    Default: <div class="toggle-theme"></div>
+    Colored: <div class="toggle-theme toggle-colored"></div>
+
+    If you set the prefix, you must add attribute data-prefix="{your-prefix-value}" to .toggle-theme
+    Example: <div class="toggle-theme" data-prefix="bs-"></div>
+
+/* ==  Radio Box (Input[type=radio]) Structure == */
+    <div class="radio-box">
+        <!-- Radio Box - image -->
+        <div class="box">
+            <input type="radio" name="{input:name}" id="{input:id-image}" value="{input:value}" class="form-check-input">
+            <label for="{input:id-image}" class="form-check-label">
+                <div class="form-check-radio"></div>
+                {Label}
+                <div class="form-check-content">
+                <img src="{path/to/img}" alt="{alt}" class="form-check-image">
+                </div>
+                <p class="form-check-description">
+                {Description}
+                </p>
+            </label>
+        </div>
+        <!-- Radio Box - text -->
+        <div class="box">
+            <input type="radio" name="{input:name}" id="{input:id-text}" value="{input:value}" class="form-check-input">
+            <label for="{input:id-text}" class="form-check-label">
+                <div class="form-check-radio"></div>
+                {Label}
+                <div class="form-check-content">
+                $3/month
+                </div>
+                <p class="form-check-description">
+                {Description}
+                </p>
+            </label>
+        </div>
+    </div>
+
+/* ==  Circular Progress - Structure == */
+    <div class="circular-progress">
+        <div class="progress-circle" role="progressbar" aria-label="Basic example" data-value="{value}" data-color="{main-color}" data-bg-color="{bg-color}">
+            <span class="progress-value">{value}%</span>
+        </div>
+        <span class="progress-text">{text}</span>
+    </div>
+
+/* ==  Typed Text Animation - Structure == */
+    Can use variable class, add it to .typing-text (ex: typing-text text-green)
+    <div class="typing-text">
+        <span class="typing text-intro">I'm a</span>
+        <span class="typing text-value" data-typing-text="{value-multiple-separated-coma}" data-typing-time="{value-millisecond}"></span>
+        </div>
+    </div>
+
+/* ==  Preloader - Structure == */
+ ------- Available class options--------
+ - Animation: fade, flip-x, flip-y, spin, spin-reverse, pulse, bounce
+ - Icon (Boxicon): bx bx-loader, bx bx-loader-alt, bx bx-loader-circle
+    or any other icon pack you want to use
+ - Image: image url
+
+    Type - Icon:
+    <div class="preloader">
+        <div class="loader-wrap" data-label="{loading-text}">
+            <i class="{boxicons-icon-class} {animation-class}"></i>
+        </div>
+    </div>
+
+    Type - Image:
+    <div class="preloader">
+        <div class="loader-wrap" data-label="{loading-text}">
+            <img src="{path/to/img}" alt="{alt}" class="logo-loader {animation-class}">
+        </div>
+    </div>
+
+/* ==  Social Share - Structure == */
+    Social Share css & js file must be included in your project. And js file must be placed after jquery file.
+ ------- Available class options--------
+ - Network : data-share="facebook,twitter,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy"
+ - Attribute : data-display="icon, text, both"
+
+ Note: We use boxicons for icon class.
+
+    Type - Dropdown:
+    <div class="dropdown">
+        <button class="btn btn-primary" type="button" data-toggle="dropdown" aria-expanded="false">
+            <i class="{boxicons-icon-class}"></i>
+            <span>{share-text}e</span>
+        </button>
+        <ul id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}" class="dropdown-menu"></ul>
+    </div>
+
+    Type - Inline:
+    <div id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}">
+        <div class="w-100"> // This wrapper is optional
+            <i class="{boxicons-icon-class}"></i>
+            <span>{share-text}</span>
+        </div>
+    </div>
+
+    Type - Modal:
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#{modal-id}">
+        <i class="{boxicons-icon-class}"></i>
+        <span>{share-text}</span>
+    </button>
+    <div id="{modal-id}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="{boxicons-icon-class} fs-lg"></i>
+                    <h4 class="modal-title">{share-title}</h4>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
