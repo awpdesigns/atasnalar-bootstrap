@@ -245,7 +245,11 @@ var languageCode = $('html').attr('lang');
 })(jQuery);
 
 function copyText(el) {
-    var content = jQuery(el).siblings('input').val();
+    if (jQuery(el).parent().is('li')) {
+        var content = jQuery(el).parent().parent().find('input').val();
+    } else {
+        var content = jQuery(el).siblings('input').val();
+    }
     var temp = jQuery("<input>");
     temp.attr('readonly', 'readonly');
     jQuery("body").append(temp);
