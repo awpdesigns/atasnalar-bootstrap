@@ -1,10 +1,10 @@
 # atasnalar-bootstrap
 
 By default we set prefix to empty.
-If you set the prefix in your custom Sass file, Please check all variable value in your inlined CSS (If you use inline CSS) or your CSS file (If you use external CSS file) and add prefix that you have set in your custom Sass file to the variable value.
+If you set the prefix in your custom Sass file, Add *data-prefix="{your-prefix}" to the html tag based on your prefix in your custom variable Sass file*. (ex: data-prefix="bs-").
+This will help you to automatically add your custom prefix to the inline style in all html tags (ex: <span style="color: var(--color);"> will changed to <span style="color: var(--bs-color);">) on the fly. So, you don't need to change anything in inline style in html tags.
 
-Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. Except for toggle switch theme mode that will automatically change when you change prefix.
-
+Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. But, if you want to use variable in your custom JS file, simply get the prefix from the html tag. (ex: var prefix = document.documentElement.getAttribute("data-prefix");) and use it in your custom JS file.
 == Usage ==
 
 1. Install via NPM: npm install atasnalar-bootstrap

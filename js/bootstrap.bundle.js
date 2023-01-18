@@ -7107,6 +7107,22 @@
 
   }));
 
+  var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
+
+  // Check if prefix is set, and if it is, add it to all variables
+  if (prefix !== '' && prefix !== null && prefix !== undefined) {
+    var any = document.querySelectorAll('*');
+
+    // Sample prefix value: bs-
+    // Find var(--*), replace with var(--bs-*)
+    any.forEach((item) => {
+      var style = item.getAttribute('style');
+      if (style !== null && style !== undefined) {
+        item.setAttribute('style', style.replace(/var\(--/g, `var(--${prefix}`));
+      }
+    });
+  }
+
   /**
      * --------------------------------------------------------------------------
      * Bootstrap (v5.2.3): progress-circular.js
@@ -7184,7 +7200,6 @@
   if (document.querySelector('.toggle-theme')) {
     var toggle = document.querySelector('.toggle-theme');
     var target = document.querySelector('html');
-    var prefix = toggle.getAttribute('data-prefix') || '';
     var getMode = localStorage.getItem('mode');
     toggle.addEventListener('click', function () {
         toggle.classList.toggle('active');

@@ -1,12 +1,10 @@
 By default we set prefix to empty.
-If you set the prefix in your custom Sass file, Please check all variable value in your inlined CSS (If you use inline CSS) or your CSS file (If you use external CSS file) and add prefix that you have set in your custom Sass file to the variable value.
+If you set the prefix in your custom Sass file, Add data-prefix="{your-prefix}" to the html tag based on your prefix in your custom Sass file. (ex: data-prefix="bs-").
+This will help you to add custom prefix to the inline style in all html tags (ex: <span style="color: var(--color);"> to <span style="color: var(--bs-color);">).
 
 /* ==  Toggle Theme - Structure == */
     Default: <div class="toggle-theme"></div>
     Colored: <div class="toggle-theme toggle-colored"></div>
-
-    If you set the prefix, you must add attribute data-prefix="{your-prefix-value}" to .toggle-theme
-    Example: <div class="toggle-theme" data-prefix="bs-"></div>
 
 /* ==  Radio Box (Input[type=radio]) Structure == */
     <div class="radio-box">
