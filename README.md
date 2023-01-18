@@ -2,7 +2,7 @@
 
 By default we set prefix to empty.
 If you set the prefix in your custom Sass file, Add *data-prefix="{your-prefix}" to the html tag based on your prefix in your custom variable Sass file*. (ex: data-prefix="bs-").
-This will help you to automatically add your custom prefix to the inline style in all html tags (ex: <span style="color: var(--color);"> will changed to <span style="color: var(--bs-color);">) on the fly. So, you don't need to change anything in inline style in html tags.
+This will help you to automatically add your custom prefix to the inline style in all html tags (ex: &lt;span&gt; style="color: var(--color);"&gt; will changed to &lt;span style="color: var(--bs-color);"&gt;) on the fly. So, you don't need to change anything in inline style in html tags.
 
 Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. But, if you want to use variable in your custom JS file, simply get the prefix from the html tag. (ex: var prefix = document.documentElement.getAttribute("data-prefix");) and use it in your custom JS file.
 == Usage ==
@@ -35,7 +35,7 @@ Sass Files:
 - Added: New Component (Toggle Switch Theme Mode => Light/Dark)
 - Added: New Component (Typing Text Animation) with support for multiple text,custom speed, variable color & theme color.
 - Added: New Dropdown Toggle Icon (chevron as default, caret as alternative with class .toggle-caret)
-- Added: New Divider with Text (Separator) with class .strike (Ex: <div class="strike"><span>Text</span></div>)
+- Added: New Divider with Text (Separator) with class .strike (Ex: &lt;div class="strike"&gt; &lt;span&gt;Text&lt;/span&gt;&lt;/div&gt;)
 - Added: Icon support for input, textarea, select.
 - Added: Style for broken image callback
 - Added: Icon only button
