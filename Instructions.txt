@@ -41,8 +41,9 @@ If you set the prefix in your custom Sass file, Please check all variable value 
     </div>
 
 /* ==  Circular Progress - Structure == */
+Note: Data Progress Color only support variable color name (blue, indigo, etc) or theme color name (primary, secondary, etc)
     <div class="circular-progress">
-        <div class="progress-circle" role="progressbar" aria-label="Basic example" data-value="{value}" data-color="{main-color}" data-bg-color="{bg-color}">
+        <div class="progress-circle" role="progressbar" aria-label="Basic example" data-progress-value="{value(1-100)}" data-progress-color="{color-name(primary, blue, etc)}">
             <span class="progress-value">{value}%</span>
         </div>
         <span class="progress-text">{text}</span>
@@ -50,7 +51,6 @@ If you set the prefix in your custom Sass file, Please check all variable value 
 
 /* ==  Typed Text Animation - Structure == */
     Can use variable class, add it to .typing-text (ex: typing-text text-green)
-    Note: Currently only support 1 component per page.
     <div class="typing-text">
         <span class="typing text-intro">I'm a</span>
         <span class="typing text-value" data-typing-text="{value-multiple-separated-coma}" data-typing-time="{value-millisecond}"></span>
