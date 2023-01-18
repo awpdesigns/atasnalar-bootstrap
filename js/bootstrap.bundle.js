@@ -7117,9 +7117,8 @@
   if (document.querySelector('.progress-circle')) {
     var progress = document.querySelectorAll('.progress-circle');
         progress.forEach((item) => {
-            var progressValue = item.getAttribute('data-value'),
-                progressColor = item.getAttribute('data-color'),
-                progressBGColor = item.getAttribute('data-bg-color');
+            var progressValue = item.getAttribute('data-progress-value'),
+                progressColor = document.getElementsByTagName('html')[0].getAttribute('data-color') ||item.getAttribute('data-progress-color') || 'primary';
 
             var progressTextValue = document.querySelector('.progress-value');
             progressTextValue.innerHTML = `${progressValue}%`;
@@ -7130,7 +7129,7 @@
                         clearInterval(progressInterval);
                     } else {
                         progressStartValue++;
-                        item.style.background = `conic-gradient(${progressColor} ${progressStartValue * 3.6}deg, ${progressBGColor} 0deg)`;
+                        item.style.background = `conic-gradient(var(--` + progressColor + `) ${progressStartValue * 3.6}deg, var(--tertiary-bg) 0)`;
                         item.querySelector('.progress-value').innerHTML = `${progressStartValue}%`;
                     }
                 }, 10);
@@ -7144,30 +7143,35 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
-  if (document.querySelector(".typing-text .text-value")) {
-    var text = document.querySelector(".typing-text .text-value"),
-        textArray = text.getAttribute("data-typing-text").split(","),
-        textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
-        textIndex = 0;
+  if (document.querySelector(".typing-text")) {
+    var typingText = document.querySelectorAll(".typing-text");
 
-    text.textContent = textArray[0];
-    // Set css animation duration to pseudo::before of text
-    text.style.setProperty("--typing-time", textTimePeriod + "ms");
+    typingText.forEach((item) => {
+      var text = item.querySelector(".text-value"),
+          textArray = text.getAttribute("data-typing-text").split(","),
+          textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
+          textIndex = 0;
 
-    var textLoad = () => {
+      text.textContent = textArray[0];
+      // Set css animation duration to pseudo::before of text
+      text.style.setProperty("--typing-time", textTimePeriod + "ms");
+
+      var textLoad = () => {
         for (var i = 0; i < textArray.length; i++) {
-            setTimeout(() => {
-                text.textContent = textArray[textIndex];
-                textIndex++;
-                if (textIndex >= textArray.length) {
-                    textIndex = 0;
-                }
-            }, textTimePeriod * i);
+          setTimeout(() => {
+            text.textContent = textArray[textIndex];
+            textIndex++;
+            if (textIndex >= textArray.length) {
+              textIndex = 0;
+            }
+          }, textTimePeriod * i);
         }
-    }
+      };
 
-    textLoad();
-    setInterval(textLoad, textTimePeriod * textArray.length);
+      textLoad();
+      setInterval(textLoad, textTimePeriod * textArray.length);
+    });
+
   }
 
   /**
