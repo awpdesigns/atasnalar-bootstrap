@@ -10040,6 +10040,76 @@ a[href^=http]:empty::before {
   background-color: RGBA(22, 29, 49, var(--bg-opacity, 1)) !important;
 }
 
+.text-bg-blue {
+  color: #fff !important;
+  background-color: RGBA(13, 110, 253, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-indigo {
+  color: #fff !important;
+  background-color: RGBA(102, 16, 242, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-purple {
+  color: #fff !important;
+  background-color: RGBA(111, 66, 193, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-pink {
+  color: #fff !important;
+  background-color: RGBA(214, 51, 132, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-red {
+  color: #fff !important;
+  background-color: RGBA(220, 53, 69, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-orange {
+  color: #000 !important;
+  background-color: RGBA(253, 126, 20, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-yellow {
+  color: #000 !important;
+  background-color: RGBA(255, 193, 7, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-green {
+  color: #fff !important;
+  background-color: RGBA(25, 135, 84, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-teal {
+  color: #000 !important;
+  background-color: RGBA(32, 201, 151, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-cyan {
+  color: #000 !important;
+  background-color: RGBA(13, 202, 240, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-black {
+  color: #fff !important;
+  background-color: RGBA(0, 0, 0, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-white {
+  color: #000 !important;
+  background-color: RGBA(255, 255, 255, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-gray {
+  color: #000 !important;
+  background-color: RGBA(110, 131, 150, var(--bg-opacity, 1)) !important;
+}
+
+.text-bg-gray-dark {
+  color: #fff !important;
+  background-color: RGBA(41, 54, 62, var(--bg-opacity, 1)) !important;
+}
+
 .bg-100 {
   background-color: #E2E5EA !important;
 }
