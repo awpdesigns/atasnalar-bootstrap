@@ -1,24 +1,27 @@
 # atasnalar-bootstrap
 
 By default we set prefix to empty.
-If you set the prefix in your custom Sass file, Add *data-prefix="{your-prefix}" to the html tag based on your prefix in your custom variable Sass file*. (ex: data-prefix="bs-").
+If you set the prefix in your custom Sass file,<br />
+Add *data-prefix="{your-prefix}" to the html tag based on your prefix in your custom variable Sass file*. (ex: data-prefix="bs-").<br />
 This will help you to automatically add your custom prefix to the inline style in all html tags (ex: &lt;span&gt; style="color: var(--color);"&gt; will changed to &lt;span style="color: var(--bs-color);"&gt;) on the fly. So, you don't need to change anything in inline style in html tags.
 
-Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. But, if you want to use variable in your custom JS file, simply get the prefix from the html tag. (ex: var prefix = document.documentElement.getAttribute("data-prefix");) and use it in your custom JS file.
+Note: In JS file, we don't use prefix. So, you don't need to change anything in JS file. But, if you want to use variable in your custom JS file, simply get the prefix from the html tag.<br />
+(ex: var prefix = document.documentElement.getAttribute("data-prefix");) and use it in your custom JS file.
 
-Example to enable Tooltip in JS:
-/* ======== Tooltip ======== */
-// Don&apos;t use "bs-" after "data-"
-const tooltipTriggerList = document.querySelectorAll(&apos;[data-toggle="tooltip"]&apos;)
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-Example for Event Toast in JS:
-/* ======== Toast, Popovers ======== */
-// Don&apos;t use "bs." after "hidden.", "show.", "shown.", "hide."
-const myToastEl = document.getElementById(&apos;.toast&apos;)
-myToastEl.addEventListener(&apos;hidden.toast&apos;, () => {
-  // do something...
-})
+Example to enable Tooltip in JS:<br />
+/* ======== Tooltip ======== */<br />
+// Don&apos;t use "bs-" after "data-"<br />
+const tooltipTriggerList = document.querySelectorAll(&apos;[data-toggle="tooltip"]&apos;)<br />
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))<br />
+Example for Event Toast in JS:<br />
+/* ======== Toast, Popovers ======== */<br />
+// Don&apos;t use "bs." after "hidden.", "show.", "shown.", "hide."<br />
+const myToastEl = document.getElementById(&apos;.toast&apos;)<br />
+myToastEl.addEventListener(&apos;hidden.toast&apos;, () => {<br />
+  // do something...<br />
+})<br />
 
+Overall just like Bootstrap.
 
 == Usage ==
 
