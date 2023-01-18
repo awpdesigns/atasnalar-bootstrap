@@ -7186,16 +7186,17 @@
     var target = document.querySelector('html');
     var prefix = toggle.getAttribute('data-prefix') || '';
     var getMode = localStorage.getItem('mode');
-    if (getMode && getMode === 'dark') {
-        target.setAttribute('data-' + prefix + 'theme', 'dark');
-        toggle.classList.add('active');
-    } else {
-        target.setAttribute('data-' + prefix + 'theme', 'light');
-        toggle.classList.remove('active');
-    }
     toggle.addEventListener('click', function () {
         toggle.classList.toggle('active');
         target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
         localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
     });
+    if (getMode && getMode === 'dark') {
+        target.setAttribute('data-' + prefix + 'theme', 'dark');
+        toggle.classList.add('active');
+    }
+    // Set active class to toggle button if theme is manually set to dark
+    if (target.getAttribute('data-' + prefix + 'theme') === 'dark') {
+        toggle.classList.add('active');
+    }
   }
