@@ -283,6 +283,7 @@
 
     --#{$prefix}primary-text: #{$primary-text-dark};
     --#{$prefix}secondary-text: #{$secondary-text-dark};
+    --#{$prefix}tertiary-text: #{$tertiary-text-dark};
     --#{$prefix}success-text: #{$success-text-dark};
     --#{$prefix}info-text: #{$info-text-dark};
     --#{$prefix}warning-text: #{$warning-text-dark};
@@ -292,6 +293,7 @@
 
     --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-dark};
     --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-dark};
+    --#{$prefix}tertiary-bg-subtle: #{$tertiary-bg-subtle-dark};
     --#{$prefix}success-bg-subtle: #{$success-bg-subtle-dark};
     --#{$prefix}info-bg-subtle: #{$info-bg-subtle-dark};
     --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-dark};
@@ -301,12 +303,46 @@
 
     --#{$prefix}primary-border-subtle: #{$primary-border-subtle-dark};
     --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-dark};
+    --#{$prefix}tertiary-border-subtle: #{$tertiary-border-subtle-dark};
     --#{$prefix}success-border-subtle: #{$success-border-subtle-dark};
     --#{$prefix}info-border-subtle: #{$info-border-subtle-dark};
     --#{$prefix}warning-border-subtle: #{$warning-border-subtle-dark};
     --#{$prefix}danger-border-subtle: #{$danger-border-subtle-dark};
     --#{$prefix}light-border-subtle: #{$light-border-subtle-dark};
     --#{$prefix}dark-border-subtle: #{$dark-border-subtle-dark};
+
+    --#{$prefix}blue-text: #{$blue-text-dark};
+    --#{$prefix}indigo-text: #{$indigo-text-dark};
+    --#{$prefix}purple-text: #{$purple-text-dark};
+    --#{$prefix}pink-text: #{$pink-text-dark};
+    --#{$prefix}red-text: #{$red-text-dark};
+    --#{$prefix}orange-text: #{$orange-text-dark};
+    --#{$prefix}yellow-text: #{$yellow-text-dark};
+    --#{$prefix}green-text: #{$green-text-dark};
+    --#{$prefix}teal-text: #{$teal-text-dark};
+    --#{$prefix}cyan-text: #{$cyan-text-dark};
+
+    --#{$prefix}blue-bg-subtle: #{$blue-bg-subtle-dark};
+    --#{$prefix}indigo-bg-subtle: #{$indigo-bg-subtle-dark};
+    --#{$prefix}purple-bg-subtle: #{$purple-bg-subtle-dark};
+    --#{$prefix}pink-bg-subtle: #{$pink-bg-subtle-dark};
+    --#{$prefix}red-bg-subtle: #{$red-bg-subtle-dark};
+    --#{$prefix}orange-bg-subtle: #{$orange-bg-subtle-dark};
+    --#{$prefix}yellow-bg-subtle: #{$yellow-bg-subtle-dark};
+    --#{$prefix}green-bg-subtle: #{$green-bg-subtle-dark};
+    --#{$prefix}teal-bg-subtle: #{$teal-bg-subtle-dark};
+    --#{$prefix}cyan-bg-subtle: #{$cyan-bg-subtle-dark};
+
+    --#{$prefix}blue-border-subtle: #{$blue-border-subtle-dark};
+    --#{$prefix}indigo-border-subtle: #{$indigo-border-subtle-dark};
+    --#{$prefix}purple-border-subtle: #{$purple-border-subtle-dark};
+    --#{$prefix}pink-border-subtle: #{$pink-border-subtle-dark};
+    --#{$prefix}red-border-subtle: #{$red-border-subtle-dark};
+    --#{$prefix}orange-border-subtle: #{$orange-border-subtle-dark};
+    --#{$prefix}yellow-border-subtle: #{$yellow-border-subtle-dark};
+    --#{$prefix}green-border-subtle: #{$green-border-subtle-dark};
+    --#{$prefix}teal-border-subtle: #{$teal-border-subtle-dark};
+    --#{$prefix}cyan-border-subtle: #{$cyan-border-subtle-dark};
 
     --#{$prefix}heading-color: #{$headings-color-dark};
 

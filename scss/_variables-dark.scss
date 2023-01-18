@@ -9,6 +9,7 @@
 // scss-docs-start sass-dark-mode-vars
 $primary-text-dark:                 $primary-300 !default;
 $secondary-text-dark:               $secondary-300 !default;
+$tertiary-text-dark:                $tertiary-300 !default;
 $success-text-dark:                 $success-300 !default;
 $info-text-dark:                    $info-300 !default;
 $warning-text-dark:                 $warning-300 !default;
@@ -18,6 +19,7 @@ $dark-text-dark:                    $gray-300 !default;
 
 $primary-bg-subtle-dark:            $primary-900 !default;
 $secondary-bg-subtle-dark:          $secondary-900 !default;
+$tertiary-bg-subtle-dark:           $tertiary-900 !default;
 $success-bg-subtle-dark:            $success-900 !default;
 $info-bg-subtle-dark:               $info-900 !default;
 $warning-bg-subtle-dark:            $warning-900 !default;
@@ -27,12 +29,46 @@ $dark-bg-subtle-dark:               mix($gray-800, $black) !default;
 
 $primary-border-subtle-dark:        $primary-700 !default;
 $secondary-border-subtle-dark:      $secondary-700 !default;
+$tertiary-border-subtle-dark:       $tertiary-700 !default;
 $success-border-subtle-dark:        $success-700 !default;
 $info-border-subtle-dark:           $info-800 !default;
 $warning-border-subtle-dark:        $warning-800 !default;
 $danger-border-subtle-dark:         $danger-700 !default;
 $light-border-subtle-dark:          $gray-700 !default;
 $dark-border-subtle-dark:           $gray-800 !default;
+
+$blue-text-dark:                    $blue-300 !default;
+$indigo-text-dark:                  $indigo-300 !default;
+$purple-text-dark:                  $purple-300 !default;
+$pink-text-dark:                    $pink-300 !default;
+$red-text-dark:                     $red-300 !default;
+$orange-text-dark:                  $orange-300 !default;
+$yellow-text-dark:                  $yellow-300 !default;
+$green-text-dark:                   $green-300 !default;
+$teal-text-dark:                    $teal-300 !default;
+$cyan-text-dark:                    $cyan-300 !default;
+
+$blue-bg-subtle-dark:               $blue-900 !default;
+$indigo-bg-subtle-dark:             $indigo-900 !default;
+$purple-bg-subtle-dark:             $purple-900 !default;
+$pink-bg-subtle-dark:               $pink-900 !default;
+$red-bg-subtle-dark:                $red-900 !default;
+$orange-bg-subtle-dark:             $orange-900 !default;
+$yellow-bg-subtle-dark:             $yellow-900 !default;
+$green-bg-subtle-dark:              $green-900 !default;
+$teal-bg-subtle-dark:               $teal-900 !default;
+$cyan-bg-subtle-dark:               $cyan-900 !default;
+
+$blue-border-subtle-dark:           $blue-700 !default;
+$indigo-border-subtle-dark:         $indigo-700 !default;
+$purple-border-subtle-dark:         $purple-700 !default;
+$pink-border-subtle-dark:           $pink-700 !default;
+$red-border-subtle-dark:            $red-700 !default;
+$orange-border-subtle-dark:         $orange-700 !default;
+$yellow-border-subtle-dark:         $yellow-700 !default;
+$green-border-subtle-dark:          $green-700 !default;
+$teal-border-subtle-dark:           $teal-700 !default;
+$cyan-border-subtle-dark:           $cyan-700 !default;
 
 $body-color-dark:                   $light !default;
 $body-bg-dark:                      $dark !default; // $gray-900 !default;

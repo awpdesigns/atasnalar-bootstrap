@@ -1045,7 +1045,7 @@ $nav-link-font-weight:              null !default;
 $nav-link-color:                    var(--#{$prefix}body-color) !default; // link-color !default;
 $nav-link-hover-color:              var(--#{$prefix}link-hover-color) !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
-$nav-link-disabled-color:           var(--#{$prefix}gray-500) !default; // secondary-color !default;
+$nav-link-disabled-color:           var(--#{$prefix}tertiary-color) !default;
 
 $nav-tabs-border-color:             var(--#{$prefix}border-color) !default;
 $nav-tabs-border-width:             var(--#{$prefix}border-width) !default;
@@ -1182,20 +1182,20 @@ $pagination-margin-start:           calc($pagination-border-width * -1) !default
 $pagination-border-color:           var(--#{$prefix}border-color) !default;
 
 $pagination-focus-color:            var(--#{$prefix}link-hover-color) !default;
-$pagination-focus-bg:               var(--#{$prefix}secondary-bg) !default; // secondary-bg !default;
+$pagination-focus-bg:               var(--#{$prefix}secondary-bg) !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            var(--#{$prefix}link-hover-color) !default;
-$pagination-hover-bg:               var(--#{$prefix}tertiary-bg) !default; // tertiary-bg !default;
+$pagination-hover-bg:               var(--#{$prefix}tertiary-bg) !default;
 $pagination-hover-border-color:     var(--#{$prefix}border-color) !default; // Todo in v6: remove this?
 
 $pagination-active-color:           $component-active-color !default;
 $pagination-active-bg:              $component-active-bg !default;
 $pagination-active-border-color:    $component-active-bg !default;
 
-$pagination-disabled-color:         var(--#{$prefix}secondary-color) !default; // secondary-color !default;
-$pagination-disabled-bg:            var(--#{$prefix}secondary-bg) !default; // secondary-bg !default;
+$pagination-disabled-color:         var(--#{$prefix}secondary-color) !default;
+$pagination-disabled-bg:            var(--#{$prefix}secondary-bg) !default;
 $pagination-disabled-border-color:  var(--#{$prefix}border-color) !default;
 
 $pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -1361,7 +1361,7 @@ $toast-header-border-color:         $toast-border-color !default;
 
 // scss-docs-start badge-variables
 $badge-font-size:                   .75em !default;
-$badge-font-weight:                 $font-weight-bold !default;
+$badge-font-weight:                 $font-weight-normal !default;
 $badge-color:                       var(--#{$prefix}white) !default; // $white !default;
 $badge-padding-y:                   .35em !default;
 $badge-padding-x:                   .65em !default;
@@ -1443,7 +1443,7 @@ $alert-color-scale:             40% !default; // Deprecated in v5.2.0, to be rem
 // scss-docs-start progress-variables
 $progress-height:                   1rem !default;
 $progress-font-size:                $font-size-base * .75 !default;
-$progress-bg:                       var(--#{$prefix}gray-200) !default; // secondary-bg !default;
+$progress-bg:                       var(--#{$prefix}tertiary-bg) !default; // secondary-bg !default;
 $progress-border-radius:            var(--#{$prefix}border-radius) !default;
 $progress-box-shadow:               var(--#{$prefix}box-shadow-inset) !default;
 $progress-bar-color:                var(--#{$prefix}white) !default; // $white !default;
