@@ -9,61 +9,63 @@
 .btn-icon {
     @include border-radius($border-radius);
     padding: $spacer * .5;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--#{$prefix}light);
-
-    &:hover {
-        background-color: var(--body-color);
-
-        > * {
-            color: var(--#{$prefix}light);
-        }
-    }
-
-    > * {
-        color: var(--#{$prefix}body-color);
-    }
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .btn-facebook {
-    background-color: var(--#{$prefix}blue-100) !important;
+    background-color: var(--#{$prefix}blue-100);
 
     &:hover {
-        background-color: var(--#{$prefix}blue) !important;
+        background-color: var(--#{$prefix}blue);
     }
 
     > * {
-        color: var(--#{$prefix}blue) !important;
+        color: var(--#{$prefix}blue);
     }
 }
 
 .btn-twitter {
-    background-color: var(--#{$prefix}cyan-100) !important;
+    background-color: var(--#{$prefix}cyan-100);
 
     &:hover {
-        background-color: var(--#{$prefix}cyan) !important;
+        background-color: var(--#{$prefix}cyan);
     }
 
     > * {
-        color: var(--#{$prefix}cyan) !important;
+        color: var(--#{$prefix}cyan);
     }
 }
 
-.btn-google {
-    background-color: var(--#{$prefix}red-100) !important;
+.btn-google, .btn-youtube {
+    background-color: var(--#{$prefix}red-100);
 
     &:hover {
-        background-color: var(--#{$prefix}red) !important;
+        background-color: var(--#{$prefix}red);
     }
 
     > * {
-        color: var(--#{$prefix}red) !important;
+        color: var(--#{$prefix}red);
+    }
+}
+
+.btn-instagram {
+    background-color: var(--#{$prefix}purple-100);
+
+    &:hover {
+        background-color: var(--#{$prefix}purple);
+    }
+
+    > * {
+        color: var(--#{$prefix}purple);
     }
 }
 
 .btn-facebook:hover>*,
 .btn-twitter:hover>*,
-.btn-google:hover>* {
-    color: var(--#{$prefix}white) !important;
+.btn-google:hover>*,
+.btn-youtube:hover>*,
+.btn-instagram:hover>* {
+    color: var(--#{$prefix}white);
 }

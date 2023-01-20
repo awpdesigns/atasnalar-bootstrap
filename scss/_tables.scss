@@ -97,6 +97,10 @@
   }
 }
 
+.table-dashed * {
+  border-style: dashed;
+}
+
 // Zebra-striping
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)

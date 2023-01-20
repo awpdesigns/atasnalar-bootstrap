@@ -105,10 +105,38 @@
   }
 }
 
+.blockquote-blocks {
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 0.5rem;
+  border-left: 5px solid var(--#{$prefix}secondary-bg);
+  background: var(--#{$prefix}tertiary-bg);
+  position: relative;
+
+  &::before {
+      content: '“';
+      font-family: var(--#{$prefix}font-monospace);
+      font-size: 2rem;
+      display: flex;
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+  }
+
+  .blockquote-title {
+      font-weight: 600;
+  }
+}
+
+// Pre
+
 .pre-blocks {
-  white-space: inherit;
-  padding: 1rem;
+  white-space: pre;
   @include border-radius($border-radius);
+  position: relative;
 }
 
 [data-#{$prefix}theme="dark"] .pre-blocks {
