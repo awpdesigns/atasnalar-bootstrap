@@ -51,6 +51,19 @@ var lang = {
     }
 }
 var languageCode = $('html').attr('lang');
+// If language code is en-US, change it to en
+if (languageCode == 'en-US') {
+    languageCode = 'en';
+}
+// If language code is id-ID, change it to id
+if (languageCode == 'id-ID') {
+    languageCode = 'id';
+}
+// If language code is not in the list, change it to en
+if (languageCode != 'en' && languageCode != 'id') {
+    languageCode = 'en';
+}
+// === End Translation === //
 (function ($) {
     'use strict';
 
@@ -226,16 +239,16 @@ var languageCode = $('html').attr('lang');
     };
     $(window).on('load', function () {
         var cdnBoxicons = 'https://unpkg.com/boxicons@latest/css/boxicons.min.css';
+        var boxicons = 'boxicons'
 
         if ($('#an-social-share').length > 0) {
-            // Check if boxicons is exists in head tag
-            if ($('#boxicons-css').length === 0) {
-                // If not exists, then add boxicons to head tag
-                $('head').append('<link rel="stylesheet" href="' + cdnBoxicons + '" class="boxicons-css">');
+            // Check if boxicons is includes in any link tag id or href
+            if ($('link').filter(function () {
+                return this.href.indexOf(boxicons) > -1;
+            }).length === 0) {
+                $('head').append('<link rel="stylesheet" href="' + cdnBoxicons + '" id="an-social-css">');
             }
-        }
-
-        if ($('#an-social-share').length === 0) {
+        } else {
             $('#an-social-css').remove();
             $('#an-social-js').remove();
         }
