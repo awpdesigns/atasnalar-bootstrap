@@ -48,7 +48,7 @@
         padding: $spacer;
         background-color: var(--#{$prefix}light);
         border: 1px solid var(--#{$prefix}border-color);
-        border-radius: $border-radius-lg;
+        border-radius: var(--#{$prefix}border-radius-lg);
         cursor: pointer;
         height: auto;
         transition: all .3s ease;

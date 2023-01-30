@@ -111,7 +111,7 @@
   font-weight: 300;
   margin-bottom: 1rem;
   padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: var(--#{$prefix}border-radius-lg);
   border-left: 5px solid var(--#{$prefix}secondary-bg);
   background: var(--#{$prefix}tertiary-bg);
   position: relative;
@@ -135,7 +135,7 @@
 
 .pre-blocks {
   white-space: pre;
-  @include border-radius($border-radius);
+  border-radius: var(--#{$prefix}border-radius);
   position: relative;
 }
 
