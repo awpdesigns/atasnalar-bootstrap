@@ -1091,7 +1091,7 @@ progress {
   font-weight: 300;
   margin-bottom: 1rem;
   padding: 1rem 2rem 1rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius-lg);
   border-right: 5px solid var(--secondary-bg);
   background: var(--tertiary-bg);
   position: relative;
@@ -1111,7 +1111,7 @@ progress {
 
 .pre-blocks {
   white-space: pre;
-  border-radius: 0.375rem;
+  border-radius: var(--border-radius);
   position: relative;
 }
 
@@ -3920,10 +3920,10 @@ textarea.form-control-lg {
   print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
-  border-radius: 0.25em;
+  border-radius: var(--border-radius);
 }
 .form-check-input[type=radio] {
-  border-radius: 50%;
+  border-radius: var(--border-radius-pill);
 }
 .form-check-input:active {
   filter: brightness(90%);
@@ -4053,7 +4053,7 @@ textarea.form-control-lg {
   padding: 1rem;
   background-color: var(--light);
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius-lg);
   cursor: pointer;
   height: auto;
   transition: all 0.3s ease;
@@ -6339,7 +6339,7 @@ textarea.form-control-lg {
 }
 
 .nav-pills {
-  --nav-pills-border-radius: 0.375rem;
+  --nav-pills-border-radius: var(--border-radius);
   --nav-pills-link-active-color: #fff;
   --nav-pills-link-active-bg: #3a6aee;
 }
