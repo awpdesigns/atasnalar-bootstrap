@@ -137,6 +137,14 @@
   white-space: pre;
   border-radius: var(--#{$prefix}border-radius);
   position: relative;
+  padding: 0.8em 1em;
+
+    code {
+      display: block;
+      font-family: inherit;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+  }
 }
 
 [data-#{$prefix}theme="dark"] .pre-blocks {

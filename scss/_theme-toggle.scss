@@ -57,7 +57,7 @@
   transition: all 0.3s ease-in-out;
 }
 .toggle-theme.toggle-colored:active::before {
-    width: 30px;
+    width: 24px;
     border-radius: 1rem;
 }
 .toggle-theme.toggle-colored::after {
@@ -74,7 +74,7 @@
   font-family: var(--#{$prefix}body-font-family);
 }
 .toggle-theme.toggle-colored.active:active::before {
-    width: 30px;
+    width: 24px;
     transform: translateY(-50%) translateX(-6px);
 }
 .toggle-theme.toggle-colored.active::after {
