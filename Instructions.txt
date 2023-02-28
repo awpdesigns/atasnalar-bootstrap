@@ -120,3 +120,36 @@ Note: Data Progress Color only support variable color name (blue, indigo, etc) o
             </div>
         </div>
     </div>
+
+/* ==  User Info - Detection == */
+    Add script on footer or before closing body tag:
+    <script src="{path/to/js/user-detection.min.js}"></script>
+    Use jQuery:
+    <script>
+        $(document).ready(function() {
+            ANDetection();
+        });
+    </script>
+    Use Vanilla JS:
+    <script>
+        window.onload = function() {
+            ANDetection();
+        };
+    </script>
+    Usage:
+    Add attribute on html element:
+    - browser = data-browser (Will return browser name. E.g: Chrome/Firefox/Opera/Safari/Edge, etc)
+    - os = data-os (Will return os name. E.g: Windows/MacOS/Linux/Android/iOS, etc)
+    - device = data-device (Will return device name. E.g: Desktop/Mobile/Tablet)
+    - ip = data-ip (Will return ip address)
+    - country = data-country (Will return country name, code, code ISO, capital, tld and call. E.g: Indonesia, ID, IDN, Jakarta, .id, +62)
+    - state = data-state (Will return state name and code. E.g: Jakarta, JKT)
+    - city = data-city (Will return city name. E.g: Jakarta) *Indonesia only
+    - district = data-district (Will return district name. E.g: Kebayoran Baru) *Indonesia only
+    - timezone = data-timezone (Will return timezone name. E.g: Asia/Jakarta)
+    - currency = data-currency (Will return currency code and name. E.g: IDR, Indonesian Rupiah)
+    - language = data-language (Will return language code and name. E.g: id, Indonesian)
+    - latitude = data-latitude (Will return latitude)
+    - longitude = data-longitude  (Will return longitude)
+    - org = data-org (Will return organization name)
+    - asn = data-asn (Will return asn number)
