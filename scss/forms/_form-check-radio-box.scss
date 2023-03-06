@@ -46,6 +46,7 @@
         flex-wrap: wrap;
         width: 100%;
         padding: $spacer;
+        color: var(--#{$prefix}body-color);
         background-color: var(--#{$prefix}light);
         border: 1px solid var(--#{$prefix}border-color);
         border-radius: var(--#{$prefix}border-radius-lg);

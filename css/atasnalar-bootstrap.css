@@ -1115,6 +1115,13 @@ progress {
   white-space: pre;
   border-radius: var(--border-radius);
   position: relative;
+  padding: 0.8em 1em;
+}
+.pre-blocks code {
+  display: block;
+  font-family: inherit;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 [data-theme=dark] .pre-blocks {
@@ -4053,6 +4060,7 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem;
+  color: var(--body-color);
   background-color: var(--light);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
@@ -10051,7 +10059,7 @@ a[href^=http]:empty::before {
 }
 
 .toggle-theme.toggle-colored:active::before {
-  width: 30px;
+  width: 24px;
   border-radius: 1rem;
 }
 
@@ -10071,7 +10079,7 @@ a[href^=http]:empty::before {
 }
 
 .toggle-theme.toggle-colored.active:active::before {
-  width: 30px;
+  width: 24px;
   transform: translateY(-50%) translateX(-6px);
 }
 
