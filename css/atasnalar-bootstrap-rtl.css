@@ -10061,6 +10061,29 @@ a[href^=http]:empty::before {
   right: calc(100% - 19px);
 }
 
+.toggle-theme.simple-toggle {
+  position: relative;
+  overflow: hidden;
+  height: 32px;
+  width: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--body-bg);
+  cursor: pointer;
+}
+
+.toggle-theme.simple-toggle::before, .toggle-theme.simple-toggle::after, .toggle-theme.toggle-colored.simple-toggle::before, .toggle-theme.toggle-colored.simple-toggle::after {
+  right: 50%;
+  transform: translate(50%, -50%);
+  line-height: 1;
+}
+
+.toggle-theme.toggle-colored.simple-toggle::before {
+  height: 100%;
+  width: 100%;
+  border-radius: unset;
+}
+
 .clearfix::after {
   display: block;
   clear: both;
