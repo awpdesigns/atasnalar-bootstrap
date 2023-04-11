@@ -81,3 +81,25 @@
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' style='fill: %23ffbc2d;transform: ;msFilter:;'%3E%3Cpath d='M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z'%3E%3C/path%3E%3C/svg%3E");
   left: calc(100% - 19px);
 }
+
+.toggle-theme.simple-toggle {
+  position: relative;
+  overflow: hidden;
+  height: 32px;
+  width: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--#{$prefix}border-color);
+  background-color: var(--#{$prefix}body-bg);
+  cursor: pointer;
+}
+
+.toggle-theme.simple-toggle::before, .toggle-theme.simple-toggle::after, .toggle-theme.toggle-colored.simple-toggle::before, .toggle-theme.toggle-colored.simple-toggle::after {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+.toggle-theme.toggle-colored.simple-toggle::before {
+  height: 100%;
+  width: 100%;
+  border-radius: unset;
+}
