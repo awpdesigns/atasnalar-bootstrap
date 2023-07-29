@@ -18,8 +18,13 @@
 
 // Extend Bootstrap - Atas Nalar - For background color classes
 @each $color, $value in $grays {
-  .bg-#{$color} {
+  .bg-gray-#{$color} {
       background-color: $value !important;
+  }
+  .bg-hover-gray-#{$color} {
+      &:hover {
+          background-color: $value !important;
+      }
   }
 }
 @each $color, $value in $theme-colors {

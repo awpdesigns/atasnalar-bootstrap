@@ -10205,39 +10205,75 @@ a[href^=http]:empty::before {
   background-color: RGBA(41, 54, 62, var(--bg-opacity, 1)) !important;
 }
 
-.bg-100 {
+.bg-gray-100 {
   background-color: #E2E5EA !important;
 }
 
-.bg-200 {
+.bg-hover-gray-100:hover {
+  background-color: #E2E5EA !important;
+}
+
+.bg-gray-200 {
   background-color: #C6CDD5 !important;
 }
 
-.bg-300 {
+.bg-hover-gray-200:hover {
+  background-color: #C6CDD5 !important;
+}
+
+.bg-gray-300 {
   background-color: #a8b4bf !important;
 }
 
-.bg-400 {
+.bg-hover-gray-300:hover {
+  background-color: #a8b4bf !important;
+}
+
+.bg-gray-400 {
   background-color: #8a9ca8 !important;
 }
 
-.bg-500 {
+.bg-hover-gray-400:hover {
+  background-color: #8a9ca8 !important;
+}
+
+.bg-gray-500 {
   background-color: #6e8396 !important;
 }
 
-.bg-600 {
+.bg-hover-gray-500:hover {
+  background-color: #6e8396 !important;
+}
+
+.bg-gray-600 {
   background-color: #566975 !important;
 }
 
-.bg-700 {
+.bg-hover-gray-600:hover {
+  background-color: #566975 !important;
+}
+
+.bg-gray-700 {
   background-color: #424e5a !important;
 }
 
-.bg-800 {
+.bg-hover-gray-700:hover {
+  background-color: #424e5a !important;
+}
+
+.bg-gray-800 {
   background-color: #29363e !important;
 }
 
-.bg-900 {
+.bg-hover-gray-800:hover {
+  background-color: #29363e !important;
+}
+
+.bg-gray-900 {
+  background-color: #151d20 !important;
+}
+
+.bg-hover-gray-900:hover {
   background-color: #151d20 !important;
 }
 
