@@ -12069,39 +12069,39 @@ a[href^=http]:empty::before {
   color: #032830 !important;
 }
 
-.text-100 {
+.text-gray-100 {
   color: #E2E5EA !important;
 }
 
-.text-200 {
+.text-gray-200 {
   color: #C6CDD5 !important;
 }
 
-.text-300 {
+.text-gray-300 {
   color: #a8b4bf !important;
 }
 
-.text-400 {
+.text-gray-400 {
   color: #8a9ca8 !important;
 }
 
-.text-500 {
+.text-gray-500 {
   color: #6e8396 !important;
 }
 
-.text-600 {
+.text-gray-600 {
   color: #566975 !important;
 }
 
-.text-700 {
+.text-gray-700 {
   color: #424e5a !important;
 }
 
-.text-800 {
+.text-gray-800 {
   color: #29363e !important;
 }
 
-.text-900 {
+.text-gray-900 {
   color: #151d20 !important;
 }
 

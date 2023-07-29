@@ -1,7 +1,12 @@
 // Extend Bootstrap - Atas Nalar - For text color classes
 @each $color, $value in $grays {
-    .text-#{$color} {
+    .text-gray-#{$color} {
         color: $value !important;
+    }
+    .text-hover-gray-#{$color} {
+        &:hover {
+            color: $value !important;
+        }
     }
 }
 @each $color, $value in $theme-colors {

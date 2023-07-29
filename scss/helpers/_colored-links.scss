@@ -13,8 +13,13 @@
 
 // Extend Bootstrap - Atas Nalar - For link color classes
 @each $color, $value in $grays {
-  .link-#{$color} {
+  .link-gray-#{$color} {
       color: $value !important;
+  }
+  .link-hover-gray-#{$color} {
+      &:hover {
+          color: $value !important;
+      }
   }
 }
 @each $color, $value in $theme-colors {
