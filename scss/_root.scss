@@ -32,12 +32,23 @@
     --#{$prefix}#{$color}-rgb: #{$value};
   }
 
+  @each $color, $value in $colors-text {
+    --#{$prefix}#{$color}-text: #{$value};
+  }
   @each $color, $value in $theme-colors-text {
     --#{$prefix}#{$color}-text: #{$value};
   }
 
+  @each $color, $value in $colors-bg-subtle {
+    --#{$prefix}#{$color}-bg-subtle: #{$value};
+  }
+
   @each $color, $value in $theme-colors-bg-subtle {
     --#{$prefix}#{$color}-bg-subtle: #{$value};
+  }
+
+  @each $color, $value in $colors-border-subtle {
+    --#{$prefix}#{$color}-border-subtle: #{$value};
   }
 
   @each $color, $value in $theme-colors-border-subtle {

@@ -19,6 +19,19 @@ $theme-colors-text: (
   "dark": $dark-text,
 ) !default;
 
+$colors-text: (
+  "blue": $blue-text,
+  "indigo": $indigo-text,
+  "purple": $purple-text,
+  "pink": $pink-text,
+  "red": $red-text,
+  "orange": $orange-text,
+  "yellow": $yellow-text,
+  "green": $green-text,
+  "teal": $teal-text,
+  "cyan": $cyan-text,
+) !default;
+
 $theme-colors-bg-subtle: (
   "primary": $primary-bg-subtle,
   "secondary": $secondary-bg-subtle,
@@ -31,6 +44,19 @@ $theme-colors-bg-subtle: (
   "dark": $dark-bg-subtle,
 ) !default;
 
+$colors-bg-subtle: (
+  "blue": $blue-bg-subtle,
+  "indigo": $indigo-bg-subtle,
+  "purple": $purple-bg-subtle,
+  "pink": $pink-bg-subtle,
+  "red": $red-bg-subtle,
+  "orange": $orange-bg-subtle,
+  "yellow": $yellow-bg-subtle,
+  "green": $green-bg-subtle,
+  "teal": $teal-bg-subtle,
+  "cyan": $cyan-bg-subtle,
+) !default;
+
 $theme-colors-border-subtle: (
   "primary": $primary-border-subtle,
   "secondary": $secondary-border-subtle,
@@ -41,6 +67,19 @@ $theme-colors-border-subtle: (
   "danger": $danger-border-subtle,
   "light": $light-border-subtle,
   "dark": $dark-border-subtle,
+) !default;
+
+$colors-border-subtle: (
+  "blue": $blue-border-subtle,
+  "indigo": $indigo-border-subtle,
+  "purple": $purple-border-subtle,
+  "pink": $pink-border-subtle,
+  "red": $red-border-subtle,
+  "orange": $orange-border-subtle,
+  "yellow": $yellow-border-subtle,
+  "green": $green-border-subtle,
+  "teal": $teal-border-subtle,
+  "cyan": $cyan-border-subtle,
 ) !default;
 
 // Utilities maps

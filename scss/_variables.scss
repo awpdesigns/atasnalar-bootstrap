@@ -115,6 +115,17 @@ $danger-text:             $danger-600 !default;
 $light-text:              $gray-600 !default;
 $dark-text:               $gray-700 !default;
 
+$blue-text:               $blue-600 !default;
+$indigo-text:             $indigo-600 !default;
+$purple-text:             $purple-600 !default;
+$pink-text:               $pink-600 !default;
+$red-text:                $red-600 !default;
+$orange-text:             $orange-600 !default;
+$yellow-text:             $yellow-600 !default;
+$green-text:              $green-600 !default;
+$teal-text:               $teal-600 !default;
+$cyan-text:               $cyan-600 !default;
+
 $primary-bg-subtle:       $primary-100 !default;
 $secondary-bg-subtle:     $secondary-100 !default;
 $tertiary-bg-subtle:      $tertiary-100 !default;
@@ -125,6 +136,17 @@ $danger-bg-subtle:        $danger-100 !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 
+$blue-bg-subtle:          $blue-100 !default;
+$indigo-bg-subtle:        $indigo-100 !default;
+$purple-bg-subtle:        $purple-100 !default;
+$pink-bg-subtle:          $pink-100 !default;
+$red-bg-subtle:           $red-100 !default;
+$orange-bg-subtle:        $orange-100 !default;
+$yellow-bg-subtle:        $yellow-100 !default;
+$green-bg-subtle:         $green-100 !default;
+$teal-bg-subtle:          $teal-100 !default;
+$cyan-bg-subtle:          $cyan-100 !default;
+
 $primary-border-subtle:   $primary-200 !default;
 $secondary-border-subtle: $secondary-200 !default;
 $tertiary-border-subtle:  $tertiary-200 !default;
@@ -134,6 +156,17 @@ $warning-border-subtle:   $warning-200 !default;
 $danger-border-subtle:    $danger-200 !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
+
+$blue-border-subtle:      $blue-200 !default;
+$indigo-border-subtle:    $indigo-200 !default;
+$purple-border-subtle:    $purple-200 !default;
+$pink-border-subtle:      $pink-200 !default;
+$red-border-subtle:       $red-200 !default;
+$orange-border-subtle:    $orange-200 !default;
+$yellow-border-subtle:    $yellow-200 !default;
+$green-border-subtle:     $green-200 !default;
+$teal-border-subtle:      $teal-200 !default;
+$cyan-border-subtle:      $cyan-200 !default;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
