@@ -14182,6 +14182,46 @@ a[href^=http]:empty::before {
   border-color: var(--dark-border-subtle) !important;
 }
 
+.border-blue-subtle {
+  border-color: var(--blue-border-subtle) !important;
+}
+
+.border-indigo-subtle {
+  border-color: var(--indigo-border-subtle) !important;
+}
+
+.border-purple-subtle {
+  border-color: var(--purple-border-subtle) !important;
+}
+
+.border-pink-subtle {
+  border-color: var(--pink-border-subtle) !important;
+}
+
+.border-red-subtle {
+  border-color: var(--red-border-subtle) !important;
+}
+
+.border-orange-subtle {
+  border-color: var(--orange-border-subtle) !important;
+}
+
+.border-yellow-subtle {
+  border-color: var(--yellow-border-subtle) !important;
+}
+
+.border-green-subtle {
+  border-color: var(--green-border-subtle) !important;
+}
+
+.border-teal-subtle {
+  border-color: var(--teal-border-subtle) !important;
+}
+
+.border-cyan-subtle {
+  border-color: var(--cyan-border-subtle) !important;
+}
+
 .border-1 {
   --border-width: 1px;
 }
@@ -16218,6 +16258,46 @@ a[href^=http]:empty::before {
   color: var(--dark-text) !important;
 }
 
+.text-blue-emphasis {
+  color: var(--blue-text) !important;
+}
+
+.text-indigo-emphasis {
+  color: var(--indigo-text) !important;
+}
+
+.text-purple-emphasis {
+  color: var(--purple-text) !important;
+}
+
+.text-pink-emphasis {
+  color: var(--pink-text) !important;
+}
+
+.text-red-emphasis {
+  color: var(--red-text) !important;
+}
+
+.text-orange-emphasis {
+  color: var(--orange-text) !important;
+}
+
+.text-yellow-emphasis {
+  color: var(--yellow-text) !important;
+}
+
+.text-green-emphasis {
+  color: var(--green-text) !important;
+}
+
+.text-teal-emphasis {
+  color: var(--teal-text) !important;
+}
+
+.text-cyan-emphasis {
+  color: var(--cyan-text) !important;
+}
+
 .bg-primary {
   --bg-opacity: 1;
   background-color: rgba(var(--primary-rgb), var(--bg-opacity)) !important;
@@ -16352,6 +16432,46 @@ a[href^=http]:empty::before {
 
 .bg-dark-subtle {
   background-color: var(--dark-bg-subtle) !important;
+}
+
+.bg-blue-subtle {
+  background-color: var(--blue-bg-subtle) !important;
+}
+
+.bg-indigo-subtle {
+  background-color: var(--indigo-bg-subtle) !important;
+}
+
+.bg-purple-subtle {
+  background-color: var(--purple-bg-subtle) !important;
+}
+
+.bg-pink-subtle {
+  background-color: var(--pink-bg-subtle) !important;
+}
+
+.bg-red-subtle {
+  background-color: var(--red-bg-subtle) !important;
+}
+
+.bg-orange-subtle {
+  background-color: var(--orange-bg-subtle) !important;
+}
+
+.bg-yellow-subtle {
+  background-color: var(--yellow-bg-subtle) !important;
+}
+
+.bg-green-subtle {
+  background-color: var(--green-bg-subtle) !important;
+}
+
+.bg-teal-subtle {
+  background-color: var(--teal-bg-subtle) !important;
+}
+
+.bg-cyan-subtle {
+  background-color: var(--cyan-bg-subtle) !important;
 }
 
 .bg-gradient {

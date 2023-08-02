@@ -118,7 +118,17 @@ $utilities-text-emphasis-colors: (
   "warning-emphasis": var(--#{$prefix}warning-text),
   "danger-emphasis": var(--#{$prefix}danger-text),
   "light-emphasis": var(--#{$prefix}light-text),
-  "dark-emphasis": var(--#{$prefix}dark-text)
+  "dark-emphasis": var(--#{$prefix}dark-text),
+  "blue-emphasis": var(--#{$prefix}blue-text),
+  "indigo-emphasis": var(--#{$prefix}indigo-text),
+  "purple-emphasis": var(--#{$prefix}purple-text),
+  "pink-emphasis": var(--#{$prefix}pink-text),
+  "red-emphasis": var(--#{$prefix}red-text),
+  "orange-emphasis": var(--#{$prefix}orange-text),
+  "yellow-emphasis": var(--#{$prefix}yellow-text),
+  "green-emphasis": var(--#{$prefix}green-text),
+  "teal-emphasis": var(--#{$prefix}teal-text),
+  "cyan-emphasis": var(--#{$prefix}cyan-text)
 ) !default;
 // scss-docs-end utilities-text-colors
 
@@ -142,7 +152,17 @@ $utilities-bg-subtle: (
   "warning-subtle": var(--#{$prefix}warning-bg-subtle),
   "danger-subtle": var(--#{$prefix}danger-bg-subtle),
   "light-subtle": var(--#{$prefix}light-bg-subtle),
-  "dark-subtle": var(--#{$prefix}dark-bg-subtle)
+  "dark-subtle": var(--#{$prefix}dark-bg-subtle),
+  "blue-subtle": var(--#{$prefix}blue-bg-subtle),
+  "indigo-subtle": var(--#{$prefix}indigo-bg-subtle),
+  "purple-subtle": var(--#{$prefix}purple-bg-subtle),
+  "pink-subtle": var(--#{$prefix}pink-bg-subtle),
+  "red-subtle": var(--#{$prefix}red-bg-subtle),
+  "orange-subtle": var(--#{$prefix}orange-bg-subtle),
+  "yellow-subtle": var(--#{$prefix}yellow-bg-subtle),
+  "green-subtle": var(--#{$prefix}green-bg-subtle),
+  "teal-subtle": var(--#{$prefix}teal-bg-subtle),
+  "cyan-subtle": var(--#{$prefix}cyan-bg-subtle)
 ) !default;
 // $utilities-bg-subtle-colors: map-loop($utilities-bg-subtle, rgba-css-var, "$key", "bg") !default;
 // scss-docs-end utilities-bg-colors
@@ -165,7 +185,17 @@ $utilities-border-subtle: (
   "warning-subtle": var(--#{$prefix}warning-border-subtle),
   "danger-subtle": var(--#{$prefix}danger-border-subtle),
   "light-subtle": var(--#{$prefix}light-border-subtle),
-  "dark-subtle": var(--#{$prefix}dark-border-subtle)
+  "dark-subtle": var(--#{$prefix}dark-border-subtle),
+  "blue-subtle": var(--#{$prefix}blue-border-subtle),
+  "indigo-subtle": var(--#{$prefix}indigo-border-subtle),
+  "purple-subtle": var(--#{$prefix}purple-border-subtle),
+  "pink-subtle": var(--#{$prefix}pink-border-subtle),
+  "red-subtle": var(--#{$prefix}red-border-subtle),
+  "orange-subtle": var(--#{$prefix}orange-border-subtle),
+  "yellow-subtle": var(--#{$prefix}yellow-border-subtle),
+  "green-subtle": var(--#{$prefix}green-border-subtle),
+  "teal-subtle": var(--#{$prefix}teal-border-subtle),
+  "cyan-subtle": var(--#{$prefix}cyan-border-subtle)
 ) !default;
 // scss-docs-end utilities-border-colors
 
