@@ -903,6 +903,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
+  appearance: button;
   -webkit-appearance: button;
 }
 button:not(:disabled),
@@ -961,6 +962,7 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
+  appearance: textfield;
   -webkit-appearance: textfield;
 }
 
@@ -982,6 +984,7 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
+  appearance: button;
   -webkit-appearance: button;
 }
 
@@ -7374,6 +7377,32 @@ textarea.form-control-lg {
   padding: 1.25rem 1rem;
 }
 
+.alert-with-icon {
+  -webkit-box-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  position: relative;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  padding: 1.25rem 3rem;
+}
+.alert-with-icon::before {
+  content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: none;transform: ;msFilter:;"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>');
+  mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: auto;transform: ;msFilter:;"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>');
+  background-color: currentcolor;
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+  position: absolute;
+  top: auto;
+  left: 0.75em;
+  line-height: 0.9;
+  text-rendering: auto;
+  display: inline-block;
+  text-transform: none;
+  speak-as: none;
+}
+
 .alert-blue {
   --alert-color: var(--blue-text);
   --alert-bg: var(--blue-bg-subtle);
@@ -9036,8 +9065,6 @@ textarea.form-control-lg {
     border-right: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(-100%);
   }
-}
-@media (max-width: 575.98px) {
   .offcanvas-sm.offcanvas-end {
     top: 0;
     right: 0;
@@ -9045,8 +9072,6 @@ textarea.form-control-lg {
     border-left: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(100%);
   }
-}
-@media (max-width: 575.98px) {
   .offcanvas-sm.offcanvas-top {
     top: 0;
     right: 0;
@@ -9056,8 +9081,6 @@ textarea.form-control-lg {
     border-bottom: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(-100%);
   }
-}
-@media (max-width: 575.98px) {
   .offcanvas-sm.offcanvas-bottom {
     right: 0;
     left: 0;
@@ -9066,13 +9089,9 @@ textarea.form-control-lg {
     border-top: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(100%);
   }
-}
-@media (max-width: 575.98px) {
   .offcanvas-sm.showing, .offcanvas-sm.show:not(.hiding) {
     transform: none;
   }
-}
-@media (max-width: 575.98px) {
   .offcanvas-sm.showing, .offcanvas-sm.hiding, .offcanvas-sm.show {
     visibility: visible;
   }
@@ -9125,8 +9144,6 @@ textarea.form-control-lg {
     border-right: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(-100%);
   }
-}
-@media (max-width: 767.98px) {
   .offcanvas-md.offcanvas-end {
     top: 0;
     right: 0;
@@ -9134,8 +9151,6 @@ textarea.form-control-lg {
     border-left: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(100%);
   }
-}
-@media (max-width: 767.98px) {
   .offcanvas-md.offcanvas-top {
     top: 0;
     right: 0;
@@ -9145,8 +9160,6 @@ textarea.form-control-lg {
     border-bottom: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(-100%);
   }
-}
-@media (max-width: 767.98px) {
   .offcanvas-md.offcanvas-bottom {
     right: 0;
     left: 0;
@@ -9155,13 +9168,9 @@ textarea.form-control-lg {
     border-top: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(100%);
   }
-}
-@media (max-width: 767.98px) {
   .offcanvas-md.showing, .offcanvas-md.show:not(.hiding) {
     transform: none;
   }
-}
-@media (max-width: 767.98px) {
   .offcanvas-md.showing, .offcanvas-md.hiding, .offcanvas-md.show {
     visibility: visible;
   }
@@ -9214,8 +9223,6 @@ textarea.form-control-lg {
     border-right: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(-100%);
   }
-}
-@media (max-width: 991.98px) {
   .offcanvas-lg.offcanvas-end {
     top: 0;
     right: 0;
@@ -9223,8 +9230,6 @@ textarea.form-control-lg {
     border-left: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(100%);
   }
-}
-@media (max-width: 991.98px) {
   .offcanvas-lg.offcanvas-top {
     top: 0;
     right: 0;
@@ -9234,8 +9239,6 @@ textarea.form-control-lg {
     border-bottom: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(-100%);
   }
-}
-@media (max-width: 991.98px) {
   .offcanvas-lg.offcanvas-bottom {
     right: 0;
     left: 0;
@@ -9244,13 +9247,9 @@ textarea.form-control-lg {
     border-top: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(100%);
   }
-}
-@media (max-width: 991.98px) {
   .offcanvas-lg.showing, .offcanvas-lg.show:not(.hiding) {
     transform: none;
   }
-}
-@media (max-width: 991.98px) {
   .offcanvas-lg.showing, .offcanvas-lg.hiding, .offcanvas-lg.show {
     visibility: visible;
   }
@@ -9303,8 +9302,6 @@ textarea.form-control-lg {
     border-right: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(-100%);
   }
-}
-@media (max-width: 1199.98px) {
   .offcanvas-xl.offcanvas-end {
     top: 0;
     right: 0;
@@ -9312,8 +9309,6 @@ textarea.form-control-lg {
     border-left: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(100%);
   }
-}
-@media (max-width: 1199.98px) {
   .offcanvas-xl.offcanvas-top {
     top: 0;
     right: 0;
@@ -9323,8 +9318,6 @@ textarea.form-control-lg {
     border-bottom: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(-100%);
   }
-}
-@media (max-width: 1199.98px) {
   .offcanvas-xl.offcanvas-bottom {
     right: 0;
     left: 0;
@@ -9333,13 +9326,9 @@ textarea.form-control-lg {
     border-top: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(100%);
   }
-}
-@media (max-width: 1199.98px) {
   .offcanvas-xl.showing, .offcanvas-xl.show:not(.hiding) {
     transform: none;
   }
-}
-@media (max-width: 1199.98px) {
   .offcanvas-xl.showing, .offcanvas-xl.hiding, .offcanvas-xl.show {
     visibility: visible;
   }
@@ -9392,8 +9381,6 @@ textarea.form-control-lg {
     border-right: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(-100%);
   }
-}
-@media (max-width: 1399.98px) {
   .offcanvas-xxl.offcanvas-end {
     top: 0;
     right: 0;
@@ -9401,8 +9388,6 @@ textarea.form-control-lg {
     border-left: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateX(100%);
   }
-}
-@media (max-width: 1399.98px) {
   .offcanvas-xxl.offcanvas-top {
     top: 0;
     right: 0;
@@ -9412,8 +9397,6 @@ textarea.form-control-lg {
     border-bottom: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(-100%);
   }
-}
-@media (max-width: 1399.98px) {
   .offcanvas-xxl.offcanvas-bottom {
     right: 0;
     left: 0;
@@ -9422,13 +9405,9 @@ textarea.form-control-lg {
     border-top: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
     transform: translateY(100%);
   }
-}
-@media (max-width: 1399.98px) {
   .offcanvas-xxl.showing, .offcanvas-xxl.show:not(.hiding) {
     transform: none;
   }
-}
-@media (max-width: 1399.98px) {
   .offcanvas-xxl.showing, .offcanvas-xxl.hiding, .offcanvas-xxl.show {
     visibility: visible;
   }

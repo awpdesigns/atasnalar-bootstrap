@@ -25,8 +25,13 @@
                 // Add Validation to input that has attribute [required] on keyup
                 if (input.attr('required') !== undefined) {
                     // Find label for input and add asterisk
-                    // var label = form.find('label[for="' + inputName + '"]');
-                    // label.append('<sup class="text-danger">*</sup>');
+                    var label = form.find('label[for="' + inputName + '"]');
+                    // Check if label child sup exists
+                    label.each(function () {
+                        if ($(this).find('sup').length == 0) {
+                            $(this).append('<sup style="color:red;">*</sup>');
+                        }
+                    });
 
                     input.on('keyup', function () {
                         if (input.val().length > 0 && inputType !== 'password' || input.val().length > 0 && inputType !== 'email') {
@@ -113,9 +118,16 @@
 
                 // Add Phone Validation to input[type=tel] or input[type=text] that has a [data-phone-validation=true] and force to only numbers
                 if ($(this).is('[type="tel"]') || $(this).is('[type="text"]')) {
-                    var phoneRegexp = /^62[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
 
                     if ($(this).attr('data-phone-validation') === 'true') {
+                        var codeArea = $(this).attr('data-code-area');
+                        if (codeArea == undefined || codeArea == '') {
+                            // Throw an error
+                            $(this).after('<small style="color:red;">Please add data-code-area attribute to this input</small>');
+                            form.find('button[type="submit"]').attr('disabled', true);
+                        }
+                        // var phoneRegexp = /^62[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
+                        var phoneRegexp = new RegExp('^' + codeArea + '[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
                         // Add Phone Validation Element
                         $(this).before('<small class="phone-validation"></small>');
                         // Hide Phone Validation Element First
@@ -149,12 +161,44 @@
                             var phone_validation = $(this).prev();
                             var phoneValue = $(this).val();
 
-                            // if first number is 0 and this input is required, replace it with 62
+                            // if first number is 0 and this input is required, replace it with codeArea
                             if (phoneValue.substring(0, 1) == 0) {
-                                phoneValue = '62' + phoneValue.substring(1);
+                                phoneValue = codeArea + phoneValue.substring(1);
                                 $(this).val(phoneValue);
                             }
 
+                            if ($(this).val().length > 0) {
+                                if (phoneRegexp.test($(this).val())) {
+                                    $(this).removeClass('is-invalid');
+                                    $(this).addClass('is-valid');
+                                    phone_validation.removeClass('bg-danger');
+                                    phone_validation.addClass('bg-success');
+                                    phone_validation.text('Valid');
+                                    phone_validation.show();
+                                } else {
+                                    $(this).removeClass('is-valid');
+                                    $(this).addClass('is-invalid');
+                                    phone_validation.removeClass('bg-success');
+                                    phone_validation.addClass('bg-danger');
+                                    phone_validation.text('Not Valid');
+                                    phone_validation.show();
+                                }
+                            } else {
+                                phone_validation.removeClass('bg-success');
+                                phone_validation.removeClass('bg-danger');
+                                $(this).removeClass('is-valid');
+                                phone_validation.text('');
+                            }
+                        });
+                        // Check if codeArea is valid
+                        $(this).on('blur', function () {
+                            var phone_validation = $(this).prev();
+                            var phoneValue = $(this).val();
+
+                            if (phoneValue.substring(0, 1) == 0) {
+                                phoneValue = codeArea + phoneValue.substring(1);
+                                $(this).val(phoneValue);
+                            }
                             if ($(this).val().length > 0) {
                                 if (phoneRegexp.test($(this).val())) {
                                     $(this).removeClass('is-invalid');
@@ -598,11 +642,11 @@
                     // Add Counter Element
                     $(this).after('<small class="counter" style="font-size:.75rem;color:#60686E;float:right;margin-top:.25em;"></small>');
                     // Add Counter Element Value
-                    $(this).parent().find('.counter').text('Maks. 0/' + maxlength + ' character');
+                    $(this).parent().find('.counter').text('Max. 0/' + maxlength + ' character');
                     // Count Character on input and textarea
                     $(this).on('keyup', function () {
                         var maxlength = $(this).attr('maxlength');
-                        $(this).parent().find('.counter').text('Maks. ' + $(this).val().length + '/' + maxlength + ' character');
+                        $(this).parent().find('.counter').text('Max. ' + $(this).val().length + '/' + maxlength + ' character');
                         // Add .text-danger if character is more than maxlength
                         if ($(this).val().length == maxlength) {
                             $(this).parent().find('.counter').addClass('text-danger');
@@ -613,12 +657,13 @@
 
                     // If input value is not empty, set counter value
                     if ($(this).val().length > 0) {
-                        $(this).parent().find('.counter').text('Maks. ' + $(this).val().length + '/' + maxlength + ' character');
+                        $(this).parent().find('.counter').text('Max ' + $(this).val().length + '/' + maxlength + ' character');
                     }
 
                     // Hide Counter Element if maxlength is not set
                     if (maxlength == undefined) {
                         $(this).parent().find('.counter').hide();
+                        $(this).after('<small>Please add maxlength attribute to this input/textarea</small>');
                     }
                 }
 
@@ -629,17 +674,15 @@
                 var form = $(this);
                 var buttonName = form.find('button[type="submit"]')
                 // Check if all required fields are filled then enable submit button
-                form.find('input').each(function () {
+                form.find('input, textarea, select').each(function () {
                     $(this).on('keyup', function () {
                         // Check if all required fields are filled then enable submit button (input/textarea/select)
-                        if (form.find('input:required').filter(function () {
+                        if (form.find('input:required, textarea:required, select:required').filter(function () {
                             return this.value === "" || this.classList.contains('is-invalid');
                         }).length === 0) {
-                            $('div.alert-danger').fadeOut('slow', function () { $(this).hide(); });
                             // Disable submit button only inside form
                             form.find('button[type="submit"], input[type="submit"]').attr('disabled', false);
                         } else {
-                            $('div.alert-danger').fadeIn(function () { $(this).show(); });
                             form.find('button[type="submit"], input[type="submit"]').attr('disabled', true);
                         }
                     });
