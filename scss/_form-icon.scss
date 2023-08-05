@@ -28,7 +28,7 @@
         line-height: $spacer * 2.375;
         font-size: $font-size-base * 1.15;
         color: var(--#{$prefix}border-color);
-        right: $spacer * .25;
+        right: 0;
         cursor: pointer;
     }
     .toggle-password {
@@ -40,8 +40,8 @@
         height: $spacer * 2.375;
         line-height: $spacer * 2.375;
         font-size: $font-size-base * 1.15;
-        top: $spacer * 1.75;
-        right: $spacer * .25;
+        color: var(--#{$prefix}border-color);
+        right: 0;
         cursor: pointer;
     }
     &:has(.form-control-lg) {

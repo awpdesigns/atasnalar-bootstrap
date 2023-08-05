@@ -18,7 +18,7 @@
 }
 
 // Input Validation with Toggle Password Activated
-.was-validated [data-toggle-password="true"]:invalid~.toggle-password, [data-toggle-password="true"].is-invalid~.toggle-password, .was-validated [data-toggle-password="true"]:valid~.toggle-password, [data-toggle-password="true"].is-valid~.toggle-password {
+div:has([data-toggle-password="true"]:invalid, [data-toggle-password="true"]:valid, [data-toggle-password="true"].is-invalid, [data-toggle-password="true"].is-valid) .toggle-password {
   padding-right: $spacer * 3.25;
 }
 

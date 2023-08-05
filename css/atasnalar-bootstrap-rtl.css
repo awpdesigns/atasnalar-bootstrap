@@ -4616,7 +4616,7 @@ textarea.form-control-lg {
   border-color: var(--input-border-color);
 }
 
-.was-validated [data-toggle-password=true]:invalid ~ .toggle-password, [data-toggle-password=true].is-invalid ~ .toggle-password, .was-validated [data-toggle-password=true]:valid ~ .toggle-password, [data-toggle-password=true].is-valid ~ .toggle-password {
+div:has([data-toggle-password=true]:invalid, [data-toggle-password=true]:valid, [data-toggle-password=true].is-invalid, [data-toggle-password=true].is-valid) .toggle-password {
   padding-left: 3.25rem;
 }
 
@@ -4671,7 +4671,7 @@ textarea.form-control-lg {
   line-height: 2.375rem;
   font-size: 1.15rem;
   color: var(--border-color);
-  left: 0.25rem;
+  left: 0;
   cursor: pointer;
 }
 .has-icon .toggle-password {
@@ -4683,8 +4683,8 @@ textarea.form-control-lg {
   height: 2.375rem;
   line-height: 2.375rem;
   font-size: 1.15rem;
-  top: 1.75rem;
-  left: 0.25rem;
+  color: var(--border-color);
+  left: 0;
   cursor: pointer;
 }
 .has-icon:has(.form-control-lg) .form-control,

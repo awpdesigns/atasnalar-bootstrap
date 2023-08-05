@@ -4,7 +4,7 @@
 */
 (function ($) {
     'use strict';
-
+    var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
     var ANForm = function () {
         // Turn off autocomplete for all forms
         $('form, input, select, textarea').attr('autocomplete', 'off');
@@ -72,21 +72,34 @@
                     var emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
                     if ($(this).attr('data-email-validation') === 'true') {
-                        // Add Email Validation Element
-                        $(this).before('<small class="email-validation"></small>');
+                        // Check if label exists
+                        if ($(this).closest('.form-group, .an-group').find('label').length) {
+                            // Check if label parent has class .input-group, .form-floating
+                            if ($(this).closest('.form-group, .an-group').find('label').parent().hasClass('input-group') || $(this).closest('.form-group, .an-group').find('label').parent().hasClass('form-floating')) {
+                                // Add Email Validation Element on first child of .form-group or .an-group
+                                $(this).closest('.form-group, .an-group').prepend('<small class="badge email-validation"></small>');
+                            } else {
+                                // Add Email Validation Element after label
+                                $(this).closest('.form-group, .an-group').find('label').after('<small class="badge email-validation"></small>');
+                            }
+                        } else {
+                            // Add Email Validation Element on first child of .form-group or .an-group
+                            $(this).closest('.form-group, .an-group').prepend('<small class="badge email-validation"></small>');
+                        }
                         // Hide Email Validation Element First
-                        $(this).prev().hide();
+                        $(this).closest('.form-group, .an-group').find('.email-validation').hide();
                         // Email Validation css
-                        $(this).prev().css({
-                            'color': 'var(--white)',
+                        $(this).closest('.form-group, .an-group').find('.email-validation').css({
                             'font-size': '0.75rem',
+                            'font-weight': 'normal',
                             'padding': '0 .25rem',
-                            'border-radius': '0.25rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
+                            'line-height': 'var(--' + prefix + 'body-line-height)',
                         });
 
                         // Check if value match with pattern
                         $(this).on('keyup', function () {
-                            var email_validation = $(this).prev();
+                            var email_validation = $(this).closest('.form-group, .an-group').find('.email-validation');
 
                             if ($(this).val().length > 0) {
                                 if (emailRegexp.test($(this).val())) {
@@ -96,6 +109,9 @@
                                     email_validation.addClass('bg-success');
                                     email_validation.text('Email valid');
                                     email_validation.show();
+                                    setTimeout(function () {
+                                        email_validation.fadeOut('slow', function () { $(this).hide(); });
+                                    }, 1500);
                                 } else {
                                     $(this).removeClass('is-valid');
                                     $(this).addClass('is-invalid');
@@ -127,16 +143,29 @@
                         }
                         // var phoneRegexp = /^62[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
                         var phoneRegexp = new RegExp('^' + codeArea + '[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
-                        // Add Phone Validation Element
-                        $(this).before('<small class="phone-validation"></small>');
+                        // Check if label exists
+                        if ($(this).closest('.form-group, .an-group').find('label').length) {
+                            // Check if label parent has class .input-group, .form-floating
+                            if ($(this).closest('.form-group, .an-group').find('label').parent().hasClass('input-group') || $(this).closest('.form-group, .an-group').find('label').parent().hasClass('form-floating')) {
+                                // Add Phone Validation Element on first child of .form-group or .an-group
+                                $(this).closest('.form-group, .an-group').prepend('<small class="badge phone-validation"></small>');
+                            } else {
+                                // Add Phone Validation Element after label
+                                $(this).closest('.form-group, .an-group').find('label').after('<small class="badge phone-validation"></small>');
+                            }
+                        } else {
+                            // Add Phone Validation Element on first child of .form-group or .an-group
+                            $(this).closest('.form-group, .an-group').prepend('<small class="badge phone-validation"></small>');
+                        }
                         // Hide Phone Validation Element First
-                        $(this).prev().hide();
+                        $(this).closest('.form-group, .an-group').find('.phone-validation').hide();
                         // Phone Validation css
-                        $(this).prev().css({
-                            'color': 'var(--white)',
+                        $(this).closest('.form-group, .an-group').find('.phone-validation').css({
                             'font-size': '0.75rem',
+                            'font-weight': 'normal',
                             'padding': '0 .25rem',
-                            'border-radius': '0.25rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
+                            'line-height': 'var(--' + prefix + 'body-line-height)',
                         });
                         // Force input only number / Only ASCII character in that range allowed
                         /* Use on attribute version
@@ -144,7 +173,7 @@
                         */
                         $(this).on('keypress', function (e) {
                             var charCode = e.which || e.keyCode;
-                            var phone_validation = $(this).prev();
+                            var phone_validation = $(this).closest('.form-group, .an-group').find('.phone-validation');
 
                             if (charCode >= 48 && charCode <= 57) {
                                 phone_validation.show();
@@ -157,11 +186,11 @@
                         });
                         // Check if value match with pattern
                         $(this).on('keyup', function () {
-                            var phone_validation = $(this).prev();
+                            var phone_validation = $(this).closest('.form-group, .an-group').find('.phone-validation');
                             var phoneValue = $(this).val();
 
                             // if first number is 0 and this input is required, replace it with codeArea
-                            if (phoneValue.substring(0, 1) == 0) {
+                            if (phoneValue.substring(0, 1) == 0 && $(this).attr('required') !== undefined) {
                                 phoneValue = codeArea + phoneValue.substring(1);
                                 $(this).val(phoneValue);
                             }
@@ -172,14 +201,26 @@
                                     $(this).addClass('is-valid');
                                     phone_validation.removeClass('bg-danger');
                                     phone_validation.addClass('bg-success');
-                                    phone_validation.text('Valid');
+                                    phone_validation.text('Number Valid');
                                     phone_validation.show();
+                                    setTimeout(function () {
+                                        phone_validation.fadeOut('slow', function () { $(this).hide(); });
+                                    }, 1500);
                                 } else {
                                     $(this).removeClass('is-valid');
                                     $(this).addClass('is-invalid');
                                     phone_validation.removeClass('bg-success');
                                     phone_validation.addClass('bg-danger');
-                                    phone_validation.text('Not Valid');
+                                    if ($(this).attr('required') === undefined && $(this).val().length > 0) {
+                                        // If this input is not required and has value and first number is not equal with codeArea
+                                        if (phoneValue.substring(0, codeArea.length) !== codeArea) {
+                                            phone_validation.text('Not Valid (Must start with ' + codeArea + ')');
+                                        } else {
+                                            phone_validation.text('Not Valid');
+                                        }
+                                    } else {
+                                        phone_validation.text('Not Valid');
+                                    }
                                     phone_validation.show();
                                 }
                             } else {
@@ -187,14 +228,24 @@
                                 phone_validation.removeClass('bg-danger');
                                 $(this).removeClass('is-valid');
                                 phone_validation.text('');
+                                phone_validation.hide();
+                            }
+
+                            if ($(this).attr('required') === undefined && $(this).val().length == 0) {
+                                $(this).removeClass('is-invalid');
+                                $(this).removeClass('is-valid');
+                                phone_validation.removeClass('bg-success');
+                                phone_validation.removeClass('bg-danger');
+                                phone_validation.text('');
+                                phone_validation.hide();
                             }
                         });
                         // Check if codeArea is valid
                         $(this).on('blur', function () {
-                            var phone_validation = $(this).prev();
+                            var phone_validation = $(this).closest('.form-group, .an-group').find('.phone-validation');
                             var phoneValue = $(this).val();
 
-                            if (phoneValue.substring(0, 1) == 0) {
+                            if (phoneValue.substring(0, 1) == 0 && $(this).attr('required') !== undefined) {
                                 phoneValue = codeArea + phoneValue.substring(1);
                                 $(this).val(phoneValue);
                             }
@@ -204,8 +255,8 @@
                                     $(this).addClass('is-valid');
                                     phone_validation.removeClass('bg-danger');
                                     phone_validation.addClass('bg-success');
-                                    phone_validation.text('Valid');
-                                    phone_validation.show();
+                                    phone_validation.text('Number Valid');
+                                    phone_validation.hide();
                                 } else {
                                     $(this).removeClass('is-valid');
                                     $(this).addClass('is-invalid');
@@ -219,11 +270,19 @@
                                 phone_validation.removeClass('bg-danger');
                                 $(this).removeClass('is-valid');
                                 phone_validation.text('');
+                                phone_validation.hide();
+                            }
+
+                            if ($(this).attr('required') === undefined && $(this).val().length == 0) {
+                                $(this).removeClass('is-invalid');
+                                $(this).removeClass('is-valid');
+                                phone_validation.removeClass('bg-success');
+                                phone_validation.removeClass('bg-danger');
+                                phone_validation.text('');
+                                phone_validation.hide();
                             }
                         });
                     }
-
-
                 }
 
                 // Add Password Validation to input[type=password] that has a sibling with class .confirm-password | Add Toggle Password Button to input[type=password] that has a [data-toggle-password=true] | Add Password Strength Meter to input[type=password] that has a [data-password-strength=true] and validate from [data-regexp]
@@ -233,23 +292,34 @@
                         // Remove .password-strength, .password-strength-info, this attribute data-password-strength, data-regexp
                         $(this).removeAttr('data-password-strength');
                         $(this).removeAttr('data-regexp');
-
-                        // Add Password Validation Element
-                        $(this).before('<small class="password-validations"></small>');
+                        // Check if label exists
+                        if ($(this).closest('.form-group, .an-group').find('label').length) {
+                            // Check if label parent has class .input-group, .form-floating
+                            if ($(this).closest('.form-group, .an-group').find('label').parent().hasClass('input-group') || $(this).closest('.form-group, .an-group').find('label').parent().hasClass('form-floating')) {
+                                // Add Password Validation Element on first child of .form-group or .an-group
+                                $(this).closest('.form-group, .an-group').prepend('<small class="badge password-validation"></small>');
+                            } else {
+                                // Add Password Validation Element after label
+                                $(this).closest('.form-group, .an-group').find('label').after('<small class="badge password-validation"></small>');
+                            }
+                        } else {
+                            // Add Password Validation Element on first child of .form-group or .an-group
+                            $(this).closest('.form-group, .an-group').prepend('<small class="badge password-validation"></small>');
+                        }
                         // Hide Password Validation Element First
-                        $(this).parent().find('.password-validations').hide();
+                        $(this).closest('.form-group, .an-group').find('.password-validation').hide();
                         // Password Validation css
-                        $(this).parent().find('.password-validations').css({
-                            'color': 'var(--white)',
+                        $(this).closest('.form-group, .an-group').find('.password-validation').css({
                             'font-size': '0.75rem',
+                            'font-weight': 'normal',
                             'padding': '0 .25rem',
-                            'margin-right': '0.25rem',
-                            'border-radius': '0.25rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
+                            'line-height': 'var(--' + prefix + 'body-line-height)',
                         });
 
                         // Validate this value must same with other input[type=password] that are not #confirm-password or .confirm-password
                         $(this).on('keyup', function () {
-                            var password_validations = $(this).parent().find('.password-validations');
+                            var password_validations = $(this).closest('.form-group, .an-group').find('.password-validation');
 
                             if ($(this).val() !== '') {
                                 if ($(this).val() === $('.password').val()) {
@@ -278,35 +348,51 @@
                     }
                     // Password Strength Meter
                     if ($(this).attr('data-password-strength') == 'true') {
-                        // Add Password Strength Element
-                        $(this).before('<small class="password-strength"></small>');
-                        // Add Password Strength Info Element
-                        $(this).before('<div class="password-strength-info" data-switch="true" data-property="border-radius"></div>');
+                        // Check if label exists
+                        if ($(this).closest('.form-group, .an-group').find('label').length) {
+                            // Check if label parent has class .input-group, .form-floating
+                            if ($(this).closest('.form-group, .an-group').find('label').parent().hasClass('input-group') || $(this).closest('.form-group, .an-group').find('label').parent().hasClass('form-floating')) {
+                                // Add Password Strength Element on first child of .form-group or .an-group
+                                $(this).closest('.form-group, .an-group').prepend('<small class="badge password-strength"></small>');
+                                // Add Password Strength Info Element
+                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                            } else {
+                                // Add Password Strength Element after label
+                                $(this).closest('.form-group, .an-group').find('label').after('<small class="badge password-strength"></small>');
+                                // Add Password Strength Info Element
+                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                            }
+                        } else {
+                            // Add Password Strength Element on first child of .form-group or .an-group
+                            $(this).closest('.form-group, .an-group').prepend('<small class="badge password-strength"></small>');
+                            // Add Password Strength Info Element
+                            $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                        }
                         // Append Password Strength Info Details
-                        $(this).parent().find('.password-strength-info').append('<small>Password must contain at least:</small>');
+                        $(this).closest('.form-group, .an-group').find('.password-strength-info').append('<small>Password must contain at least:</small>');
                         // Append Password Strength Info List Elements
-                        $(this).parent().find('.password-strength-info').append('<ul class="m-0 main"><ul class="sub"></ul></ul>');
+                        $(this).closest('.form-group, .an-group').find('.password-strength-info').append('<ul class="m-0 main"><ul class="sub"></ul></ul>');
                         // Hide Password Strength & Password Strength Info Element First
-                        $(this).parent().find('.password-strength').hide();
-                        $(this).parent().find('.password-strength-info').hide();
+                        $(this).closest('.form-group, .an-group').find('.password-strength').hide();
+                        $(this).closest('.form-group, .an-group').find('.password-strength-info').hide();
                         // Password Strength css
-                        $(this).parent().find('.password-strength').css({
-                            'color': 'var(--white)',
+                        $(this).closest('.form-group, .an-group').find('.password-strength').css({
                             'font-size': '0.75rem',
+                            'font-weight': 'normal',
                             'padding': '0 .25rem',
-                            'margin-right': '.25rem',
-                            'border-radius': '0.25rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
+                            'line-height': 'var(--' + prefix + 'body-line-height)',
                         });
                         // Password Strength Info css
-                        $(this).parent().find('.password-strength-info').css({
+                        $(this).closest('.form-group, .an-group').find('.password-strength-info').css({
                             'position': 'absolute',
                             'top': '100%',
-                            'background': 'var(--white)',
+                            'background': 'var(--' + prefix + 'body-bg)',
                             'padding': '1rem',
-                            'border-radius': '0.5rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
                             'z-index': '3',
-                            'box-shadow': '0 0.25rem 0.5rem rgba(0,0,0,0.1)',
-                            'border': '1px solid var(--gray-10)',
+                            'box-shadow': 'var(--' + prefix + 'box-shadow)',
+                            'border': '1px solid var(--' + prefix + 'border-color)',
                             'margin-top': '0.25rem',
                         });
 
@@ -321,21 +407,21 @@
                             $(this).attr('pattern', password_pattern);
                             // Append Password Strength Info List Element Details with their class name that matches with current pattern:
                             // ! 8 characters
-                            $(this).parent().find('.password-strength-info ul.main').prepend('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.main').prepend('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             // ! 1 uppercase letter
-                            $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
                             // ! 1 lowercase letter
-                            $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
                             // ! 1 number
-                            $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
                             // ! 1 special character
-                            $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
                             // Check if value match with pattern and add success class to each pattern
                             $(this).keyup(function () {
                                 var password = $(this).val();
-                                var password_strength = $(this).parent().find('.password-strength');
+                                var password_strength = $(this).closest('.form-group, .an-group').find('.password-strength');
                                 var password_pattern = $(this).attr('pattern');
-                                var password_info = $(this).parent().find('.password-strength-info');
+                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
 
                                 if (password.length > 0) {
                                     var regex = new RegExp(password_pattern);
@@ -393,7 +479,7 @@
                                     password_info.find('.special-strength').removeClass('text-success');
                                     password_info.addClass('text-white bg-success border-success');
                                     password_info.find('small').addClass('text-white');
-                                    $(this).parent().find('.invalid-feedback').hide();
+                                    $(this).closest('.form-group, .an-group').find('.invalid-feedback').hide();
                                     $(this).removeClass('is-invalid');
                                     $(this).addClass('is-valid');
                                     setTimeout(function () {
@@ -403,7 +489,7 @@
                                 } else {
                                     password_info.removeClass('text-white bg-success border-success');
                                     password_info.find('small').removeClass('text-white');
-                                    $(this).parent().find('.invalid-feedback').show();
+                                    $(this).closest('.form-group, .an-group').find('.invalid-feedback').show();
                                     password_info.show();
                                 }
                             });
@@ -428,7 +514,7 @@
 
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
                             } else {
                                 var upperCase = '';
                                 var upperCase_pattern = '';
@@ -444,7 +530,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
                             } else {
                                 var lowerCase = '';
                                 var lowerCase_pattern = '';
@@ -460,7 +546,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
                             } else {
                                 var number = '';
                                 var number_pattern = '';
@@ -476,7 +562,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
                             } else {
                                 var special = '';
                                 var special_pattern = '';
@@ -486,16 +572,16 @@
                                 var minLength = regex_data_object.min;
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             } else {
                                 var minLength = 8;
 
-                                $(this).parent().find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             }
 
                             // Order last <li> to be the first one on ul.main / ul.sub:
-                            $(this).parent().find('.password-strength-info ul.main li:last-child').prependTo($(this).parent().find('.password-strength-info ul.main'));
-                            $(this).parent().find('.password-strength-info ul.sub li:last-child').prependTo($(this).parent().find('.password-strength-info ul.sub'));
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.main li:last-child').prependTo($(this).parent().find('.password-strength-info ul.main'));
+                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub li:last-child').prependTo($(this).parent().find('.password-strength-info ul.sub'));
 
                             // Add Default Pattern
                             $(this).attr('pattern', '^' + lowerCase_pattern + upperCase_pattern + number_pattern + special_pattern + '[' + lowerCase + upperCase + number + special + ']{' + minLength + ',}$');
@@ -505,9 +591,9 @@
                             //$(this).val($(this).attr('pattern'));
                             $(this).keyup(function () {
                                 var password = $(this).val();
-                                var password_strength = $(this).parent().find('.password-strength');
+                                var password_strength = $(this).closest('.form-group, .an-group').find('.password-strength');
                                 var password_pattern = $(this).attr('pattern');
-                                var password_info = $(this).parent().find('.password-strength-info');
+                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
 
                                 if (password.length > 0) {
                                     var regex = new RegExp(password_pattern);
@@ -565,7 +651,7 @@
                                     password_info.find('.special-strength').removeClass('text-success');
                                     password_info.find('.inc').removeClass('text-success');
                                     password_info.addClass('text-white bg-success border-success');
-                                    $(this).parent().find('.invalid-feedback').hide();
+                                    $(this).closest('.form-group, .an-group').find('.invalid-feedback').hide();
                                     $(this).removeClass('is-invalid');
                                     $(this).addClass('is-valid');
                                     setTimeout(function () {
@@ -574,7 +660,7 @@
 
                                 } else {
                                     password_info.removeClass('text-white bg-success border-success');
-                                    $(this).parent().find('.invalid-feedback').show();
+                                    $(this).closest('.form-group, .an-group').find('.invalid-feedback').show();
                                     password_info.show();
                                 }
                             });
@@ -583,7 +669,7 @@
 
                         // Show Password Strength Info Element on focus
                         $(this).focus(function () {
-                            var password_info = $(this).parent().find('.password-strength-info');
+                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
                             password_info.show();
 
                             if (password_info.hasClass('text-white bg-success border-success')) {
@@ -592,7 +678,7 @@
                         });
                         // Hide Password Strength Info Element on blur / not focus
                         $(this).blur(function () {
-                            var password_info = $(this).parent().find('.password-strength-info');
+                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
                             password_info.hide();
                         });
                     }
@@ -603,32 +689,35 @@
                             'padding-right': '2.375rem',
                         });
                         // Add Toggle Password Element with Icon Class
-                        $(this).after('<span class="toggle-password text-gray bx bx-lock-alt"></span>');
-                        // Add Notifications password open & not secure
-                        if ($(this).siblings('.password-validations').length) {
-                            $(this).siblings('.password-validations').after('<small class="not-secure bg-warning text-dark float-end" style="font-size:.75rem;padding:0 .25rem;border-radius:.25rem">Not secure!</small>');
-                        } else {
-                            $(this).prev().before('<small class="not-secure bg-warning text-dark float-end" style="font-size:.75rem;padding:0 .25rem;border-radius:.25rem">Not secure!</small>');
-                        }
-                        // Hide .not-secure Element First
-                        $(this).parent().find('.not-secure').hide();
+                        $(this).before('<span class="toggle-password text-gray bx bx-lock-alt"></span>');
+                        // Add Notifications password open & keep-secret
+                        $(this).siblings('.toggle-password').before('<small class="badge keep-secret bg-warning">Keep secret!</small>');
+                        // Hide .keep-secret Element First
+                        $(this).closest('.form-group, .an-group').find('.keep-secret').hide();
+                        $(this).closest('.form-group, .an-group').find('.keep-secret').css({
+                            'font-size': '0.75rem',
+                            'font-weight': 'normal',
+                            'padding': '0 .25rem',
+                            'border-radius': 'var(--' + prefix + 'border-radius)',
+                            'line-height': 'var(--' + prefix + 'body-line-height)',
+                        });
                         // Toggle password visibility
-                        $(this).next().on('click', function () {
+                        $(this).closest('.form-group, .an-group').find('.toggle-password').on('click', function () {
                             if ($(this).hasClass('bx bx-lock-alt')) {
                                 $(this).removeClass('bx bx-lock-alt');
                                 $(this).addClass('bx bx-lock-open-alt');
-                                $(this).prev().attr('type', 'text');
-                                // Hide .not-secure on device width < 768px
+                                $(this).siblings('input').attr('type', 'text');
+                                // Hide .keep-secret on device width < 768px
                                 if ($(window).width() < 768) {
-                                    $(this).parent().find('.not-secure').hide();
+                                    $(this).closest('.form-group, .an-group').find('.keep-secret').hide();
                                 } else {
-                                    $(this).parent().find('.not-secure').show();
+                                    $(this).closest('.form-group, .an-group').find('.keep-secret').show();
                                 }
                             } else {
                                 $(this).removeClass('bx bx-lock-open-alt');
                                 $(this).addClass('bx bx-lock-alt');
-                                $(this).parent().find('.not-secure').hide();
-                                $(this).prev().attr('type', 'password');
+                                $(this).closest('.form-group, .an-group').find('.keep-secret').hide();
+                                $(this).siblings('input').attr('type', 'password');
                             }
                         });
                     }
@@ -637,32 +726,52 @@
                 // Count Character on input and textarea if [data-count="true"] attribute is set
                 if ($(this).attr('data-count') == 'true' && $(this).is('input') || $(this).attr('data-count') == 'true' && $(this).is('textarea')) {
                     var maxlength = $(this).attr('maxlength');
-
-                    // Add Counter Element
-                    $(this).after('<small class="counter" style="font-size:.75rem;color:#60686E;float:right;margin-top:.25em;"></small>');
+                    // Check if parent has class .input-group
+                    if ($(this).parent().hasClass('input-group')) {
+                        // Add Counter Element append .input-group
+                        $(this).closest('.form-group, .an-group').find('.input-group').append('<small class="counter counter-group" style="font-size:.75rem;color:var(--' + prefix + 'border-color);margin-top:.25em;position: absolute;right: 0;bottom: 0;top:100%"></small>');
+                    } else {
+                        // Add Counter Element after input/textarea
+                        $(this).after('<small class="counter" style="font-size:.75rem;color:var(--' + prefix + 'border-color);float:right;margin-top:.25em;"></small>');
+                    }
                     // Add Counter Element Value
-                    $(this).parent().find('.counter').text('Max. 0/' + maxlength + ' character');
+                    $(this).closest('.form-group, .an-group').find('.counter').text('Max. 0/' + maxlength + ' character');
                     // Count Character on input and textarea
                     $(this).on('keyup', function () {
                         var maxlength = $(this).attr('maxlength');
-                        $(this).parent().find('.counter').text('Max. ' + $(this).val().length + '/' + maxlength + ' character');
+                        $(this).closest('.form-group, .an-group').find('.counter').text('Max. ' + $(this).val().length + '/' + maxlength + ' character');
                         // Add .text-danger if character is more than maxlength
                         if ($(this).val().length == maxlength) {
-                            $(this).parent().find('.counter').addClass('text-danger');
+                            $(this).closest('.form-group, .an-group').find('.counter').addClass('text-danger');
                         } else {
-                            $(this).parent().find('.counter').removeClass('text-danger');
+                            $(this).closest('.form-group, .an-group').find('.counter').removeClass('text-danger');
+                        }
+                        if ($(this).closest('.input-group').find('[data-count="true"]').hasClass('is-invalid')) {
+                            $(this).closest('.input-group').find('.counter-group').css({'top': 'auto', 'margin-top': '0'});
+                        } else {
+                            $(this).closest('.input-group').find('.counter-group').css({'top': '100%', 'margin-top': '.25rem'});
                         }
                     });
 
                     // If input value is not empty, set counter value
                     if ($(this).val().length > 0) {
-                        $(this).parent().find('.counter').text('Max ' + $(this).val().length + '/' + maxlength + ' character');
+                        $(this).closest('.form-group, .an-group').find('.counter').text('Max ' + $(this).val().length + '/' + maxlength + ' character');
+                        if ($(this).closest('.input-group').find('[data-count="true"]').hasClass('is-invalid')) {
+                            $(this).closest('.input-group').find('.counter-group').css({'top': 'auto', 'margin-top': '0'});
+                        } else {
+                            $(this).closest('.input-group').find('.counter-group').css({'top': '100%', 'margin-top': '.25rem'});
+                        }
                     }
 
                     // Hide Counter Element if maxlength is not set
                     if (maxlength == undefined) {
-                        $(this).parent().find('.counter').hide();
-                        $(this).after('<small>Please add maxlength attribute to this input/textarea</small>');
+                        $(this).closest('.form-group, .an-group').find('.counter').hide();
+                        // Check if parent has class .input-group
+                        if ($(this).parent().hasClass('input-group')) {
+                            $(this).closest('.form-group, .an-group').find('.input-group').after('<small>Please add maxlength attribute to this input/textarea</small>');
+                        } else {
+                            $(this).after('<small>Please add maxlength attribute to this input/textarea</small>');
+                        }
                     }
                 }
 
