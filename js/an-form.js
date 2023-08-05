@@ -355,18 +355,18 @@
                                 // Add Password Strength Element on first child of .form-group or .an-group
                                 $(this).closest('.form-group, .an-group').prepend('<small class="badge password-strength"></small>');
                                 // Add Password Strength Info Element
-                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-data"></div>');
                             } else {
                                 // Add Password Strength Element after label
                                 $(this).closest('.form-group, .an-group').find('label').after('<small class="badge password-strength"></small>');
                                 // Add Password Strength Info Element
-                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-data"></div>');
                             }
                         } else {
                             // Add Password Strength Element on first child of .form-group or .an-group
                             $(this).closest('.form-group, .an-group').prepend('<small class="badge password-strength"></small>');
                             // Add Password Strength Info Element
-                            $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-data"></div>');
                         }
                         // Append Password Strength Info Details
                         $(this).closest('.form-group, .an-group').find('.password-strength-data').append('<small>Password must contain at least:</small>');
