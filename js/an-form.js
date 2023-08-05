@@ -289,7 +289,7 @@
                 if ($(this).is('[type="password"]')) {
                     // Confirm Password Validation
                     if ($(this).attr('id') == 'confirm-password' || $(this).hasClass('confirm-password')) {
-                        // Remove .password-strength, .password-strength-info, this attribute data-password-strength, data-regexp
+                        // Remove .password-strength, .password-strength-data, this attribute data-password-strength, data-regexp
                         $(this).removeAttr('data-password-strength');
                         $(this).removeAttr('data-regexp');
                         // Check if label exists
@@ -369,12 +369,12 @@
                             $(this).closest('.form-group, .an-group').find('.password-strength').after('<div class="password-strength-info"></div>');
                         }
                         // Append Password Strength Info Details
-                        $(this).closest('.form-group, .an-group').find('.password-strength-info').append('<small>Password must contain at least:</small>');
+                        $(this).closest('.form-group, .an-group').find('.password-strength-data').append('<small>Password must contain at least:</small>');
                         // Append Password Strength Info List Elements
-                        $(this).closest('.form-group, .an-group').find('.password-strength-info').append('<ul class="m-0 main"><ul class="sub"></ul></ul>');
+                        $(this).closest('.form-group, .an-group').find('.password-strength-data').append('<ul class="m-0 main"><ul class="sub"></ul></ul>');
                         // Hide Password Strength & Password Strength Info Element First
                         $(this).closest('.form-group, .an-group').find('.password-strength').hide();
-                        $(this).closest('.form-group, .an-group').find('.password-strength-info').hide();
+                        $(this).closest('.form-group, .an-group').find('.password-strength-data').hide();
                         // Password Strength css
                         $(this).closest('.form-group, .an-group').find('.password-strength').css({
                             'font-size': '0.75rem',
@@ -384,7 +384,7 @@
                             'line-height': 'var(--' + prefix + 'body-line-height)',
                         });
                         // Password Strength Info css
-                        $(this).closest('.form-group, .an-group').find('.password-strength-info').css({
+                        $(this).closest('.form-group, .an-group').find('.password-strength-data').css({
                             'position': 'absolute',
                             'top': '100%',
                             'background': 'var(--' + prefix + 'body-bg)',
@@ -407,21 +407,21 @@
                             $(this).attr('pattern', password_pattern);
                             // Append Password Strength Info List Element Details with their class name that matches with current pattern:
                             // ! 8 characters
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.main').prepend('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.main').prepend('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             // ! 1 uppercase letter
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
                             // ! 1 lowercase letter
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
                             // ! 1 number
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
                             // ! 1 special character
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
                             // Check if value match with pattern and add success class to each pattern
                             $(this).keyup(function () {
                                 var password = $(this).val();
                                 var password_strength = $(this).closest('.form-group, .an-group').find('.password-strength');
                                 var password_pattern = $(this).attr('pattern');
-                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
+                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-data');
 
                                 if (password.length > 0) {
                                     var regex = new RegExp(password_pattern);
@@ -514,7 +514,7 @@
 
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="uppercase-strength">1 Uppercase</small></li>');
                             } else {
                                 var upperCase = '';
                                 var upperCase_pattern = '';
@@ -530,7 +530,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="lowercase-strength">1 Lowercase</small></li>');
                             } else {
                                 var lowerCase = '';
                                 var lowerCase_pattern = '';
@@ -546,7 +546,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="number-strength">1 Number</small></li>');
                             } else {
                                 var number = '';
                                 var number_pattern = '';
@@ -562,7 +562,7 @@
                                 // }
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="special-strength">1 Special Character</small></li>');
                             } else {
                                 var special = '';
                                 var special_pattern = '';
@@ -572,16 +572,16 @@
                                 var minLength = regex_data_object.min;
 
                                 // Append this to Password Strength Info List Element Details with their class name that matches with current pattern:
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             } else {
                                 var minLength = 8;
 
-                                $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
+                                $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub').append('<li><small class="character-strength">' + minLength + ' Character<span class="inc text-gray">, including:</span></small></li>');
                             }
 
                             // Order last <li> to be the first one on ul.main / ul.sub:
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.main li:last-child').prependTo($(this).parent().find('.password-strength-info ul.main'));
-                            $(this).closest('.form-group, .an-group').find('.password-strength-info ul.sub li:last-child').prependTo($(this).parent().find('.password-strength-info ul.sub'));
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.main li:last-child').prependTo($(this).parent().find('.password-strength-data ul.main'));
+                            $(this).closest('.form-group, .an-group').find('.password-strength-data ul.sub li:last-child').prependTo($(this).parent().find('.password-strength-data ul.sub'));
 
                             // Add Default Pattern
                             $(this).attr('pattern', '^' + lowerCase_pattern + upperCase_pattern + number_pattern + special_pattern + '[' + lowerCase + upperCase + number + special + ']{' + minLength + ',}$');
@@ -593,7 +593,7 @@
                                 var password = $(this).val();
                                 var password_strength = $(this).closest('.form-group, .an-group').find('.password-strength');
                                 var password_pattern = $(this).attr('pattern');
-                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
+                                var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-data');
 
                                 if (password.length > 0) {
                                     var regex = new RegExp(password_pattern);
@@ -669,7 +669,7 @@
 
                         // Show Password Strength Info Element on focus
                         $(this).focus(function () {
-                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
+                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-data');
                             password_info.show();
 
                             if (password_info.hasClass('text-white bg-success border-success')) {
@@ -678,7 +678,7 @@
                         });
                         // Hide Password Strength Info Element on blur / not focus
                         $(this).blur(function () {
-                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-info');
+                            var password_info = $(this).closest('.form-group, .an-group').find('.password-strength-data');
                             password_info.hide();
                         });
                     }
@@ -688,10 +688,18 @@
                         $(this).css({
                             'padding-right': '2.375rem',
                         });
-                        // Add Toggle Password Element with Icon Class
-                        $(this).before('<span class="toggle-password text-gray bx bx-lock-alt"></span>');
-                        // Add Notifications password open & keep-secret
-                        $(this).siblings('.toggle-password').before('<small class="badge keep-secret bg-warning">Keep secret!</small>');
+                        // Check if siblings has class .icon-control or not
+                        if ($(this).siblings('.icon-control').length) {
+                            // Add Toggle Password Element with Icon Class
+                            $(this).siblings('.icon-control').before('<span class="toggle-password text-gray bx bx-lock-alt"></span>');
+                            // Add Notifications password open & keep-secret
+                            $(this).siblings('.toggle-password').before('<small class="badge keep-secret bg-warning">Keep secret!</small>');
+                        } else {
+                            // Add Toggle Password Element with Icon Class
+                            $(this).before('<span class="toggle-password text-gray bx bx-lock-alt"></span>');
+                            // Add Notifications password open & keep-secret
+                            $(this).siblings('.toggle-password').before('<small class="badge keep-secret bg-warning">Keep secret!</small>');
+                        }
                         // Hide .keep-secret Element First
                         $(this).closest('.form-group, .an-group').find('.keep-secret').hide();
                         $(this).closest('.form-group, .an-group').find('.keep-secret').css({

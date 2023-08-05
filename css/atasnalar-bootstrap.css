@@ -4618,11 +4618,11 @@ textarea.form-control-lg {
   border-color: var(--input-border-color);
 }
 
-div:has([data-toggle-password=true]:invalid, [data-toggle-password=true]:valid, [data-toggle-password=true].is-invalid, [data-toggle-password=true].is-valid) .toggle-password {
+.form-group .toggle-password:has(~ [data-toggle-password=true].is-invalid), .form-group .toggle-password:has(~ [data-toggle-password=true].is-valid) {
   padding-right: 3.25rem;
 }
 
-.was-validated [data-toggle-password=true]:valid, [data-toggle-password=true].is-valid, .was-validated [data-toggle-password=true]:invalid, [data-toggle-password=true].is-invalid {
+.was-validated .toggle-password:has(~ [data-toggle-password=true].is-invalid), .was-validated .toggle-password:has(~ [data-toggle-password=true].is-valid), .was-validated .toggle-password:has(~ [data-toggle-password=true]:invalid), .was-validated .toggle-password:has(~ [data-toggle-password=true]:valid) {
   padding-right: 3.5rem !important;
 }
 
