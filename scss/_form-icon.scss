@@ -5,7 +5,7 @@
         padding-left: $spacer * 2.375;
     }
     .emoji-control {
-        padding-right: 2.375rem;
+        padding-right: $spacer * 2.375;
     }
     .icon-control {
         position: absolute;
@@ -16,19 +16,19 @@
         height: $spacer * 2.375;
         line-height: $spacer * 2.375;
         font-size: $font-size-base * 1.15;
-        color: var(--#{$prefix}gray-500);
+        color: var(--#{$prefix}border-color);
     }
     .icon-emoji {
         position: absolute;
         z-index: 2;
         display: block;
-        right: .25rem;
         text-align: center;
-        width: 2.375rem;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        font-size: 1.15rem;
-        color: var(--#{$prefix}gray-500);
+        width: $spacer * 2.375;
+        height: $spacer * 2.375;
+        line-height: $spacer * 2.375;
+        font-size: $font-size-base * 1.15;
+        color: var(--#{$prefix}border-color);
+        right: $spacer * .25;
         cursor: pointer;
     }
     .toggle-password {
@@ -43,6 +43,36 @@
         top: $spacer * 1.75;
         right: $spacer * .25;
         cursor: pointer;
+    }
+    &:has(.form-control-lg) {
+        .form-control,
+        .form-select {
+            padding-left:  $spacer * 2.75;
+        }
+        .emoji-control {
+            padding-right: $spacer * 2.75;
+        }
+        .icon-control, .icon-emoji, .toggle-password {
+            font-size: $font-size-base * 1.5;
+            width: $spacer * 3;
+            height: $spacer * 3;
+            line-height: $spacer * 3;
+        }
+    }
+    &:has(.form-control-sm) {
+        .form-control,
+        .form-select {
+            padding-left:  $spacer * 2;
+        }
+        .emoji-control {
+            padding-right: $spacer * 2;
+        }
+        .icon-control, .icon-emoji, .toggle-password {
+            font-size: $font-size-base;
+            width: $spacer * 2.25;
+            height: $spacer * 1.95;
+            line-height: $spacer * 1.95;
+        }
     }
 }
 
