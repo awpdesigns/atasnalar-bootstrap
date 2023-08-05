@@ -15,7 +15,6 @@
         $('form').each(function () {
             var form = $(this);
             var inputs = form.find('input, textarea, select');
-
             // Input Validation
             inputs.each(function () {
                 var input = $(this);
@@ -636,7 +635,7 @@
                 }
 
                 // Count Character on input and textarea if [data-count="true"] attribute is set
-                if ($(this).attr('data-count') == 'true' && $(this).is('input') || $(this).is('textarea')) {
+                if ($(this).attr('data-count') == 'true' && $(this).is('input') || $(this).attr('data-count') == 'true' && $(this).is('textarea')) {
                     var maxlength = $(this).attr('maxlength');
 
                     // Add Counter Element
@@ -672,7 +671,7 @@
             // Customize checkValidity()
             $('form').each(function () {
                 var form = $(this);
-                var buttonName = form.find('button[type="submit"]')
+                var buttonSubmit = form.find('button[type="submit"], input[type="submit"]')
                 // Check if all required fields are filled then enable submit button
                 form.find('input, textarea, select').each(function () {
                     $(this).on('keyup', function () {
@@ -681,9 +680,9 @@
                             return this.value === "" || this.classList.contains('is-invalid');
                         }).length === 0) {
                             // Disable submit button only inside form
-                            form.find('button[type="submit"], input[type="submit"]').attr('disabled', false);
+                            buttonSubmit.attr('disabled', false);
                         } else {
-                            form.find('button[type="submit"], input[type="submit"]').attr('disabled', true);
+                            buttonSubmit.attr('disabled', true);
                         }
                     });
                 });
