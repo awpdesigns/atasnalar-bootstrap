@@ -739,8 +739,14 @@
                         // Add Counter Element append .input-group
                         $(this).closest('.form-group, .an-group').find('.input-group').append('<small class="counter counter-group" style="font-size:.75rem;color:var(--' + prefix + 'border-color);margin-top:.25em;position: absolute;right: 0;bottom: 0;top:100%"></small>');
                     } else {
-                        // Add Counter Element after input/textarea
-                        $(this).after('<small class="counter" style="font-size:.75rem;color:var(--' + prefix + 'border-color);float:right;margin-top:.25em;"></small>');
+                        // Check if label exists
+                        if ($(this).closest('.form-group, .an-group').find('label').length) {
+                            // Add Counter Element after label
+                            $(this).closest('.form-group, .an-group').find('label').after('<small class="counter" style="font-size:.75rem;color:var(--' + prefix + 'border-color);float:right;margin-top:.25em;"></small>');
+                        } else {
+                            // Add Counter Element after input/textarea
+                            $(this).after('<small class="counter" style="font-size:.75rem;color:var(--' + prefix + 'border-color);float:right;margin-top:.25em;"></small>');
+                        }
                     }
                     // Add Counter Element Value
                     $(this).closest('.form-group, .an-group').find('.counter').text('Max. 0/' + maxlength + ' character');
