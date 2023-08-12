@@ -54,9 +54,6 @@ Note: Data Progress Color only support variable color name (blue, indigo, etc) o
         <span class="typing text-value" data-typing-text="{value-multiple-separated-coma}" data-typing-time="{value-millisecond}"></span>
         </div>
     </div>
-/* ==  Typed Text Animation V2 - Structure == */
-    Can use other tag (ex: h1, h2, h3, etc).
-    <div class="an-typed" data-typing-period="{value-millisecond}" data-typing-text="{value-multiple-separated-coma}" data-typing-cursor="false"></div>
 
 /* ==  Preloader - Structure == */
  ------- Available class options--------
