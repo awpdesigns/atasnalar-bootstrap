@@ -1,4 +1,5 @@
 /*
+    AN Form - Form Validation & Input Validation with Regex (Email, Phone, Password, etc) & Password Strength Meter & Toggle Password Button & Disable Space on Input & Disable Copy Paste Space on Input & Disable Autocomplete & Disable Spellcheck
     Author: Atas Nalar
     Version: 1.0
 */
@@ -817,3 +818,8 @@
         ANForm();
     });
 })(jQuery);
+// Check if jquery-form plugin is not exist in this page
+if (typeof jQuery.fn.ajaxForm === 'undefined') {
+    // Import jquery-form plugin
+    $.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js');
+}

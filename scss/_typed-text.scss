@@ -38,3 +38,21 @@
         left: 0%;
     }
 }
+
+.an-typed {
+    min-height: 21px;
+
+    .an-typed-cursor {
+        font-weight: 300;
+        min-height: 21px;
+    }
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+.blink, .an-typed-blink {
+    animation: blinker 1s linear infinite;
+    -webkit-animation: blinker 1s linear infinite;
+}

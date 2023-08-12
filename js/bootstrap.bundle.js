@@ -7131,10 +7131,12 @@
      * --------------------------------------------------------------------------
   */
   if (document.querySelector('.progress-circle')) {
-    var progress = document.querySelectorAll('.progress-circle');
+      var progress = document.querySelectorAll('.progress-circle');
         progress.forEach((item) => {
+          // Set timeout
+          setTimeout(() => {
             var progressValue = item.getAttribute('data-progress-value'),
-                progressColor = document.getElementsByTagName('html')[0].getAttribute('data-color') ||item.getAttribute('data-progress-color') || 'primary';
+                progressColor = item.getAttribute('data-progress-color') || document.getElementsByTagName('html')[0].getAttribute('data-color') || 'primary';
 
             var progressTextValue = document.querySelector('.progress-value');
             progressTextValue.innerHTML = `${progressValue}%`;
@@ -7145,10 +7147,52 @@
                         clearInterval(progressInterval);
                     } else {
                         progressStartValue++;
-                        item.style.background = `conic-gradient(var(--` + progressColor + `) ${progressStartValue * 3.6}deg, var(--tertiary-bg) 0)`;
+                        item.style.background = `conic-gradient(var(--` + progressColor + `) ${progressStartValue * 3.6}deg, var(--border-color) 0)`;
                         item.querySelector('.progress-value').innerHTML = `${progressStartValue}%`;
                     }
                 }, 10);
+            }, 500);
+        });
+  }
+
+  /**
+     * --------------------------------------------------------------------------
+     * Bootstrap (v5.2.3): progress-bar.js
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     * Re-implemented by Atas Nalar (https://atasnalar.com)
+     * --------------------------------------------------------------------------
+  */
+  if (document.querySelector('.progress')) {
+      var progress = document.querySelectorAll('.progress');
+        progress.forEach((item) => {
+          var progressColor = item.getAttribute('data-progress-color') || document.getElementsByTagName('html')[0].getAttribute('data-color') || 'primary';
+          var progressBars = item.querySelectorAll('.progress-bar');
+          // If progress bar exists
+          if (progressBars.length > 0) {
+            // If progress color is set
+            if (progressColor !== null && progressColor !== undefined) {
+                progressBars.forEach((item) => {
+                  item.style.background = `var(--${progressColor})`;
+                });
+            }
+
+            var progressValue = item.getAttribute('aria-valuenow');
+            var progressValueMin = item.getAttribute('aria-valuemin');
+            if (progressValueMin === null || progressValueMin === undefined) {
+              progressValueMin = 0;
+            }
+            var progressValueMax = item.getAttribute('aria-valuemax');
+            if (progressValueMax === null || progressValueMax === undefined) {
+              progressValueMax = 100;
+            }
+
+            // Set timeout to fill progress bar
+            setTimeout(() => {
+              progressBars.forEach((item) => {
+                item.style.width = `${progressValue}%`;
+              });
+            }, 500);
+          }
         });
   }
 
@@ -7188,6 +7232,95 @@
       setInterval(textLoad, textTimePeriod * textArray.length);
     });
 
+  }
+
+
+  var ANTyped = function(el, text, duration, cursor) {
+    this.text = text; // Get text from data attribute
+    this.el = el; // Get element
+    this.loopNum = 0; // Set loop number
+    this.duration = parseInt(duration, 10) || 2000; // Set duration
+    this.cursor = cursor; // Get cursor from data attribute
+    this.txt = ''; // Set text
+    this.tick(); // Run tick function
+    this.isDeleting = false; // Set isDeleting to false
+  };
+
+  ANTyped.prototype.tick = function() {
+    var i = this.loopNum % this.text.length; // Get current loop number
+    var fullTxt = this.text[i]; // Get full text of current loop
+
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1); // Remove char
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1); // Add char
+    }
+
+    if (this.cursor === true) {
+      var theCursor = 'data-cursor="true"';
+      var cursorBlink = '<span class="an-typed-cursor"></span>';
+    } else {
+      var theCursor = '';
+      var cursorBlink = '';
+    }
+
+    this.el.innerHTML = '<span class="an-typed-text" ' + theCursor + '>' + this.txt + cursorBlink + '</span>'; // Set element text
+
+    var that = this;
+    var delta = 200 - Math.random() * 100; // Set random delta
+
+    if (this.isDeleting) {
+      delta /= 2; // If deleting, half the delta
+    }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.duration; // If full text, set delta to duration
+      if (this.cursor === true) {
+        // Add blink class to typed text
+        this.el.querySelector('.an-typed-text').classList.add('an-typed-blink');
+      }
+      // Set timeout
+      setTimeout(function() {
+        that.isDeleting = true; // Set isDeleting to true
+      }, 500);
+    } else if (this.isDeleting && this.txt === '') {
+      this.isDeleting = false; // Set isDeleting to false
+      this.loopNum++; // Add to loopNum
+      delta = 500; // Set delta
+    }
+
+    setTimeout(function() {
+      that.tick(); // Run tick function
+    }, delta);
+  };
+
+  // Init ANTyped
+  if (document.querySelector('.an-typed')) {
+    var anTyped = document.querySelectorAll('.an-typed');
+    anTyped.forEach((item) => {
+      var text = item.getAttribute('data-typing-text'),
+          duration = item.getAttribute('data-typing-duration'),
+          cursor = item.getAttribute('data-typing-cursor');
+      // Check if text is set
+      if (text === null || text === undefined) {
+        // Return false
+        return false;
+      } else {
+        text = text.split(',');
+      }
+      // Check if duration is set
+      if (duration === null || duration === undefined) {
+        // Set default duration
+        duration = 2000;
+      }
+      // Check if cursor is set
+      if (cursor === null || cursor === undefined) {
+        // Set default cursor
+        cursor = true;
+      }
+      // Init ANTyped
+      new ANTyped(item, text, duration, cursor).tick();
+    });
   }
 
   /**
