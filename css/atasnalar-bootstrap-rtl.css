@@ -9663,6 +9663,10 @@ img:after {
     display: block;
     font-size: inherit;
   }
+  .excerpt-sm-0 {
+    display: block;
+    font-size: inherit;
+  }
   .excerpt-sm-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -9683,6 +9687,10 @@ img:after {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-md-0 {
     display: block;
     font-size: inherit;
   }
@@ -9709,6 +9717,10 @@ img:after {
     display: block;
     font-size: inherit;
   }
+  .excerpt-lg-0 {
+    display: block;
+    font-size: inherit;
+  }
   .excerpt-lg-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -9729,6 +9741,10 @@ img:after {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-xl-0 {
     display: block;
     font-size: inherit;
   }
