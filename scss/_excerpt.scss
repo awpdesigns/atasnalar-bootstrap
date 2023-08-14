@@ -42,6 +42,11 @@ $breakpoints: (
             display: block;
             font-size: inherit;
 
+            &-0 {
+                display: block;
+                font-size: inherit;
+            }
+
             &-2 {
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
