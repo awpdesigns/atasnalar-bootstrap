@@ -5618,62 +5618,6 @@ textarea.form-control-lg {
   --btn-border-radius: var(--border-radius-sm);
 }
 
-@media (min-width: 576px) {
-  .btn-sm-sm {
-    --btn-padding-y: 0.25rem;
-    --btn-padding-x: 0.5rem;
-    --btn-font-size: 0.875rem;
-    --btn-border-radius: var(--border-radius-sm);
-  }
-  .btn-lg-sm {
-    --btn-padding-y: 0.5rem;
-    --btn-padding-x: 1rem;
-    --btn-font-size: 1.25rem;
-    --btn-border-radius: var(--border-radius-lg);
-  }
-}
-@media (min-width: 768px) {
-  .btn-sm-md {
-    --btn-padding-y: 0.25rem;
-    --btn-padding-x: 0.5rem;
-    --btn-font-size: 0.875rem;
-    --btn-border-radius: var(--border-radius-sm);
-  }
-  .btn-lg-md {
-    --btn-padding-y: 0.5rem;
-    --btn-padding-x: 1rem;
-    --btn-font-size: 1.25rem;
-    --btn-border-radius: var(--border-radius-lg);
-  }
-}
-@media (min-width: 992px) {
-  .btn-sm-lg {
-    --btn-padding-y: 0.25rem;
-    --btn-padding-x: 0.5rem;
-    --btn-font-size: 0.875rem;
-    --btn-border-radius: var(--border-radius-sm);
-  }
-  .btn-lg-lg {
-    --btn-padding-y: 0.5rem;
-    --btn-padding-x: 1rem;
-    --btn-font-size: 1.25rem;
-    --btn-border-radius: var(--border-radius-lg);
-  }
-}
-@media (min-width: 1200px) {
-  .btn-sm-xl {
-    --btn-padding-y: 0.25rem;
-    --btn-padding-x: 0.5rem;
-    --btn-font-size: 0.875rem;
-    --btn-border-radius: var(--border-radius-sm);
-  }
-  .btn-lg-xl {
-    --btn-padding-y: 0.5rem;
-    --btn-padding-x: 1rem;
-    --btn-font-size: 1.25rem;
-    --btn-border-radius: var(--border-radius-lg);
-  }
-}
 .social-account {
   display: flex;
   justify-content: center;
@@ -8666,6 +8610,24 @@ textarea.form-control-lg {
     right: 0%;
   }
 }
+.an-typed {
+  min-height: 21px;
+}
+.an-typed .an-typed-cursor {
+  font-weight: 300;
+  min-height: 21px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.blink, .an-typed-blink {
+  animation: blinker 1s linear infinite;
+  -webkit-animation: blinker 1s linear infinite;
+}
+
 .popover {
   --popover-zindex: 1070;
   --popover-max-width: 276px;
@@ -9689,6 +9651,102 @@ img:after {
   -webkit-line-clamp: 3;
 }
 
+.excerpt-0 {
+  all: unset;
+}
+
+@media (min-width: 576px) {
+  .excerpt-sm {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-sm-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+  .excerpt-sm-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+}
+@media (min-width: 768px) {
+  .excerpt-md {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-md-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+  .excerpt-md-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+}
+@media (min-width: 992px) {
+  .excerpt-lg {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-lg-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+  .excerpt-lg-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+}
+@media (min-width: 1200px) {
+  .excerpt-xl {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    font-size: inherit;
+  }
+  .excerpt-xl-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+  .excerpt-xl-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: inherit;
+  }
+}
 .floating {
   position: fixed;
   bottom: 3.5rem;

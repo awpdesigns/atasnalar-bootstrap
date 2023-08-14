@@ -18,3 +18,45 @@
         -webkit-line-clamp: 3;
     }
 }
+
+.excerpt-0 {
+    all: unset;
+}
+
+
+// Make responsive for .excerpt class. Example: excerpt-none excerpt-sm-1, excerpt-md-2, excerpt-lg-3 etc.
+// Use bootstrap breakpoints
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+);
+
+@each $breakpoint, $value in $breakpoints {
+    @media (min-width: $value) {
+        .excerpt-#{$breakpoint} {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            display: block;
+            font-size: inherit;
+
+            &-2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                font-size: inherit;
+            }
+
+            &-3 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                font-size: inherit;
+            }
+        }
+    }
+}

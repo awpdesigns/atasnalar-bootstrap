@@ -7203,6 +7203,7 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
+  // Version 1
   if (document.querySelector(".typing-text")) {
     var typingText = document.querySelectorAll(".typing-text");
 
@@ -7233,6 +7234,86 @@
     });
 
   }
+  // Version 2
+  function ANTyped(el, text, duration, cursor) {
+    this.text = text;
+    this.el = el;
+    this.loopNum = 0;
+    this.duration = parseInt(duration, 10) || 2000;
+    this.cursor = cursor;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+  }
+
+  ANTyped.prototype.tick = function() {
+    var i = this.loopNum % this.text.length;
+    var fullTxt = this.text[i];
+
+    if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    var theCursor, cursorBlink;
+    if (this.cursor === true) {
+        theCursor = 'data-cursor="true"';
+        cursorBlink = '<span class="an-typed-cursor">|</span>';
+    } else {
+        theCursor = '';
+        cursorBlink = '';
+    }
+
+    this.el.innerHTML = '<span class="an-typed-text" ' + theCursor + '>' + this.txt + cursorBlink + '</span>';
+
+    var that = this;
+    var delta = 200 - Math.random() * 100;
+
+    if (this.isDeleting) {
+        delta /= 2;
+    }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.duration;
+        if (this.cursor === true) {
+            this.el.querySelector('.an-typed-cursor').classList.add('an-typed-blink');
+        }
+        setTimeout(function() {
+            that.isDeleting = true;
+        }, 500);
+    } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+    }
+
+    setTimeout(function() {
+        that.tick();
+    }, delta);
+  };
+
+  document.querySelectorAll('.an-typed').forEach(function (el) {
+    var typingText = el.getAttribute('data-typing-text');
+    if (typingText === null) {
+        return;
+    } else {
+        typingText = typingText.split(',');
+    }
+    var typingSpeed = parseInt(el.getAttribute('data-typing-period'), 10);
+    if (isNaN(typingSpeed)) {
+        typingSpeed = 2000;
+    }
+    var showCursor = el.getAttribute('data-typing-cursor');
+    if (showCursor === 'false') {
+        showCursor = false;
+    } else {
+        showCursor = true;
+    }
+
+    var typed = new ANTyped(el, typingText, typingSpeed, showCursor);
+    typed.tick();
+  });
 
   /**
      * --------------------------------------------------------------------------
