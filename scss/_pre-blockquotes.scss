@@ -1,0 +1,64 @@
+.pre-blocks {
+    white-space: pre;
+    position: relative;
+    padding: 0.8em 1em;
+    border-radius: var(--#{$prefix}border-radius);
+
+    code {
+        display: block;
+        font-family: inherit;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+}
+
+[data-#{$prefix}theme="dark"] .pre-blocks {
+    background: var(--#{$prefix}body-bg);
+    color: var(--#{$prefix}body-color);
+    border: 1px solid var(--#{$prefix}body-color);
+}
+
+.blockquote {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.blockquote-footer {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--#{$prefix}text-muted);
+
+    &::before {
+        content: "— ";
+    }
+}
+
+.blockquote-blocks {
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: var(--border-radius-lg);
+    border-left: 5px solid var(--#{$prefix}light-text);
+    background: var(--#{$prefix}light-bg-subtle);
+    position: relative;
+
+    &::before {
+        content: "“";
+        font-family: var(--#{$prefix}font-monospace);
+        font-size: 2rem;
+        display: flex;
+        position: absolute;
+        left: 0.5rem;
+        top: 0.5rem;
+    }
+
+    .blockquote-title {
+        font-weight: 600;
+    }
+}

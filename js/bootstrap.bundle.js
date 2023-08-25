@@ -7340,3 +7340,34 @@
         toggle.classList.add('active');
     }
   }
+
+  /**
+     * --------------------------------------------------------------------------
+     * Bootstrap (v5.2.3): input-range.js
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     * Re-implemented by Atas Nalar (https://atasnalar.com)
+     * --------------------------------------------------------------------------
+  */
+  const rangeInputElements = document.querySelectorAll('input[type="range"]');
+  rangeInputElements.forEach(function (rangeInputElement) {
+      if (!rangeInputElement.classList.contains('an-range-slider') && !rangeInputElement.classList.contains('slider-progress')) {
+          rangeInputElement.classList.add('an-range-slider', 'slider-progress');
+      }
+  });
+
+  const sliderProgressElements = document.querySelectorAll('input[type="range"].slider-progress');
+  sliderProgressElements.forEach(function (sliderProgressElement) {
+      if (!sliderProgressElement.hasAttribute('min')) {
+          sliderProgressElement.setAttribute('min', '0');
+      }
+      if (!sliderProgressElement.hasAttribute('max')) {
+          sliderProgressElement.setAttribute('max', '100');
+      }
+      sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
+      sliderProgressElement.style.setProperty('--min', sliderProgressElement.getAttribute('min') || '0');
+      sliderProgressElement.style.setProperty('--max', sliderProgressElement.getAttribute('max') || '100');
+
+      sliderProgressElement.addEventListener('input', function () {
+          sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
+      });
+  });
