@@ -134,16 +134,12 @@
 
                 // Add Phone Validation to input[type=tel] or input[type=text] that has a [data-phone-validation=true] and force to only numbers
                 if ($(this).is('[type="tel"]') || $(this).is('[type="text"]')) {
-
                     if ($(this).attr('data-phone-validation') === 'true') {
                         var codeArea = $(this).attr('data-code-area');
-                        if (codeArea !== undefined || codeArea !== '') {
+                        if (codeArea !== undefined && codeArea !== '') {
                             var phoneRegexp = new RegExp('^' + codeArea + '[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
-                            // Sample output: 6281234567890
                         } else {
-                            // Regex without code area, no need "+" on first. so can be any input numbers will be valid
-                            var phoneRegexp = new RegExp('^\\+?[0-9]{3}[0-9]{3}[0-9]{4,9}$', 'im');
-                            // Sample output: 081234567890
+                            var phoneRegexp = new RegExp('^\\+?[\\(]?[0-9]{3}[\\)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
                         }
                         // Check if label exists
                         if ($(this).closest('.form-group, .an-group').find('label').length) {
@@ -193,7 +189,11 @@
 
                             // if first number is 0 and this input is required, replace it with codeArea
                             if (phoneValue.substring(0, 1) == 0 && $(this).attr('required') !== undefined) {
-                                phoneValue = codeArea + phoneValue.substring(1);
+                                if (codeArea !== undefined && codeArea !== '') {
+                                    phoneValue = codeArea + phoneValue.substring(1);
+                                } else {
+                                    phoneValue = phoneValue.substring(1);
+                                }
                                 $(this).val(phoneValue);
                             }
 
@@ -214,12 +214,12 @@
                                     phone_validation.removeClass('bg-success');
                                     phone_validation.addClass('bg-danger');
                                     if ($(this).attr('required') === undefined && $(this).val().length > 0) {
-                                        // If this input is not required and has value and first number is not equal with codeArea
-                                        if (phoneValue.substring(0, codeArea.length) !== codeArea) {
-                                            phone_validation.text('Not Valid (Must start with ' + codeArea + ')');
-                                        } else {
-                                            phone_validation.text('Not Valid');
-                                        }
+                                            // If this input is not required and has value and first number is not equal with codeArea
+                                            if (codeArea && phoneValue.substring(0, codeArea.length) !== codeArea) {
+                                                phone_validation.text('Not Valid (Must start with ' + codeArea + ')');
+                                            } else {
+                                                phone_validation.text('Not Valid');
+                                            }
                                     } else {
                                         phone_validation.text('Not Valid');
                                     }
@@ -248,7 +248,11 @@
                             var phoneValue = $(this).val();
 
                             if (phoneValue.substring(0, 1) == 0 && $(this).attr('required') !== undefined) {
-                                phoneValue = codeArea + phoneValue.substring(1);
+                                if (codeArea !== undefined && codeArea !== '') {
+                                    phoneValue = codeArea + phoneValue.substring(1);
+                                } else {
+                                    phoneValue = phoneValue.substring(1);
+                                }
                                 $(this).val(phoneValue);
                             }
                             if ($(this).val().length > 0) {
