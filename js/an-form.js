@@ -137,13 +137,14 @@
 
                     if ($(this).attr('data-phone-validation') === 'true') {
                         var codeArea = $(this).attr('data-code-area');
-                        if (codeArea == undefined || codeArea == '') {
-                            // Throw an error
-                            $(this).after('<small style="color:red;">Please add data-code-area attribute to this input</small>');
-                            form.find('button[type="submit"]').attr('disabled', true);
+                        if (codeArea !== undefined || codeArea !== '') {
+                            var phoneRegexp = new RegExp('^' + codeArea + '[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
+                            // Sample output: 6281234567890
+                        } else {
+                            // Regex without code area, no need "+" on first. so can be any input numbers will be valid
+                            var phoneRegexp = new RegExp('^\\+?[0-9]{3}[0-9]{3}[0-9]{4,9}$', 'im');
+                            // Sample output: 081234567890
                         }
-                        // var phoneRegexp = /^62[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
-                        var phoneRegexp = new RegExp('^' + codeArea + '[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,8}$', 'im');
                         // Check if label exists
                         if ($(this).closest('.form-group, .an-group').find('label').length) {
                             // Check if label parent has class .input-group, .form-floating
