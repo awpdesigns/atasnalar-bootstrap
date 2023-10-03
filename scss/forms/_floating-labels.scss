@@ -153,7 +153,7 @@
         position: absolute;
         inset: $form-floating-padding-y ($form-floating-padding-x * .5);
         z-index: -1;
-        height: $form-floating-label-height;
+        height: 1.375em;
         content: "";
         background-color: $input-bg;
         @include border-radius($input-border-radius);

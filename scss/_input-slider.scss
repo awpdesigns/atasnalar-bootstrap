@@ -1,4 +1,7 @@
 // https://toughengineer.github.io/demo/slider-styler
+input[type=range] {
+    --#{$prefix}range-color: var(--#{$prefix}primary);
+}
 input[type=range].an-range-slider {
     height: 1em;
     width: 200px;
@@ -52,7 +55,7 @@ input[type=range].an-range-slider:hover::-webkit-slider-runnable-track {
 }
 
 input[type=range].an-range-slider::-webkit-slider-thumb:active {
-    background: var(--#{$prefix}primary);
+    background: var(--#{$prefix}range-color);
 }
 
 input[type=range].an-range-slider:active::-webkit-slider-runnable-track {
@@ -68,7 +71,7 @@ input[type=range].an-range-slider.slider-progress:hover::-webkit-slider-runnable
 }
 
 input[type=range].an-range-slider.slider-progress:active::-webkit-slider-runnable-track {
-    background: linear-gradient(var(--#{$prefix}primary),var(--#{$prefix}primary)) 0/var(--sx) 100% no-repeat, #e5e5e5;
+    background: linear-gradient(var(--#{$prefix}range-color),var(--#{$prefix}range-color)) 0/var(--sx) 100% no-repeat, #e5e5e5;
 }
 
 /*mozilla*/
@@ -99,7 +102,7 @@ input[type=range].an-range-slider:hover::-moz-range-track {
 }
 
 input[type=range].an-range-slider::-moz-range-thumb:active {
-    background: var(--#{$prefix}primary);
+    background: var(--#{$prefix}range-color);
 }
 
 input[type=range].an-range-slider:active::-moz-range-track {
@@ -115,7 +118,7 @@ input[type=range].an-range-slider.slider-progress:hover::-moz-range-track {
 }
 
 input[type=range].an-range-slider.slider-progress:active::-moz-range-track {
-    background: linear-gradient(var(--#{$prefix}primary),var(--#{$prefix}primary)) 0/var(--sx) 100% no-repeat, #e5e5e5;
+    background: linear-gradient(var(--#{$prefix}range-color),var(--#{$prefix}range-color)) 0/var(--sx) 100% no-repeat, #e5e5e5;
 }
 
 /*ms*/
@@ -159,7 +162,7 @@ input[type=range].an-range-slider:hover::-ms-track {
 }
 
 input[type=range].an-range-slider::-ms-thumb:active {
-    background: var(--#{$prefix}primary);
+    background: var(--#{$prefix}range-color);
 }
 
 input[type=range].an-range-slider:active::-ms-track {
@@ -180,5 +183,5 @@ input[type=range].an-range-slider.slider-progress:hover::-ms-fill-lower {
 }
 
 input[type=range].an-range-slider.slider-progress:active::-ms-fill-lower {
-    background: var(--#{$prefix}primary);
+    background: var(--#{$prefix}range-color);
 }

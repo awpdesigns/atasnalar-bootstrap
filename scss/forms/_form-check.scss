@@ -117,6 +117,22 @@
 }
 
 //
+// Check Wrapper
+//
+
+.form-check-wrap {
+  background: var(--#{$prefix}body-bg);
+  border-radius: var(--#{$prefix}border-radius);
+  padding: 0.5rem;
+  word-wrap: break-word;
+  word-break: break-word;
+  border: 1px solid var(--#{$prefix}border-color);
+  .form-check, .form-check-label {
+      width: 100%;
+  }
+}
+
+//
 // Switch
 //
 

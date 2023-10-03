@@ -17,12 +17,37 @@
   border-color: var(--#{$prefix}input-border-color);
 }
 
+// Form Group - Form Check Required Validation
+.form-check-required.is-invalid {
+  .form-check-input:not(:checked), .form-check-wrap:has(.form-check-input:not(:checked)) {
+      border-color: var(--#{$prefix}danger) !important;
+  }
+  .invalid-feedback {
+      display: block;
+  }
+}
+.was-validated:has(.form-check-required .form-check-input:valid) {
+  .form-check-required .form-check-input:not(:checked), .form-check-required .form-check-wrap:has(.form-check-input:not(:checked)) {
+      border-color: var(--#{$prefix}danger) !important;
+  }
+  .form-check-required .form-check-input:not(:checked)~.form-check-label {
+      color: var(--#{$prefix}danger) !important;
+  }
+  .form-check-required .invalid-feedback {
+      display: block;
+  }
+}
+
 // Input Validation with Toggle Password Activated
-.form-group .toggle-password:has(~ [data-toggle-password="true"].is-invalid), .form-group .toggle-password:has(~ [data-toggle-password="true"].is-valid) {
+.form-group:has([data-toggle-password="true"].is-invalid) .toggle-password, .form-group:has([data-toggle-password="true"].is-valid) .toggle-password {
   padding-right: $spacer * 3.25;
 }
 
-.was-validated .toggle-password:has(~ [data-toggle-password="true"].is-invalid), .was-validated .toggle-password:has(~ [data-toggle-password="true"].is-valid), .was-validated .toggle-password:has(~ [data-toggle-password="true"]:invalid), .was-validated .toggle-password:has(~ [data-toggle-password="true"]:valid) {
+.was-validated [data-toggle-password="true"]:invalid~.toggle-password, [data-toggle-password="true"].is-invalid~.toggle-password, .was-validated [data-toggle-password="true"]:valid~.toggle-password, [data-toggle-password="true"].is-valid~.toggle-password {
+  padding-right: $spacer * 3.25;
+}
+
+.was-validated [data-toggle-password="true"]:valid, [data-toggle-password="true"].is-valid, .was-validated [data-toggle-password="true"]:invalid, [data-toggle-password="true"].is-invalid {
   padding-right: $spacer * 3.5 !important;
 }
 
@@ -37,6 +62,10 @@
 .was-validated textarea.form-control.emoji-control:valid, textarea.form-control.emoji-control.is-valid, .was-validated textarea.form-control.emoji-control:invalid, textarea.form-control.emoji-control.is-invalid {
   background-position: top calc(0.375em + 0.1875rem) right calc(1.65em + 0.1875rem);
 }
-.was-validated .form-check-input:invalid~.form-check-label .form-check-radio, .form-check-input.is-invalid~.form-check-label .form-check-radio {
-  border-color: var(--#{$prefix}input-border-color);
+// .was-validated .form-check-input:invalid~.form-check-label .form-check-radio, .form-check-input.is-invalid~.form-check-label .form-check-radio {
+//   border-color: var(--#{$prefix}input-border-color);
+// }
+/* === No View for BOT === */
+.noview {
+  display: none !important;
 }
