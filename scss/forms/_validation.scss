@@ -22,7 +22,7 @@
   .form-check-input:not(:checked), .form-check-wrap:has(.form-check-input:not(:checked)) {
       border-color: var(--#{$prefix}danger) !important;
   }
-  .invalid-feedback {
+  [class^="invalid"] {
       display: block;
   }
 }
@@ -33,7 +33,7 @@
   .form-check-required .form-check-input:not(:checked)~.form-check-label {
       color: var(--#{$prefix}danger) !important;
   }
-  .form-check-required .invalid-feedback {
+  .form-check-required [class^="invalid"] {
       display: block;
   }
 }

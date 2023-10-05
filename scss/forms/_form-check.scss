@@ -127,6 +127,7 @@
   word-wrap: break-word;
   word-break: break-word;
   border: 1px solid var(--#{$prefix}border-color);
+  height: 100%;
   .form-check, .form-check-label {
       width: 100%;
   }

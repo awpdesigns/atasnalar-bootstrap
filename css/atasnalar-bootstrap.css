@@ -4007,6 +4007,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
   word-break: break-word;
   border: 1px solid var(--border-color);
+  height: 100%;
 }
 .form-check-wrap .form-check, .form-check-wrap .form-check-label {
   width: 100%;
@@ -4363,6 +4364,7 @@ textarea.form-control-lg {
   left: 0;
   z-index: 2;
   height: 100%;
+  max-width: 100%;
   padding: 1rem 0.75rem;
   overflow: hidden;
   text-align: start;
@@ -4773,7 +4775,7 @@ textarea.form-control-lg {
 .form-check-required.is-invalid .form-check-input:not(:checked), .form-check-required.is-invalid .form-check-wrap:has(.form-check-input:not(:checked)) {
   border-color: var(--danger) !important;
 }
-.form-check-required.is-invalid .invalid-feedback {
+.form-check-required.is-invalid [class^=invalid] {
   display: block;
 }
 
@@ -4783,7 +4785,7 @@ textarea.form-control-lg {
 .was-validated:has(.form-check-required .form-check-input:valid) .form-check-required .form-check-input:not(:checked) ~ .form-check-label {
   color: var(--danger) !important;
 }
-.was-validated:has(.form-check-required .form-check-input:valid) .form-check-required .invalid-feedback {
+.was-validated:has(.form-check-required .form-check-input:valid) .form-check-required [class^=invalid] {
   display: block;
 }
 

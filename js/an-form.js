@@ -214,7 +214,14 @@ if (typeof jQuery.fn.ajaxForm === 'undefined') {
                     // Check if label child sup exists
                     label.each(function () {
                         if ($(this).find('sup').length == 0) {
-                            $(this).append('<sup style="color:red;">*</sup>');
+                            // Check if label has parent .form-floating
+                            if ($(this).parents().hasClass('form-floating')) {
+                                // Add asterisk before label
+                                $(this).prepend('<sup style="color:red;">*</sup>');
+                            } else {
+                                // Add asterisk after label
+                                $(this).append('<sup style="color:red;">*</sup>');
+                            }
                         }
                     });
                     // On keyup & change for input or textarea
