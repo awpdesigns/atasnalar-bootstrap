@@ -38,6 +38,19 @@
   }
 }
 
+// Droppable Area Validation
+.an-droppable-area.is-invalid {
+  border-color: var(--#{$prefix}danger);
+  [class^="invalid"] {
+      display: block;
+  }
+}
+.was-validated:has(.an-droppable-area .an-droppable-input:invalid) {
+  .an-droppable-area ~ [class^="invalid"] {
+      display: block;
+  }
+}
+
 // Input Validation with Toggle Password Activated
 .form-group:has([data-toggle-password="true"].is-invalid) .toggle-password, .form-group:has([data-toggle-password="true"].is-valid) .toggle-password {
   padding-right: $spacer * 3.25;

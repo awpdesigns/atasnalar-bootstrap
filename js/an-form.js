@@ -46,7 +46,7 @@ if (typeof jQuery.fn.ajaxForm === 'undefined') {
                 return;
             }
 
-            // Feedback Class Type=
+            // Feedback Class Type
             var floatingValidation = form.attr('data-floating-validation');
             var invalidType = 'invalid-feedback';
             var validType = 'valid-feedback';
@@ -1510,6 +1510,86 @@ if (typeof jQuery.fn.ajaxForm === 'undefined') {
                                     }
                                 }
                             });
+                        });
+                    }
+                    var droppable = $(this).data('droppable');
+                    if (droppable === true) {
+                        var droppableBtnText = $(this).data('droppable-btn-text');
+                        var droppableMsgText = $(this).data('droppable-msg-text');
+                        if (droppable === undefined || droppable === '') {
+                            droppable = false;
+                        }
+                        if (droppableBtnText === undefined || droppableBtnText === '') {
+                            droppableBtnText = 'Choose Files';
+                        }
+                        if (droppableMsgText === undefined || droppableMsgText === '') {
+                            droppableMsgText = 'or drop files here';
+                        }
+                        var DropArea = 'an-droppable-area';
+                        var DropBtn = '<span class="an-droppable-btn btn btn-primary">' + droppableBtnText + '</span>';
+                        var DropMsg = '<span class="an-droppable-msg">' + droppableMsgText + '</span>';
+                        var DropDelete = '<div class="an-droppable-item-delete"></div>';
+                        $(this).addClass('an-droppable-input');
+
+                        // Wrap input file with div
+                        $(this).wrap('<div class="' + DropArea + '"></div>');
+                        // Add drop button & drop message
+                        $(this).before(DropBtn + DropMsg);
+                        // Add delete button
+                        $(this).after(DropDelete);
+                        var $fileInput = $('.an-droppable-input');
+                        var $droparea = $('.an-droppable-area');
+                        var $delete = $('.an-droppable-item-delete');
+
+                        $fileInput.on('dragenter focus click', function () {
+                            $droparea.addClass('is-active');
+                        });
+
+                        $fileInput.on('dragleave blur drop', function () {
+                            $droparea.removeClass('is-active');
+                        });
+
+                        $fileInput.on('change', function () {
+                            // Check if this has class 'is-invalid'
+                            if ($(this).hasClass('is-invalid')) {
+                                // Add class 'is-invalid' to droparea
+                                $droparea.addClass('is-invalid');
+                                $droparea.removeClass('is-valid');
+                                $droparea.removeClass('is-active');
+                            } else {
+                                // Remove class 'is-invalid' to droparea
+                                $droparea.removeClass('is-invalid');
+                            }
+                            // Check if this has class 'is-valid'
+                            if ($(this).hasClass('is-valid')) {
+                                // Add class 'is-valid' to droparea
+                                $droparea.addClass('is-valid');
+                                $droparea.removeClass('is-invalid');
+                            } else {
+                                // Remove class 'is-valid' to droparea
+                                $droparea.removeClass('is-valid');
+                            }
+
+                            let filesCount = $(this)[0].files.length;
+                            let $textContainer = $(this).prev();
+
+                            if (filesCount === 1) {
+                                let fileName = $(this).val().split('\\').pop();
+                                $textContainer.text(fileName);
+                                $delete.css('display', 'inline-block');
+                            } else if (filesCount === 0) {
+                                $textContainer.text(droppableMsgText);
+                                $delete.css('display', 'none');
+                            } else {
+                                $textContainer.text(filesCount + ' files selected');
+                                $delete.css('display', 'inline-block');
+                            }
+                        });
+
+                        $delete.on('click', function () {
+                            $('.an-droppable-input').val(null);
+                            $('.an-droppable-msg').text(droppableMsgText);
+                            $('.an-droppable-item-delete').css('display', 'none');
                         });
                     }
                 }
