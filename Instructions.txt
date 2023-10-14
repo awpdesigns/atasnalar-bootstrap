@@ -81,46 +81,38 @@ Note: Data Progress Color only support variable color name (blue, indigo, etc) o
     </div>
 
 /* ==  Social Share - Structure == */
-    Social Share css & js file must be included in your project. And js file must be placed after jquery file.
+    Social Share css & js file must be included in your project.
  ------- Available class options--------
- - Network : data-share="facebook,twitter,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy"
+ - Network : data-share="facebook,twitter,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" (For print: you can use "print:{targetClass/Id}" to print specific element. Example: print:#print or print:.print)
  - Attribute : data-display="icon, text, both"
 
- Note: We use boxicons for icon class.
-
     Type - Dropdown:
-    <div class="dropdown">
-        <button class="btn btn-primary" type="button" data-toggle="dropdown" aria-expanded="false">
-            <i class="{boxicons-icon-class}"></i>
-            <span>{share-text}e</span>
+    <div id="an-social-share-dropdown">
+        <button id="an-social-share-trigger" class="an-social-share-button" type="button">
+           <span>{share-text}e</span>
         </button>
-        <ul id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}" class="dropdown-menu"></ul>
+        <ul id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}" class="an-social-share-list"></ul>
     </div>
 
     Type - Inline:
     <div id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}">
-        <div class="w-100"> // This wrapper is optional
-            <i class="{boxicons-icon-class}"></i>
+        <div class="an-social-share-title">
             <span>{share-text}</span>
         </div>
     </div>
 
     Type - Modal:
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#{modal-id}">
-        <i class="{boxicons-icon-class}"></i>
+    <button id="an-social-share-trigger" class="an-social-share-button" type="button">
         <span>{share-text}</span>
     </button>
-    <div id="{modal-id}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="{boxicons-icon-class} fs-lg"></i>
-                    <h4 class="modal-title">{share-title}</h4>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}"></div>
-                </div>
+    <div id="an-social-share-modal">
+        <div class="an-social-share-modal-content">
+            <div class="an-social-share-modal-header">
+                <h4 class="an-social-share-title">{share-text}</h4>
+                <button type="button" class="an-social-share-close" aria-label="Close"></button>
+            </div>
+            <div class="an-social-share-modal-body">
+                <div id="an-social-share" data-display="{icon/text/both}" data-share="{network-separated-coma}"></div>
             </div>
         </div>
     </div>
