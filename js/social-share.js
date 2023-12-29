@@ -60,6 +60,10 @@ var ANShare = function () {
             if (account === 'twitter') {
                 socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-twitter" data-type="twitter" aria-label="Twitter" title="' + lang[languageCode].shareText + ' Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" style="fill: currentcolor;"><path d="m19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 0 0 5.001-1.721 4.036 4.036 0 0 1-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 0 1-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 0 1-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 0 0 8.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 0 1 4.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 0 0 2.556-.973 4.02 4.02 0 0 1-1.771 2.22 8.073 8.073 0 0 0 2.319-.624 8.645 8.645 0 0 1-2.019 2.083z"></path></svg></button';
             }
+            // if social account includes 'twitter-x'
+            if (account === 'twitter-x') {
+                socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-twitter-x" data-type="twitter-x" aria-label="Twitter-X" title="' + lang[languageCode].shareText + ' Twitter-X"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 2H1L9.26086 13.0145L1.44995 21.9999H4.09998L10.4883 14.651L16 22H23L14.3917 10.5223L21.8001 2H19.1501L13.1643 8.88578L8 2ZM17 20L5 4H7L19 20H17Z" fill="currentColor"></path></svg></button';
+            }
             // if social account includes 'pinterest'
             if (account === 'pinterest') {
                 socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-pinterest" data-type="pinterest" aria-label="Pinterest" title="' + lang[languageCode].shareText + ' Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M11.99 2C6.472 2 2 6.473 2 11.99c0 4.232 2.633 7.85 6.35 9.306-.088-.79-.166-2.006.034-2.868.182-.78 1.172-4.966 1.172-4.966s-.299-.599-.299-1.484c0-1.388.805-2.425 1.808-2.425.853 0 1.264.64 1.264 1.407 0 .858-.546 2.139-.827 3.327-.235.994.499 1.805 1.479 1.805 1.775 0 3.141-1.872 3.141-4.575 0-2.392-1.719-4.064-4.173-4.064-2.843 0-4.512 2.132-4.512 4.335 0 .858.331 1.779.744 2.28a.3.3 0 0 1 .069.286c-.076.315-.245.994-.277 1.133-.044.183-.145.222-.335.134-1.247-.581-2.027-2.405-2.027-3.871 0-3.151 2.289-6.045 6.601-6.045 3.466 0 6.159 2.469 6.159 5.77 0 3.444-2.171 6.213-5.184 6.213-1.013 0-1.964-.525-2.29-1.146l-.623 2.374c-.225.868-.834 1.956-1.241 2.62a10 10 0 0 0 2.958.445c5.517 0 9.99-4.473 9.99-9.99S17.507 2 11.99 2"></path></svg></button';
@@ -135,6 +139,13 @@ var ANShare = function () {
                     window.open(sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'twitter') {
+                    var sharelink = encodeURIComponent(lang[languageCode].sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    if (shareContent) {
+                        sharelink = encodeURIComponent(lang[languageCode].sharetitle + ': ' + docTitle + '\n' + lang[languageCode].sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                    }
+                    window.open('https://twitter.com/intent/tweet?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
+                }
+                else if (shareType === 'twitter-x') {
                     var sharelink = encodeURIComponent(lang[languageCode].sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
                     if (shareContent) {
                         sharelink = encodeURIComponent(lang[languageCode].sharetitle + ': ' + docTitle + '\n' + lang[languageCode].sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);

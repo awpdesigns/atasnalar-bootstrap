@@ -7109,19 +7109,23 @@
 
   var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
 
-  // Check if prefix is set, and if it is, add it to all variables
-  if (prefix !== '' && prefix !== null && prefix !== undefined) {
-    var any = document.querySelectorAll('*');
+  function checkPrefix() {
+    var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
+    // Check if prefix is set, and if it is, add it to all variables
+    if (prefix !== '' && prefix !== null && prefix !== undefined) {
+      var any = document.querySelectorAll('*');
 
-    // Sample prefix value: bs-
-    // Find var(--*), replace with var(--bs-*)
-    any.forEach((item) => {
-      var style = item.getAttribute('style');
-      if (style !== null && style !== undefined) {
-        item.setAttribute('style', style.replace(/var\(--/g, `var(--${prefix}`));
-      }
-    });
+      // Sample prefix value: bs-
+      // Find var(--*), replace with var(--bs-*)
+      any.forEach((item) => {
+        var style = item.getAttribute('style');
+        if (style !== null && style !== undefined) {
+          item.setAttribute('style', style.replace(/var\(--/g, `var(--${prefix}`));
+        }
+      });
+    }
   }
+  checkPrefix();
 
   /**
      * --------------------------------------------------------------------------
@@ -7130,30 +7134,35 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
-  if (document.querySelector('.progress-circle')) {
+  function progressCircular() {
+    var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
+
+    if (document.querySelector('.progress-circle')) {
       var progress = document.querySelectorAll('.progress-circle');
-        progress.forEach((item) => {
-          // Set timeout
-          setTimeout(() => {
-            var progressValue = item.getAttribute('data-progress-value'),
-                progressColor = item.getAttribute('data-progress-color') || document.getElementsByTagName('html')[0].getAttribute('data-color') || 'primary';
+      progress.forEach((item) => {
+        // Set timeout
+        setTimeout(() => {
+          var progressValue = item.getAttribute('data-progress-value'),
+              progressColor = item.getAttribute('data-progress-color') || document.getElementsByTagName('html')[0].getAttribute('data-color') || 'primary';
 
-            var progressTextValue = document.querySelector('.progress-value');
-            progressTextValue.innerHTML = `${progressValue}%`;
+          var progressTextValue = document.querySelector('.progress-value');
+          progressTextValue.innerHTML = `${progressValue}%`;
 
-            var progressStartValue = 0,
-                progressInterval = setInterval(() => {
-                    if (progressStartValue >= progressValue) {
-                        clearInterval(progressInterval);
-                    } else {
-                        progressStartValue++;
-                        item.style.background = `conic-gradient(var(--` + progressColor + `) ${progressStartValue * 3.6}deg, var(--border-color) 0)`;
-                        item.querySelector('.progress-value').innerHTML = `${progressStartValue}%`;
-                    }
-                }, 10);
-            }, 500);
-        });
+          var progressStartValue = 0,
+              progressInterval = setInterval(() => {
+                  if (progressStartValue >= progressValue) {
+                      clearInterval(progressInterval);
+                  } else {
+                      progressStartValue++;
+                      item.style.background = `conic-gradient(var(--` + progressColor + `) ${progressStartValue * 3.6}deg, var(--` + prefix + `border-color) 0)`;
+                      item.querySelector('.progress-value').innerHTML = `${progressStartValue}%`;
+                  }
+              }, 10);
+          }, 500);
+      });
+    }
   }
+  progressCircular();
 
   /**
      * --------------------------------------------------------------------------
@@ -7162,7 +7171,8 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
-  if (document.querySelector('.progress')) {
+  function progressBar() {
+    if (document.querySelector('.progress')) {
       var progress = document.querySelectorAll('.progress');
         progress.forEach((item) => {
           var progressColor = item.getAttribute('data-progress-color') || document.getElementsByTagName('html')[0].getAttribute('data-color') || 'primary';
@@ -7194,7 +7204,9 @@
             }, 500);
           }
         });
+    }
   }
+  progressBar();
 
   /**
      * --------------------------------------------------------------------------
@@ -7204,36 +7216,39 @@
      * --------------------------------------------------------------------------
   */
   // Version 1
-  if (document.querySelector(".typing-text")) {
-    var typingText = document.querySelectorAll(".typing-text");
+  function runTypingText(){
+    if (document.querySelector(".typing-text")) {
+      var typingText = document.querySelectorAll(".typing-text");
 
-    typingText.forEach((item) => {
-      var text = item.querySelector(".text-value"),
-          textArray = text.getAttribute("data-typing-text").split(","),
-          textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
-          textIndex = 0;
+      typingText.forEach((item) => {
+        var text = item.querySelector(".text-value"),
+            textArray = text.getAttribute("data-typing-text").split(","),
+            textTimePeriod = text.getAttribute("data-typing-time"), // 1000 = 1s
+            textIndex = 0;
 
-      text.textContent = textArray[0];
-      // Set css animation duration to pseudo::before of text
-      text.style.setProperty("--typing-time", textTimePeriod + "ms");
+        text.textContent = textArray[0];
+        // Set css animation duration to pseudo::before of text
+        text.style.setProperty("--typing-time", textTimePeriod + "ms");
 
-      var textLoad = () => {
-        for (var i = 0; i < textArray.length; i++) {
-          setTimeout(() => {
-            text.textContent = textArray[textIndex];
-            textIndex++;
-            if (textIndex >= textArray.length) {
-              textIndex = 0;
-            }
-          }, textTimePeriod * i);
-        }
-      };
+        var textLoad = () => {
+          for (var i = 0; i < textArray.length; i++) {
+            setTimeout(() => {
+              text.textContent = textArray[textIndex];
+              textIndex++;
+              if (textIndex >= textArray.length) {
+                textIndex = 0;
+              }
+            }, textTimePeriod * i);
+          }
+        };
 
-      textLoad();
-      setInterval(textLoad, textTimePeriod * textArray.length);
-    });
+        textLoad();
+        setInterval(textLoad, textTimePeriod * textArray.length);
+      });
 
+    }
   }
+  runTypingText();
   // Version 2
   function ANTyped(el, text, duration, cursor) {
     this.text = text;
@@ -7245,7 +7260,6 @@
     this.tick();
     this.isDeleting = false;
   }
-
   ANTyped.prototype.tick = function() {
     var i = this.loopNum % this.text.length;
     var fullTxt = this.text[i];
@@ -7292,28 +7306,32 @@
         that.tick();
     }, delta);
   };
+  function runANTyped(){
+    if (document.querySelector(".an-typed")) {
+      document.querySelectorAll('.an-typed').forEach(function (el) {
+        var typingText = el.getAttribute('data-typing-text');
+        if (typingText === null) {
+            return;
+        } else {
+            typingText = typingText.split(',');
+        }
+        var typingSpeed = parseInt(el.getAttribute('data-typing-period'), 10);
+        if (isNaN(typingSpeed)) {
+            typingSpeed = 2000;
+        }
+        var showCursor = el.getAttribute('data-typing-cursor');
+        if (showCursor === 'false') {
+            showCursor = false;
+        } else {
+            showCursor = true;
+        }
 
-  document.querySelectorAll('.an-typed').forEach(function (el) {
-    var typingText = el.getAttribute('data-typing-text');
-    if (typingText === null) {
-        return;
-    } else {
-        typingText = typingText.split(',');
+        var typed = new ANTyped(el, typingText, typingSpeed, showCursor);
+        typed.tick();
+      });
     }
-    var typingSpeed = parseInt(el.getAttribute('data-typing-period'), 10);
-    if (isNaN(typingSpeed)) {
-        typingSpeed = 2000;
-    }
-    var showCursor = el.getAttribute('data-typing-cursor');
-    if (showCursor === 'false') {
-        showCursor = false;
-    } else {
-        showCursor = true;
-    }
-
-    var typed = new ANTyped(el, typingText, typingSpeed, showCursor);
-    typed.tick();
-  });
+  }
+  runANTyped();
 
   /**
      * --------------------------------------------------------------------------
@@ -7322,24 +7340,27 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
-  if (document.querySelector('.toggle-theme')) {
-    var toggle = document.querySelector('.toggle-theme');
-    var target = document.querySelector('html');
-    var getMode = localStorage.getItem('mode');
-    toggle.addEventListener('click', function () {
-        toggle.classList.toggle('active');
-        target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
-        localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
-    });
-    if (getMode && getMode === 'dark') {
-        target.setAttribute('data-' + prefix + 'theme', 'dark');
-        toggle.classList.add('active');
-    }
-    // Set active class to toggle button if theme is manually set to dark
-    if (target.getAttribute('data-' + prefix + 'theme') === 'dark') {
-        toggle.classList.add('active');
+  function toggleTheme() {
+    if (document.querySelector('.toggle-theme')) {
+      var toggle = document.querySelector('.toggle-theme');
+      var target = document.querySelector('html');
+      var getMode = localStorage.getItem('mode');
+      toggle.addEventListener('click', function () {
+          toggle.classList.toggle('active');
+          target.setAttribute('data-' + prefix + 'theme', target.getAttribute('data-' + prefix + 'theme') === 'dark' ? 'light' : 'dark');
+          localStorage.setItem('mode', target.getAttribute('data-' + prefix + 'theme'));
+      });
+      if (getMode && getMode === 'dark') {
+          target.setAttribute('data-' + prefix + 'theme', 'dark');
+          toggle.classList.add('active');
+      }
+      // Set active class to toggle button if theme is manually set to dark
+      if (target.getAttribute('data-' + prefix + 'theme') === 'dark') {
+          toggle.classList.add('active');
+      }
     }
   }
+  toggleTheme();
 
   /**
      * --------------------------------------------------------------------------
@@ -7348,26 +7369,31 @@
      * Re-implemented by Atas Nalar (https://atasnalar.com)
      * --------------------------------------------------------------------------
   */
-  const rangeInputElements = document.querySelectorAll('input[type="range"]');
-  rangeInputElements.forEach(function (rangeInputElement) {
-      if (!rangeInputElement.classList.contains('an-range-slider') && !rangeInputElement.classList.contains('slider-progress')) {
-          rangeInputElement.classList.add('an-range-slider', 'slider-progress');
-      }
-  });
-
-  const sliderProgressElements = document.querySelectorAll('input[type="range"].slider-progress');
-  sliderProgressElements.forEach(function (sliderProgressElement) {
-      if (!sliderProgressElement.hasAttribute('min')) {
-          sliderProgressElement.setAttribute('min', '0');
-      }
-      if (!sliderProgressElement.hasAttribute('max')) {
-          sliderProgressElement.setAttribute('max', '100');
-      }
-      sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
-      sliderProgressElement.style.setProperty('--min', sliderProgressElement.getAttribute('min') || '0');
-      sliderProgressElement.style.setProperty('--max', sliderProgressElement.getAttribute('max') || '100');
-
-      sliderProgressElement.addEventListener('input', function () {
-          sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
+  function typeRange() {
+    if (document.querySelector('input[type="range"]')) {
+      const rangeInputElements = document.querySelectorAll('input[type="range"]');
+      rangeInputElements.forEach(function (rangeInputElement) {
+          if (!rangeInputElement.classList.contains('an-range-slider') && !rangeInputElement.classList.contains('slider-progress')) {
+              rangeInputElement.classList.add('an-range-slider', 'slider-progress');
+          }
       });
-  });
+
+      const sliderProgressElements = document.querySelectorAll('input[type="range"].slider-progress');
+      sliderProgressElements.forEach(function (sliderProgressElement) {
+          if (!sliderProgressElement.hasAttribute('min')) {
+              sliderProgressElement.setAttribute('min', '0');
+          }
+          if (!sliderProgressElement.hasAttribute('max')) {
+              sliderProgressElement.setAttribute('max', '100');
+          }
+          sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
+          sliderProgressElement.style.setProperty('--min', sliderProgressElement.getAttribute('min') || '0');
+          sliderProgressElement.style.setProperty('--max', sliderProgressElement.getAttribute('max') || '100');
+
+          sliderProgressElement.addEventListener('input', function () {
+              sliderProgressElement.style.setProperty('--value', sliderProgressElement.value);
+          });
+      });
+    }
+  }
+  typeRange();

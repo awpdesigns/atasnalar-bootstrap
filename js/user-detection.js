@@ -384,3 +384,4 @@ function ANDetection() {
     }
     locationCheck();
 }
+ANDetection();
