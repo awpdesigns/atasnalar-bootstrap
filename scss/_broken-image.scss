@@ -30,7 +30,7 @@ img {
         transform: translate(-50%, -50%);
         width: 100%;
         // Calculate the font size based on the image width
-        font-size: calc(100% / 2);
+        font-size: calc(1rem + 10%);
         color: var(--#{$prefix}gray-400);
         text-align: center;
     }

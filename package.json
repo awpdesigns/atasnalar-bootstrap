@@ -23,7 +23,7 @@
     "watch:rtl": "rtlcss --config .rtlcssrc --watch css/atasnalar-bootstrap.css css/atasnalar-bootstrap-rtl.css",
     "build": "npm-run-all build:*",
     "watch": "npm-run-all watch:*",
-    "compress": "minify css/atasnalar-bootstrap.css > css/atasnalar-bootstrap.min.css && minify css/atasnalar-bootstrap-rtl.css > css/atasnalar-bootstrap-rtl.min.css && minify css/social-share.css > css/social-share.min.css && minify js/bootstrap.bundle.js > js/bootstrap.bundle.min.js && minify js/social-share.js > js/social-share.min.js && minify js/an-form.js > js/an-form.min.js",
+    "compress": "minify css/atasnalar-bootstrap.css > css/atasnalar-bootstrap.min.css && minify css/atasnalar-bootstrap-rtl.css > css/atasnalar-bootstrap-rtl.min.css && minify css/social-share.css > css/social-share.min.css && minify css/an-popup.css > css/an-popup.min.css && minify js/bootstrap.bundle.js > js/bootstrap.bundle.min.js && minify js/social-share.js > js/social-share.min.js && minify js/an-popup.js > js/an-popup.min.js && minify js/an-form.js > js/an-form.min.js",
     "start": "npm-run-all build watch"
   },
   "repository": {

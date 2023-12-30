@@ -8840,7 +8840,7 @@ select:-webkit-autofill:focus {
   min-height: 21px;
 }
 .an-typed .an-typed-cursor {
-  font-weight: 300;
+  font-weight: 200;
   min-height: 21px;
 }
 
@@ -10103,7 +10103,7 @@ img:after {
   right: 50%;
   transform: translate(50%, -50%);
   width: 100%;
-  font-size: 50%;
+  font-size: calc(1rem + 10%);
   color: var(--gray-400);
   text-align: center;
 }

@@ -1,0 +1,250 @@
+/*!
+  *  Project Name: AN Popup
+  *  Description: AN Popup is a simple and lightweight jquery plugin that allows you to create a popup with multiple content type (Image, Video, Google Map, File, etc) and responsive.
+  *  Author: Atas Nalar
+  *  Version: 1.0
+  *  License: GNU General Public License v3.0 or later
+  *  License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+.an-popup-btn {
+  cursor: pointer;
+}
+
+.an-popup-open {
+  overflow: hidden !important;
+}
+
+.an-popup.an-popup-show {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5000;
+  background: rgba(var(--primary-rgb), 0.1);
+  box-shadow: 0 4px 30px rgba(var(--body-color-rgb), 0.1);
+  backdrop-filter: blur(3px);
+}
+.an-popup.an-popup-show::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  opacity: 0.5;
+  cursor: zoom-out;
+}
+.an-popup.an-popup-show .an-popup-content {
+  position: relative;
+  max-width: min-content;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--body-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header .an-popup-title-wrapper {
+  max-width: 75%;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header .an-popup-title-wrapper .an-popup-title {
+  font-size: clamp(1.1rem, 1.75vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header .an-popup-title-wrapper .an-popup-gallery-counter {
+  min-width: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header .an-popup-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-header .an-popup-action * {
+  font-size: clamp(1.25rem, 1.75vw, 1.5rem) !important;
+  cursor: pointer;
+  line-height: 1;
+  color: var(--body-color);
+  fill: var(--body-color);
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner {
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--border-radius);
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-image {
+  width: max-content;
+  height: 100vh;
+  max-height: 80vh;
+  max-width: 90vw;
+  position: relative;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-image img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery {
+  transition: all 0.5s ease;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-nav-slider {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  font-size: 3rem;
+  color: var(--white);
+  line-height: 1;
+  cursor: pointer;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-nav-slider.an-popup-gallery-next {
+  right: 0;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-nav-slider.an-popup-gallery-prev {
+  left: 0;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-nav-slider > * {
+  width: 100%;
+  height: 100%;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-gallery-inner {
+  pointer-events: none;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-gallery-inner .an-popup-gallery-item {
+  position: relative;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-gallery-inner .an-popup-gallery-item img {
+  max-width: 80vw;
+  max-height: 80vh;
+  animation: fadeIn 0.25s linear;
+  z-index: 5;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-gallery .an-popup-gallery-inner .an-popup-gallery-item:not(.active) img {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  position: absolute;
+  animation: fadeOut 0.2s linear;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-video {
+  width: 100%;
+  position: relative;
+  border-radius: var(--border-radius);
+  transition: all 0.5s ease;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-video video, .an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-video iframe {
+  max-width: 90vw;
+  max-height: 75vh;
+  width: 1080px;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-google-map {
+  width: 100%;
+  position: relative;
+  transition: all 0.5s ease;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-google-map iframe {
+  max-width: 90vw;
+  max-height: 75vh;
+  width: 1080px;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-file-content {
+  width: max-content;
+  min-width: 50vw;
+  max-width: 90vw !important;
+  overflow: auto;
+  word-wrap: break-word;
+  background: var(--body-bg);
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-file-content .an-popup-file-content-inner {
+  max-height: 80vh;
+  overflow: auto;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-file-content .an-popup-file-content-inner::-webkit-scrollbar {
+  display: block !important;
+  height: 4px;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .an-popup-content-not-supported {
+  padding: 1rem;
+  width: max-content;
+  min-width: 40vw;
+  max-width: 90vw;
+  background: var(--body-bg);
+  border: 1px solid;
+  border-radius: inherit;
+  font-weight: 500;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .pre-blocks {
+  margin-bottom: 0;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-body .an-popup-body-inner .pre-blocks svg {
+  color: currentColor;
+  fill: currentColor;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-footer {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+  background: var(--body-bg);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-footer .an-popup-description {
+  max-width: 90%;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-footer .an-popup-description * {
+  margin: 0;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-footer .an-popup-description a {
+  text-decoration: underline;
+}
+.an-popup.an-popup-show .an-popup-content .an-popup-footer .readmore {
+  white-space: nowrap;
+}
+
+.an-hidden-target {
+  display: none !important;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .an-popup-description {
+    max-width: 100% !important;
+  }
+}
