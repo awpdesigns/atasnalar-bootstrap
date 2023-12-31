@@ -176,6 +176,10 @@ function ANPopUp() {
                                 // Set attribute autoplay to video
                                 videoClone.attr('autoplay', '');
                             }
+                            // If video is muted, unmute it
+                            if (videoClone.attr('muted') !== undefined) {
+                                videoClone.removeAttr('muted');
+                            }
                             html += '<div class="an-popup-video">';
                             // Check if parent "an-card-wrap" has attribute data-popup-source
                             if ($(this).closest('.an-card').find('.an-card-wrap').attr('data-popup-source') !== undefined && $(this).closest('.an-card').find('.an-card-wrap').attr('data-popup-source') !== '') {
