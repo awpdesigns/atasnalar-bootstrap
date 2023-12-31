@@ -101,8 +101,6 @@
                 // margin-bottom: 2.5rem;
                 .an-popup-image {
                     width: max-content;
-                    height: 100vh;
-                    max-height: 80vh;
                     max-width: 90vw;
                     position: relative;
                     transition: all 0.5s ease;
@@ -263,5 +261,11 @@
 @media only screen and (max-width: 767.98px) {
     .an-popup-description {
         max-width: 100% !important;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .an-popup-image {
+        height: 100vh;
+        max-height: 80vh;
     }
 }
