@@ -726,7 +726,17 @@ function ANPopUp() {
                 // Scroll to about section or to top
                 // Check if about section is exist or not
                 if ($('section#about').length) {
-                    $('html, body').scrollTop($('section#about').offset().top - initialOffset);
+                    // If html data-type="v-card"
+                    if ($('html').attr('data-type') === 'v-card') {
+                        // Compare hash with data-target of navigation link, then trigger click
+                        if ($('.an-nav-link[data-target="about"]').length) {
+                            $('.an-nav-link[data-target="about"]').trigger('click');
+                        } else {
+                            $('html, body').scrollTop($('section#about').offset().top - initialOffset);
+                        }
+                    } else {
+                        $('html, body').scrollTop($('section#about').offset().top - initialOffset);
+                    }
                 } else if (window.location.href.indexOf('/page/') > -1) {
                     window.location.href = $(this).attr('href');
                 } else {
