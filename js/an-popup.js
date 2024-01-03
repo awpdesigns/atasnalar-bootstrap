@@ -10,7 +10,7 @@ function ANPopUp() {
     if ($('.an-popup-btn').length > 0) {
         // Trigger Pop Up
         $('.an-popup-btn').each(function () {
-            var source = $(this).attr('href') || $(this).attr('src') || $(this).attr('data-image') || $(this).find('source').attr('src') || $(this).attr('data-video');
+            var source = $(this).attr('href') || $(this).attr('src') || $(this).attr('data-image') || $(this).find('source').attr('src') || $(this).attr('data-video') || $(this).attr('data-map') || $(this).attr('data-url') || $(this).attr('data-src');
             $(this).on('click', function(e) {
                 var downloadable = $(this).data('downloadable');
                 if (downloadable === true) {
