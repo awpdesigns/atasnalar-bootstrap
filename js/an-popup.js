@@ -11,6 +11,24 @@ function ANPopUp() {
         // Trigger Pop Up
         $('.an-popup-btn').each(function () {
             var source = $(this).attr('href') || $(this).attr('src') || $(this).attr('data-image') || $(this).find('source').attr('src') || $(this).attr('data-video') || $(this).attr('data-map') || $(this).attr('data-url') || $(this).attr('data-src');
+            var overlayColor = $(this).attr('data-overlay');
+            if ($(this).parents('.an-card').attr('data-type') === 'gallery' || $(this).parents('.an-popup-gallery').length) {
+                // Check parent gallery
+                var overlayParent = '.an-card-wrap';
+                if ($(this).parents('.an-popup-gallery').length) {
+                    overlayParent = '.an-popup-gallery';
+                }
+                // Check if parent has overlay
+                if ($(this).parents(overlayParent).attr('data-overlay') !== undefined && $(this).parents(overlayParent).attr('data-overlay') !== '') {
+                    overlayColor = $(this).parents(overlayParent).attr('data-overlay');
+                    $(this).parents(overlayParent).find('.an-popup-btn').attr('data-overlay', overlayColor);
+                }
+            }
+            if (overlayColor !== undefined && overlayColor !== '') {
+                overlayColor = ' data-overlay="true" style="background:' + overlayColor + ';"';
+            } else {
+                overlayColor = '';
+            }
             $(this).on('click', function(e) {
                 var downloadable = $(this).data('downloadable');
                 if (downloadable === true) {
@@ -53,7 +71,7 @@ function ANPopUp() {
                     // Capitalize
                     title = title.charAt(0).toUpperCase() + title.slice(1);
                     var description = $(this).parents('.an-card-body').find('.an-card-detail').html() || $(this).attr('data-description');
-                    var html = '<div class="an-popup">';
+                    var html = '<div class="an-popup"' + overlayColor + '>';
                     html += '<div class="an-popup-content">';
                     html += '<div class="an-popup-header animated fadeInDown">';
                         html += '<div class="an-popup-title-wrapper">';
@@ -78,12 +96,23 @@ function ANPopUp() {
                             var imagesDescription = [];
                             // Get all images downloadable from siblings
                             var imagesDownloadable = [];
+                            // Get all overlay from siblings
+                            var galleryOverlays = [];
+                            // Check parent gallery
                             var theParent = '.an-card-wrap';
                             if ($(this).parents('.an-popup-gallery').length) {
                                 theParent = '.an-popup-gallery';
                             }
                             // Loop each image
                             $(this).parents(theParent).find('.an-popup-btn').each(function () {
+                                // Get overlay color
+                                var galleryOverlay = $(this).attr('data-overlay');
+                                // Check if galleryOverlay is not empty
+                                if (galleryOverlay !== undefined && galleryOverlay !== '') {
+                                    galleryOverlays.push(' data-overlay="' + galleryOverlay + '"');
+                                } else {
+                                    galleryOverlays.push('');
+                                }
                                 // Get image source
                                 var imageSrc = $(this).attr('src') || $(this).attr('href') || $(this).attr('data-image') || $(this).find('source').attr('src');
                                 // Push image source to images array
@@ -459,7 +488,7 @@ function ANPopUp() {
                                 }
                             }
                             // Check if source is content ajax request (file)
-                            else if (source.match(/\.(html|txt|md|json|js|css|scss|jsx|ts|tsx|xml)/g)) {
+                            else if (source.match(/\.(html|txt|md|json|js|css|scss|jsx|ts|tsx|xml)/g) && $(this).attr('data-type') !== 'qr-code') {
                                 html += '<div class="an-popup-file-content">';
                                 html += '<div class="an-popup-file-content-inner"></div>';
                                 html += '</div>';
@@ -514,10 +543,73 @@ function ANPopUp() {
                                 xhttp.open('GET', source, true);
                                 xhttp.send();
                             }
+                            // Check if source is pdf file
+                            else if (source.match(/\.(pdf)/g) && $(this).attr('data-type') !== 'qr-code') {
+                                var toolbar = $(this).attr('data-toolbar');
+                                if (toolbar === 'false') {
+                                    toolbar = '#toolbar=0';
+                                } else {
+                                    toolbar = '';
+                                }
+                                html += '<div class="an-popup-file-content">';
+                                html += '<div class="an-popup-file-content-inner"></div>';
+                                html += '</div>';
+                                var element = $('.an-popup-file-content-inner');
+                                // Set loading icon
+                                element.html('<div class="an-popup-file-content-loading"><span class="an-loading-icon" role="status" aria-hidden="true">Loading...</span></div>');
+                                // Check if source is url
+                                if (source.match(/http/g) || source.match(/https/g)) {
+                                    // Using XMLHttpRequest
+                                    var xhttp;
+                                    xhttp = new XMLHttpRequest();
+                                    xhttp.onreadystatechange = function () {
+                                        if (this.readyState === 4) {
+                                            // Check if request status is success
+                                            if (this.status === 200) {
+                                                // Set content (Add "#toolbar=0" after source to hide toolbar)
+                                                element.html('<iframe src="' + source + toolbar + '" title="' + title + '" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" height="600" style="width:100%;min-height: 600px;height:100%"></iframe>');
+                                            }
+                                            // Check if request status is error
+                                            if (this.status === 404) {
+                                                // Set content
+                                                element.html('<div class="an-popup-file-content-not-found">File Content not found!</div>');
+                                            }
+                                        }
+                                    }
+                                    xhttp.open('GET', source, true);
+                                    xhttp.send();
+                                }
+                                // Check if source is relative path
+                                else {
+                                    // Check if source is pdf file
+                                    if (source.match(/\.(pdf)/g)) {
+                                        // Check if source is not found
+                                        if (!fileExists(source)) {
+                                            // Set content
+                                            element.html('<div class="an-popup-file-content-not-found">File Content not found!</div>');
+                                        } else {
+                                            // Set content (Add "#toolbar=0" after source to hide toolbar)
+                                            element.html('<iframe src="' + source + toolbar + '" title="' + title + '" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" height="600" style="width:100%;min-height: 600px;height:100%"></iframe>');
+                                        }
+                                    }
+                                }
+                            }
                             // Check if source is image
-                            else if (source.match(/\.(jpe?g|png|gif|svg|webp|bmp|ico)/g) || source.match(/data:image/g) || source.match(/blob:/g) || source.match(/base64/g) || source.match(/unsplash/g) || source.match(/pexel/g)) {
+                            else if (source.match(/\.(jpe?g|png|gif|svg|webp|bmp|ico)/g) && $(this).attr('data-type') !== 'qr-code' || source.match(/data:image/g) && $(this).attr('data-type') !== 'qr-code' || source.match(/blob:/g) && $(this).attr('data-type') !== 'qr-code' || source.match(/base64/g) && $(this).attr('data-type') !== 'qr-code' || source.match(/unsplash/g) && $(this).attr('data-type') !== 'qr-code' || source.match(/pexel/g) && $(this).attr('data-type') !== 'qr-code') {
                                 html += '<div class="an-popup-image">';
                                 html += '<img src="' + source + '" alt="' + title + '">';
+                                html += '</div>';
+                            }
+                            // Check if source is url and this has attribute data-type="qr-code"
+                            else if ($(this).attr('data-type') === 'qr-code') {
+                                var qrCodeUrl = 'https://chart.googleapis.com/chart?cht=qr&chl=' + source + '&chs=380x380&chld=L|0';
+                                html += '<div class="an-popup-file-content" style="min-width: fit-content;">';
+                                html += '<div class="an-popup-file-content-inner qr-code text-center">';
+                                html += '<h4>Scan QR Code</h4>';
+                                html += '<img src="' + qrCodeUrl + '" alt="' + title + '" width="380" height="380" class="p-2 rounded border border-2 border-theme">';
+                                html += '<div class="qr-code-info mt-2">';
+                                html += title;
+                                html += '</div>';
                                 html += '</div>';
                             }
                             // Show error message (Source not supported)

@@ -1,12 +1,13 @@
-<!-- Form Alert | Required (or will create automatically) | Set attribute id to "alert-{form-id}" and class "alert-an-form" -->
-<div id="alert-contact-form" class="alert-an-form" role="alert" hidden aria-label="Form Alert"></div>
-<!-- Form | Google Sheet Submission is available | For more information: https://drive.google.com/file/d/1ar-dV5ktLCYAQIwGbmNZJBAWLtgCqwL7/view?usp=sharing  -->
-<form id="contact-form" action="" method="post" class="row g-3 an-form" data-success-message="Your message has been sent successfully." data-error-message="I am sorry, there was an error. Please try again." data-floating-validation="true">
+<!-- Contact Form (an-form.js) by Atas Nalar | Google Sheet Submission is available | For more information about Google Sheet Submission & Input Validation, please read documentation: https://drive.google.com/file/d/1ar-dV5ktLCYAQIwGbmNZJBAWLtgCqwL7/view?usp=sharing -->
+<!-- Form Alert -->
+<div id="alert-Form-ID" class="alert-an-form" role="alert" hidden aria-label="Form Alert"></div>
+<!-- Form -->
+<form id="Form-ID" action="" method="post" class="row g-3 an-form" data-success-message="Your message has been sent successfully." data-error-message="I am sorry, there was an error. Please try again." data-floating-validation="true" autocomplete="off">
     <!-- Text -->
     <div class="col-12">
         <div class="form-group">
             <div class="form-floating">
-                <input type="text" class="form-control" id="name" name="an-name" placeholder="Your name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
                 <label for="name">Hi, tell me your name</label>
                 <div class="invalid-feedback">Please, let me know your name.</div>
             </div>
@@ -36,7 +37,7 @@
     <div class="col-sm-6">
         <div class="form-group">
             <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="an-email" placeholder="Your email" data-email-validation="true" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your email" data-email-validation="true" required>
                 <label for="email">Put your email here</label>
                 <div class="invalid-feedback">Please enter your email, so I can contact you later.</div>
             </div>

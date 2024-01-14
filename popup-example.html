@@ -1,44 +1,49 @@
+<!--! [Source] Accepted source attributes: href, src, data-src, data-image, data-video, data-map, data-url -->
+<!-- To set popup title, use attribute data-title="Title" or title="Title" -->
+<!-- To set popup description, use attribute data-description="Description" -->
+<!-- To set popup downloadable, use attribute data-downloadable="true" or data-downloadable="false" -->
+<!-- [QRCode] To set popup type to QRCode, use attribute data-type="qr-code" -->
 <div id="popup-sample" class="d-flex flex-column gap-2 p-3">
     <!-- Popup Image | (jpe?g|png|gif|svg|webp|bmp|ico) | (data:image|base64|blob:) -->
     <div class="d-block">
-        <a class="an-popup-btn btn btn-primary" href="../doc/sample/sample-1.jpg" title="Image Title" data-description="Image Description" data-downloadable="false">
+        <a class="an-popup-btn btn btn-primary" href="../../doc/sample/sample-1.jpg" title="Image Title" data-description="Image Description" data-downloadable="false">
             Single Image
         </a>
-        <img src="../doc/sample/sample-1.jpg" alt="Image Title" width="130" height="130" class="an-popup-btn" data-description="Image Description" data-downloadable="true">
+        <img src="../../doc/sample/sample-1.jpg" alt="Image Title" width="130" height="130" class="an-popup-btn" data-description="Image Description" data-downloadable="true">
     </div>
     <!-- Popup Gallery | (jpe?g|png|gif|svg|webp|bmp|ico) | (data:image|base64|blob:) -->
     <div class="d-flex flex-wrap gap-2">
         <div class="an-popup-gallery d-flex flex-column gap-2">
-            <a class="an-popup-btn btn btn-primary" href="../doc/sample/sample-1.jpg" title="Image User Title" data-description="Image User Description" data-downloadable="false">
+            <a class="an-popup-btn btn btn-primary" href="../../doc/sample/sample-1.jpg" title="Image User Title" data-description="Image User Description" data-downloadable="false">
                 Gallery Image 1
             </a>
-            <a class="an-popup-btn btn btn-primary" href="../doc/sample/sample-2.jpg" title="Image Title" data-description="Image Description <a href='test.html'>Read here</a>" data-downloadable="true">
+            <a class="an-popup-btn btn btn-primary" href="../../doc/sample/sample-2.jpg" title="Image Title" data-description="Image Description <a href='test.html'>Read here</a>" data-downloadable="true">
                 Gallery Image 2
             </a>
-            <a class="an-popup-btn btn btn-primary" href="../doc/sample/sample-3.jpg" title="Image Logo Title" data-description="Image Logo Description" data-downloadable="true">
+            <a class="an-popup-btn btn btn-primary" href="../../doc/sample/sample-3.jpg" title="Image Logo Title" data-description="Image Logo Description" data-downloadable="true">
                 Gallery Image 3
             </a>
         </div>
         <div class="an-popup-gallery">
-            <img src="../doc/sample/sample-1.jpg" alt="Image User Title" width="130" height="130" class="an-popup-btn" data-description="Image User Description" data-downloadable="false">
-            <img src="../doc/sample/sample-2.jpg" alt="Image Title" width="130" height="130" class="an-popup-btn" data-description="Image Description <a href='test.html'>Read here</a>" data-downloadable="true">
-            <img src="../doc/sample/sample-3.jpg" alt="Image Logo Title" width="130" height="130" class="an-popup-btn" data-description="Image Logo Description" data-downloadable="true">
+            <img src="../../doc/sample/sample-1.jpg" alt="Image User Title" width="130" height="130" class="an-popup-btn" data-description="Image User Description" data-downloadable="false">
+            <img src="../../doc/sample/sample-2.jpg" alt="Image Title" width="130" height="130" class="an-popup-btn" data-description="Image Description <a href='test.html'>Read here</a>" data-downloadable="true">
+            <img src="../../doc/sample/sample-3.jpg" alt="Image Logo Title" width="130" height="130" class="an-popup-btn" data-description="Image Logo Description" data-downloadable="true">
         </div>
         <!--! Sample with bootstrap column -->
         <div class="row g-3 an-popup-gallery">
             <div class="col-sm-6 an-popup-btn" data-image="./doc/sample/sample-1.jpg" title="Gallery 1" data-downloadable="false">
-                <div class="gallery-item">
+                <div class="img-wrap ratio ratio-4x3">
                     <img src="./doc/sample/sample-1.jpg" alt="Gallery 1" class="img-fluid" width="175" height="175">
                 </div>
             </div>
-            <div class="col-sm-6 an-popup-btn" data-image="../doc/sample/sample-2.jpg" title="Gallery 2" data-downloadable="true">
-                <div class="gallery-item">
-                    <img src="../doc/sample/sample-2.jpg" alt="Gallery 2" class="img-fluid" width="175" height="175">
+            <div class="col-sm-6 an-popup-btn" data-image="../../doc/sample/sample-2.jpg" title="Gallery 2" data-downloadable="true">
+                <div class="img-wrap ratio ratio-4x3">
+                    <img src="../../doc/sample/sample-2.jpg" alt="Gallery 2" class="img-fluid" width="175" height="175">
                 </div>
             </div>
-            <div class="col-sm-6 an-popup-btn" data-image="../doc/sample/sample-3.jpg" title="Gallery 3" data-downloadable="false">
-                <div class="gallery-item">
-                    <img src="../doc/sample/sample-3.jpg" alt="Gallery 3" class="img-fluid" width="175" height="175">
+            <div class="col-sm-6 an-popup-btn" data-image="../../doc/sample/sample-3.jpg" title="Gallery 3" data-downloadable="false">
+                <div class="img-wrap ratio ratio-4x3">
+                    <img src="../../doc/sample/sample-3.jpg" alt="Gallery 3" class="img-fluid" width="175" height="175">
                 </div>
             </div>
         </div>
@@ -46,15 +51,15 @@
     <!-- Popup Video | (mp4|ogg|ogv|webm) or youtube or vimeo -->
     <div class="d-flex flex-wrap gap-2">
         <!-- Self Hosted (MP4) -->
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.mp4" title="Video MP4 Title" data-description="Video Description" data-downloadable="true">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.mp4" title="Video MP4 Title" data-description="Video Description" data-downloadable="true">
             Video (Self Hosted MP4)
         </a>
         <!-- Self Hosted (WEBM) -->
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.webm" title="Video WEBM Title" data-description="Video Description" data-downloadable="false">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.webm" title="Video WEBM Title" data-description="Video Description" data-downloadable="false">
             Video (Self Hosted WEBM)
         </a>
         <!-- Self Hosted (OGV/OGG) -->
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.ogv" title="Video OGV/OGG Title" data-description="Video Description" data-downloadable="true">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.ogv" title="Video OGV/OGG Title" data-description="Video Description" data-downloadable="true">
             Video (Self Hosted OGV/OGG)
         </a>
         <!-- Youtube | Share URL (https://youtu.be/{video_id}) -->
@@ -98,41 +103,45 @@
             Vimeo (Embed URL)
         </a>
     </div>
-    <!-- Popup AJAX | file (html|txt|md|json|js|css|scss|jsx|ts|tsx|xml) -->
+    <!-- Popup AJAX | file (html|txt|md|json|js|css|scss|jsx|ts|tsx|xml|pdf) -->
     <div class="d-flex flex-wrap gap-2">
         <!--! Required data-target-content="{class/id}" for file (html) to get specific content -->
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.html" data-target-content=".an-app-content" title="Content Title HTML (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.html" data-target-content=".an-app-content" title="Content Title HTML (Optional)">
             AJAX Content HTML
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.txt" title="Content Title TXT (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.txt" title="Content Title TXT (Optional)">
             AJAX Content TXT
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.md" title="Content Title MD (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.md" title="Content Title MD (Optional)">
             AJAX Content MD
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.json" title="Content Title JSON (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.json" title="Content Title JSON (Optional)">
             AJAX Content JSON
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.js" title="Content Title JavaScript (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.js" title="Content Title JavaScript (Optional)">
             AJAX Content JavaScript
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.css" title="Content Title CSS (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.css" title="Content Title CSS (Optional)">
             AJAX Content CSS
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.scss" title="Content Title SCSS (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.scss" title="Content Title SCSS (Optional)">
             AJAX Content SCSS
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.jsx" title="Content Title JSX (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.jsx" title="Content Title JSX (Optional)">
             AJAX Content JSX
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.ts" title="Content Title TypeScript (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.ts" title="Content Title TypeScript (Optional)">
             AJAX Content TypeScript
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.tsx" title="Content Title TSX (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.tsx" title="Content Title TSX (Optional)">
             AJAX Content TSX
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../doc/sample/sample.xml" title="Content Title XML (Optional)">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.xml" title="Content Title XML (Optional)">
             AJAX Content XML
+        </a>
+        <!-- To disable toolbar on iframe pdf. Set attribute, data-toolbar="false" -->
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.pdf" data-toolbar="false" title="Content Title PDF (Optional)">
+            AJAX Content PDF
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../sample.txt">
             AJAX Error Handling (Not Found)
@@ -141,6 +150,10 @@
             AJAX Error Handling (Not Supported)
         </a>
     </div>
+    <!-- Popup QR Code | url (http|https) -->
+    <button type="button" class="btn btn-primary an-popup-btn" data-type="qr-code" data-url="https://www.google.com" data-title="Download with QR Code">
+        <i class="ri-qr-code-fill"></i> Scan QR Code
+    </button>
     <!-- Popup Google Maps | Embed link (https://www.google.com/maps/embed?pb={data}) -->
     <a class="an-popup-btn btn btn-primary" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.880508821434!2d106.826984314769!3d-6.175392995530799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f50e4f6b7a9f%3A0x2e0b0d0d0d0d0d0!2sJl.%20Kebon%20Jeruk%20Raya%20No.27%2C%20RT.1%2FRW.2%2C%20Kebon%20Jeruk%2C%20Kec.%20Kby.%20Lama%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2011550!5e0!3m2!1sen!2sid!4v1629780858983!5m2!1sen!2sid" title="Google Maps" data-description="Google Maps Description">
         Google Maps (Embed Link)
@@ -162,5 +175,29 @@
     <!-- Popup Hash Target (data content) | Add class an-hidden-target to target element -->
     <div id="hash-target" class="an-hidden-target">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sit, ex nihil facilis incidunt dignissimos minima necessitatibus aliquid doloremque consequatur sed deserunt asperiores eius. Dicta commodi adipisci odio molestias architecto, quod quam nulla nisi, magnam asperiores delectus veniam neque est eveniet harum, hic repellat velit praesentium dolorum fuga provident cupiditate? Expedita, incidunt recusandae esse illum a facilis, maiores quod atque quidem mollitia aut tenetur exercitationem nobis, debitis natus dignissimos animi maxime pariatur doloribus dolorum distinctio? Facere cum aperiam placeat consequatur voluptatibus beatae vitae nesciunt nam recusandae, nemo debitis repellendus, provident, repudiandae quis quae doloribus. Minus quam inventore minima repudiandae. Maxime inventore rerum exercitationem accusamus, nemo ex cupiditate, deleniti nisi est minima quas expedita veritatis, nihil asperiores quo architecto laborum reprehenderit vitae veniam. At repudiandae dolores placeat inventore mollitia deserunt ipsam accusamus, illum officia dignissimos voluptas esse in odit nisi rem, excepturi consequuntur. Sapiente expedita nulla natus nobis, ex eveniet vel?
+    </div>
+</div>
+
+<!--* [Overlay Color] Set data-overlay="{rgba/hex/variables}" on ".an-popup-btn" to change overlay color of the popup. Each element can have different overlay color. -->
+<!--* [Gallery - Overlay Color] Set data-overlay="{rgba/hex/variables}" on ".an-popup-gallery" to force all gallery popup to have same overlay color. -->
+<!-- Usage Example: data-overlay="rgba(0,0,0,.5)" or data-overlay="#000000" or data-overlay="var(--dark)" -->
+<div id="popup-overlay-sample" class="d-flex flex-column gap-2 p-3">
+    <!-- Single Element -->
+    <a href="../../doc/sample/sample-1.jpg" class="an-popup-btn btn btn-primary" data-overlay="rgba(95,164,255,0.8)">
+        Single Image
+    </a>
+    <!-- Gallery Element with different overlay -->
+    <div class="an-popup-gallery">
+        <img src="../../doc/sample/sample-1.jpg" alt="Gallery1" width="60" height="60" class="an-popup-btn" data-overlay="rgba(95,164,255,0.8)">
+        <img src="../../doc/sample/sample-2.jpg" alt="Gallery2" width="60" height="60" class="an-popup-btn" data-overlay="rgba(125,14,215,0.8)">
+        <img src="../../doc/sample/sample-3.jpg" alt="Gallery3" width="60" height="60" class="an-popup-btn">
+        <img src="../../doc/sample/placeholder.jpg" alt="Gallery4" width="60" height="60" class="an-popup-btn" data-overlay="rgba(7,154,25,0.8)">
+    </div>
+    <!-- Gallery Element with forced overlay -->
+    <div class="an-popup-gallery" data-overlay="rgba(255,0,0,0.8)">
+        <img src="../../doc/sample/sample-1.jpg" alt="Gallery1" width="60" height="60" class="an-popup-btn" data-overlay="rgba(95,164,255,0.8)">
+        <img src="../../doc/sample/sample-2.jpg" alt="Gallery2" width="60" height="60" class="an-popup-btn" data-overlay="rgba(125,14,215,0.8)">
+        <img src="../../doc/sample/sample-3.jpg" alt="Gallery3" width="60" height="60" class="an-popup-btn">
+        <img src="../../doc/sample/placeholder.jpg" alt="Gallery4" width="60" height="60" class="an-popup-btn" data-overlay="rgba(7,154,25,0.8)">
     </div>
 </div>
