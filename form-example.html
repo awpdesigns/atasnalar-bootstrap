@@ -1,7 +1,13 @@
-<!-- Contact Form (an-form.js) by Atas Nalar | Google Sheet Submission is available | For more information about Google Sheet Submission & Input Validation, please read documentation: https://drive.google.com/file/d/1ar-dV5ktLCYAQIwGbmNZJBAWLtgCqwL7/view?usp=sharing -->
-<!-- Form Alert -->
+<!--! [Required] an-form.js by Atas Nalar (atasnalar-bootstrap) (This has been included in the an-plugins.min.js) -->
+<!-- Google Sheet Submission is available | For more information about Google Sheet Submission & Input Validation, please read documentation: https://drive.google.com/file/d/1ar-dV5ktLCYAQIwGbmNZJBAWLtgCqwL7/view?usp=sharing -->
+
+<!-- Form Alert | Required (or will create automatically) | Set attribute id to "alert-{form-id}" and class "alert-an-form"-->
 <div id="alert-Form-ID" class="alert-an-form" role="alert" hidden aria-label="Form Alert"></div>
 <!-- Form -->
+<!--! Required form class: an-form, and must have attribute id="{string}" or will automatically generated (an-form-{randomnumber}) -->
+<!--! Each form element (except [type="submit"]) must be wrapped with class "form-group" and must have attribute "name" (field name) -->
+<!--* To change form message, add attribute data-success-message="{your message}" or data-error-message="{your message}" to form element -->
+<!--* Add data-floating-validation="true" to form element to enable floating validation. This will automatically change class of valid/invalid-feedback to valid/invalid-tooltip instead of you change it manually (If there is any validation that you've already set). -->
 <form id="Form-ID" action="" method="post" class="row g-3 an-form" data-success-message="Your message has been sent successfully." data-error-message="I am sorry, there was an error. Please try again." data-floating-validation="true" autocomplete="off">
     <!-- Text -->
     <div class="col-12">

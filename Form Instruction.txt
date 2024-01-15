@@ -4,27 +4,28 @@ Example: <div id="alert-{form-id}" class="alert-an-form" role="alert" hidden ari
 /* ==  Form | Submit Form PHP: https://drive.google.com/file/d/18FaHaqWb0ir1Q_0g1h4qlkAwYkiSN0dK/view?usp=sharing | Form Example: https://drive.google.com/file/d/1_Ad58nMKYmS6FuZAy0rIumiqx_Oaz7uR/view?usp=sharing == */
 ! Required form class: an-form, and must have attribute id="{string}" or will automatically generated (an-form-{randomnumber})
 ! Each form element (except [type="submit"]) must be wrapped with class "form-group" and must have attribute "name" (field name)
-! Required field name: an-send-copy, an-submit. If you change these field name value, you must change it in submit-form.php too
+! Required field name: an-send-copy, an-submit. If you change these field name value, you must change it in /php/submit-form.php too
 ! Required [type="submit"], add attribute onclick="uploadForm(this)" to submit button
 * (Optional) [type="submit"], add attribute data-progress-text={string} to set progress text. Default: Sending...
 ^ To change form message, add attribute data-success-message="{your message}" or data-error-message="{your message}" to form element
 ^ Add data-floating-validation="true" to form element to enable floating validation. This will automatically change class of valid/invalid-feedback to valid/invalid-tooltip instead of you change it manually (If there is any validation that you've already set).
 
 /* ==  Submit to Google Sheet | Submit Form GS: https://drive.google.com/file/d/1pfv33GPaVR1pHnrpOhvYMPN1K1FgSB6I/view?usp=sharing | App Script Library ID: 1wCu3qt-T_BRhg-mis6QOJ8R_nC7lmISeNQlEJSmBY-3FaoHmLS7y68LT == */
-^ If you want save data to Google Sheet, please make sure your field name (Except: an-send-copy & an-submit) has same exact value with your Sheet Column. | Set Google Sheet Data (URL, SheetName, SheetID) in submit-form.php
+^ If you want save data to Google Sheet, please make sure your field name (Except: an-send-copy & an-submit) has same exact value with your Sheet Column. | Set Google Sheet Data (URL, SheetName, SheetID) in /php/submit-form.php
 * Add "an_exclude_{field_name}" or "an_exclude-{field_name}" to field name. This will exclude the field from email to sender and only send to admin and google sheet.
 ToDo:
 -- Create new Google Sheet and add column name (First row) with field name (Except: an-send-copy & an-submit)
 -- Change "sheetName" value with your Sheet Name. (Default: Sheet1)
 -- Get Sheet ID from Google Sheet URL (https://docs.google.com/spreadsheets/d/{sheetID}/edit#gid=0)
 -- Publish Google Sheet (Share > Get Shareable Link > Anyone with the link > Viewer)
--- Create new Google App Script (Tools > Script Editor/ Extension > App Script)
+-- Create new Google App Script (In Google Sheet: Select Extensions > App Script)
 -- Copy and paste code in submit-form.gs to App Script and save it.
--- Add App Script Library to your App Script (Libraries > Add Library > Add Library ID: {LibraryID} > Add)
+-- Add App Script Library to your App Script (Libraries > Add Library (+) > Insert Library ID: {LibraryID} > Look Up > Add)
 -- Test your App Script to make sure it works!
--- Once done, click "Deploy" and select "New Deployment" > Select "Web App" > Set "Execute the app as:" to "Me" > Set "Who has access to the app:" to "Anyone" > Click "Deploy" > Copy "Current web app URL" and save it. (This will be used in submit-form.php)
--- Set Google Sheet Data (URL, SheetName, SheetID) in submit-form.php
-
+-- Once done, click "Deploy" and select "New Deployment" > Select "Web App" > Set "Execute the app as:" to "Me" > Set "Who has access to the app:" to "Anyone" > Click "Deploy".
+-- Click "Authorize access" > Select your Google Account > Select "Advanced" > Click "Go to ... (unsafe)" > Click "Allow".
+-- Copy "Web App URL" and paste it to "sheetURL" value in /php/submit-form.php
+-- Set Google Sheet Data (URL, SheetName, SheetID) in /php/submit-form.php
 
 /* ==  Input Element Validation == */
 -- If you want to prevent white space in input, add attribute data-whitespace="{false}"
@@ -34,7 +35,7 @@ ToDo:
 -- For [type="url"], add attribute data-url-validation="{true/false}" to enable url validation.
 -- For [type="checkbox"], if you have multiple checkbox, you can add class "form-check-required" to "form-group" and add attribute data-min-check="{number}" to set minimum checkbox required.
 -- For [type="radio"], you can add class "form-check-required" to "form-group" or add attribute "required" to "input"
--- For [type="file"], add attribute data-file-validation="{true/false}" to enable file validation. And add attribute "accept", data-max-size="{number}", data-max-size-unit="{b/kb/mb/gb/tb}", data-invalid-type-message="{string}", data-invalid-size-message="{string}" to restrict file type and file size. | Set upload folder in submit-form.php
+-- For [type="file"], add attribute data-file-validation="{true/false}" to enable file validation. And add attribute "accept", data-max-size="{number}", data-max-size-unit="{b/kb/mb/gb/tb}", data-invalid-type-message="{string}", data-invalid-size-message="{string}" to restrict file type and file size. | Set upload folder in /php/submit-form.php
 -- For [type="file"], add attribute  data-droppable="{true/false}" to enable drag and drop file upload.
 -- For [textarea] or [type="text"], add attribute data-count="{true/false}" & maxlength="{number}" to show character count and limit character.
 -- For [type="password"], add attribute data-toggle-password="{true/false}" to enable toggle password visibility. Add attribute data-password-strength="{true/false}" to enable password strength. Default Password Strength: 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character. Add attribute data-regexp="{option}" to set custom validation. Option: upper, lower, number, special, min:{number}. Min. number is 6, if you set lower than 6, it will be set to 6.

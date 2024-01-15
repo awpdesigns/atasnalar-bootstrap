@@ -1,8 +1,10 @@
-<!--! [Source] Accepted source attributes: href, src, data-src, data-image, data-video, data-map, data-url -->
+<!--! [Required] an-popup.css & an-popup.js by Atas Nalar (atasnalar-bootstrap) (This has been included in the an-plugins.min.css & an-plugins.min.js) -->
+<!--^ [Classes] Single Element = .an-popup-btn | Gallery = .an-popup-gallery (parent) > .an-popup-btn (child) -->
+<!--^ [Source] Accepted source attributes: href, src, data-src, data-image, data-video, data-map, data-url -->
 <!-- To set popup title, use attribute data-title="Title" or title="Title" -->
 <!-- To set popup description, use attribute data-description="Description" -->
 <!-- To set popup downloadable, use attribute data-downloadable="true" or data-downloadable="false" -->
-<!-- [QRCode] To set popup type to QRCode, use attribute data-type="qr-code" -->
+<!-- [QRCode] To set popup type as QRCode, use attribute data-type="qr-code" and data-url="https://..." on .an-popup-btn -->
 <div id="popup-sample" class="d-flex flex-column gap-2 p-3">
     <!-- Popup Image | (jpe?g|png|gif|svg|webp|bmp|ico) | (data:image|base64|blob:) -->
     <div class="d-block">
@@ -30,10 +32,10 @@
             <img src="../../doc/sample/sample-3.jpg" alt="Image Logo Title" width="130" height="130" class="an-popup-btn" data-description="Image Logo Description" data-downloadable="true">
         </div>
         <!--! Sample with bootstrap column -->
-        <div class="row g-3 an-popup-gallery">
-            <div class="col-sm-6 an-popup-btn" data-image="./doc/sample/sample-1.jpg" title="Gallery 1" data-downloadable="false">
+        <div class="row g-3 an-popup-gallery w-50">
+            <div class="col-sm-6 an-popup-btn" data-image="../../doc/sample/sample-1.jpg" title="Gallery 1" data-downloadable="false">
                 <div class="img-wrap ratio ratio-4x3">
-                    <img src="./doc/sample/sample-1.jpg" alt="Gallery 1" class="img-fluid" width="175" height="175">
+                    <img src="../../doc/sample/sample-1.jpg" alt="Gallery 1" class="img-fluid" width="175" height="175">
                 </div>
             </div>
             <div class="col-sm-6 an-popup-btn" data-image="../../doc/sample/sample-2.jpg" title="Gallery 2" data-downloadable="true">
@@ -105,48 +107,51 @@
     </div>
     <!-- Popup AJAX | file (html|txt|md|json|js|css|scss|jsx|ts|tsx|xml|pdf) -->
     <div class="d-flex flex-wrap gap-2">
-        <!--! Required data-target-content="{class/id}" for file (html) to get specific content -->
+        <!--^ [Optional] data-target-content="{class/id}" for file (html) to get specific content and view as the content -->
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.html" data-target-content=".an-app-content" title="Content Title HTML (Optional)">
             AJAX Content HTML
         </a>
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.html" title="Content Title HTML (Optional)">
+            AJAX HTML
+        </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.txt" title="Content Title TXT (Optional)">
-            AJAX Content TXT
+            AJAX TXT
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.md" title="Content Title MD (Optional)">
-            AJAX Content MD
+            AJAX MD
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.json" title="Content Title JSON (Optional)">
-            AJAX Content JSON
+            AJAX JSON
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.js" title="Content Title JavaScript (Optional)">
-            AJAX Content JavaScript
+            AJAX JavaScript
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.css" title="Content Title CSS (Optional)">
-            AJAX Content CSS
+            AJAX CSS
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.scss" title="Content Title SCSS (Optional)">
-            AJAX Content SCSS
+            AJAX SCSS
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.jsx" title="Content Title JSX (Optional)">
-            AJAX Content JSX
+            AJAX JSX
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.ts" title="Content Title TypeScript (Optional)">
-            AJAX Content TypeScript
+            AJAX TypeScript
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.tsx" title="Content Title TSX (Optional)">
-            AJAX Content TSX
+            AJAX TSX
         </a>
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.xml" title="Content Title XML (Optional)">
-            AJAX Content XML
+            AJAX XML
         </a>
         <!-- To disable toolbar on iframe pdf. Set attribute, data-toolbar="false" -->
         <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../doc/sample/sample.pdf" data-toolbar="false" title="Content Title PDF (Optional)">
-            AJAX Content PDF
+            AJAX PDF
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../sample.txt">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../sample.txt">
             AJAX Error Handling (Not Found)
         </a>
-        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../sample.php">
+        <a class="an-popup-btn btn btn-primary flex-grow-1" href="../../sample.php">
             AJAX Error Handling (Not Supported)
         </a>
     </div>

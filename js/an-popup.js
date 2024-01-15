@@ -503,32 +503,40 @@ function ANPopUp() {
                                         // Set loading icon
                                         element.html('<div class="an-popup-file-content-loading"><span class="an-loading-icon" role="status" aria-hidden="true">Loading...</span></div>');
                                         var theContent = this.responseText;
-                                        // Check if target content is empty and source is url or relative path without extension
-                                        if (targetContent === undefined && !source.match(/\.(txt|md|json|js|css|scss|jsx|ts|tsx|xml)/g)) {
-                                            element.html('target content is empty');
-                                            // Return false
-                                            return false;
-                                        }
-                                        // Check if target content is not empty
-                                        if (targetContent !== undefined && targetContent !== '' && !source.match(/\.(txt|md|json|js|css|scss|jsx|ts|tsx|xml)/g)) {
-                                            // Get content inside of source file/url of source file/url
-                                            theContent = $(theContent).find(targetContent).html() || $(theContent).filter(targetContent).html();
-                                        }
                                         // Check if request status is success
                                         if (this.status === 200) {
                                             // Set content
-                                            var preWrap = '';
-                                            if (source.match(/\.(md|json|js|css|scss|jsx|ts|tsx|xml)/g)) {
-                                                // if ($('head').find('.an-prism').length === 0) {
-                                                //     $('head').append('<link class="an-prism" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">');
-                                                // }
-                                                // if ($('body').find('.an-prism').length === 0) {
-                                                //     $('body').append('<script class="an-prism" src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>');
-                                                //     // Prism With theme "Tomorrow Night"
-                                                //     $('body').append('<script class="an-prism" type="text/javascript">$(document).ready(function(){setTimeout(function(){Prism.highlightAll()}, 500)});</script>');
-                                                // }
-                                                preWrap = '<pre class="pre-blocks"><code class="language-' + sourceExtension + '">' + theContent + '</code></pre>';
-                                                element.html(preWrap);
+                                            if (source.match(/\.(html|md|json|js|css|scss|jsx|ts|tsx|xml)/g)) {
+                                                // Check if target content is not empty
+                                                if (targetContent !== undefined && targetContent !== '') {
+                                                    // Check if source is not html file
+                                                    if (!source.match(/\.(html)/g)) {
+                                                        return false;
+                                                    }
+                                                    // Get content inside of source file/url of source file/url
+                                                    theContent = $(theContent).find(targetContent).html() || $(theContent).filter(targetContent).html();
+                                                    element.html(theContent);
+                                                } else {
+                                                    // Check if prism is loaded
+                                                    if (typeof Prism !== 'undefined') {
+                                                        var preWrap = '<pre data-src="' + source + '" class="line-numbers"></pre>';
+                                                        element.html(preWrap);
+                                                        Prism.highlightAll();
+                                                        $("pre").addClass("line-numbers");
+                                                    } else {
+                                                        if ($('head').find('.an-prism').length === 0) {
+                                                            $('head').append('<link class="an-prism" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous">');
+                                                            $('head').append('<link class="an-prism" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css" crossorigin="anonymous">');
+                                                        }
+                                                        if ($('body').find('.an-prism').length === 0) {
+                                                            $('body').append('<script class="an-prism" src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>');
+                                                            $('body').append('<script class="an-prism" src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>');
+                                                            $('body').append('<script class="an-prism" type="text/javascript">$(document).ready(function(){ setTimeout((function(){Prism.highlightAll(),$("pre").addClass("line-numbers")}),500);</script>');
+                                                        }
+                                                        var preWrap = '<pre data-src="' + source + '" class="line-numbers"></pre>';
+                                                        element.html(preWrap);
+                                                    }
+                                                }
                                             } else {
                                                 element.html(theContent);
                                             }
