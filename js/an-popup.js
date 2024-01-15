@@ -167,7 +167,7 @@ function ANPopUp() {
                                     imagesDescription[i] = '';
                                     imagesDownloadable[i] = '';
                                 }
-                                html += '<img src="' + images[i] + '" alt="' + imagesAlt[i] + '" ' + imagesDescription[i] + ' ' + imagesDownloadable[i] + styleNotExists +'>';
+                                html += '<img src="' + images[i] + '" alt="' + imagesAlt[i] + '" ' + imagesDescription[i] + ' ' + imagesDownloadable[i] + styleNotExists + galleryOverlays[i] +'>';
                                 html += '</div>';
                             }
                             html += '</div>';
@@ -694,8 +694,14 @@ function ANPopUp() {
                             var $prevItemDescription = $prevItem.find('img').attr('data-description');
                             var $prevItemDownloadable = $prevItem.find('img').attr('data-downloadable');
                             var $prevItemSrc = $prevItem.find('img').attr('src');
+                            var $prevItemOverlay = $prevItem.find('img').attr('data-overlay');
 
                             $currentItem.removeClass('active');
+                            if ($prevItemOverlay !== undefined && $prevItemOverlay !== '') {
+                                $('.an-popup').attr('data-overlay', 'true').css('background-color', $prevItemOverlay);
+                            } else {
+                                $('.an-popup').removeAttr('data-overlay').removeAttr('style');
+                            }
                             thePopupTitle.text($prevItemTitle);
                             thePopupFooter.html('');
                             // Check if description is not empty
@@ -743,8 +749,14 @@ function ANPopUp() {
                             var $nextItemDescription = $nextItem.find('img').attr('data-description');
                             var $nextItemDownloadable = $nextItem.find('img').attr('data-downloadable');
                             var $nextItemSrc = $nextItem.find('img').attr('src');
+                            var $nextItemOverlay = $nextItem.find('img').attr('data-overlay');
 
                             $currentItem.removeClass('active');
+                            if ($nextItemOverlay !== undefined && $nextItemOverlay !== '') {
+                                $('.an-popup').attr('data-overlay', 'true').css('background-color', $nextItemOverlay);
+                            } else {
+                                $('.an-popup').removeAttr('data-overlay').removeAttr('style');
+                            }
                             thePopupTitle.text($nextItemTitle);
                             thePopupFooter.html('');
                             // Check if description is not empty
