@@ -446,53 +446,39 @@ function ANPopUp() {
                             }
                             // Check if source is hash or not
                             else if (source.match(/#/g)) {
-                                html += '<div class="an-popup-file-content">';
-                                html += '<div class="an-popup-file-content-inner"></div>';
-                                html += '</div>';
-                                var element = $('.an-popup-file-content-inner');
                                 // Find the target id
                                 var targetHashId = source.split('#').pop();
-                                // Set loading icon
-                                element.html('<div class="an-popup-file-content-loading"><span class="an-loading-icon" role="status" aria-hidden="true">Loading...</span></div>');
-                                // Check if target id is found
-                                if ($('#' + targetHashId).length) {
-                                    // Find the target id
-                                    var targetHashId = source.split('#').pop();
-                                    html += '<div class="an-popup-file-content">';
-                                    html += '<div class="an-popup-file-content-inner"><div class="an-popup-file-content-loading"><span class="an-loading-icon" role="status" aria-hidden="true">Loading...</span></div></div>';
-                                    html += '</div>';
-                                    setTimeout(function () {
-                                        var element = $('.an-popup-file-content-inner');
-                                        // Check if target id is found
-                                        if ($('#' + targetHashId).length) {
-                                            // Clone the target
-                                            var targetClone = $('#' + targetHashId).clone();
-                                            // Set content
-                                            element.html(targetClone);
-                                            // Remove class "an-hidden-target" from cloned content
-                                            targetClone.removeClass('an-hidden-target');
-                                            setTimeout(function () {
-                                                // Replace the target with the new content with class .an-hidden-target except cloned content
-                                                $('#' + targetHashId).not(targetClone).replaceWith('<div id="' + targetHashId + '-hidden" class="an-hidden-target"></div>');
-                                                $('.an-popup-footer').remove();
-                                            }, 100);
-                                            $(document).on('click', '.an-popup-close, .an-popup', function(e) {
-                                                if (!$(e.target).closest('.an-popup-content').length) {
-                                                    // Add class "an-hidden-target"
-                                                    targetClone.addClass('an-hidden-target');
-                                                    // Replace the new content with the target
-                                                    $('#' + targetHashId + '-hidden').replaceWith(targetClone);
-                                                }
-                                            });
-                                        } else {
-                                            // Set content
-                                            element.html('<div class="an-popup-file-content-not-found">File Content not found!</div>');
-                                        }
-                                    }, 250);
-                                } else {
-                                    // Set content
-                                    element.html('<div class="an-popup-file-content-not-found">File Content not found!</div>');
-                                }
+                                html += '<div class="an-popup-file-content">';
+                                html += '<div class="an-popup-file-content-inner"><div class="an-popup-file-content-loading"><span class="an-loading-icon" role="status" aria-hidden="true">Loading...</span></div></div>';
+                                html += '</div>';
+                                setTimeout(function () {
+                                    var element = $('.an-popup-file-content-inner');
+                                    // Check if target id is found
+                                    if ($('#' + targetHashId).length) {
+                                        // Clone the target
+                                        var targetClone = $('#' + targetHashId).clone();
+                                        // Set content
+                                        element.html(targetClone);
+                                        // Remove class "an-hidden-target" from cloned content
+                                        targetClone.removeClass('an-hidden-target');
+                                        setTimeout(function () {
+                                            // Replace the target with the new content with class .an-hidden-target except cloned content
+                                            $('#' + targetHashId).not(targetClone).replaceWith('<div id="' + targetHashId + '-hidden" class="an-hidden-target"></div>');
+                                            $('.an-popup-footer').remove();
+                                        }, 100);
+                                        $(document).on('click', '.an-popup-close, .an-popup', function(e) {
+                                            if (!$(e.target).closest('.an-popup-content').length) {
+                                                // Add class "an-hidden-target"
+                                                targetClone.addClass('an-hidden-target');
+                                                // Replace the new content with the target
+                                                $('#' + targetHashId + '-hidden').replaceWith(targetClone);
+                                            }
+                                        });
+                                    } else {
+                                        // Set content
+                                        element.html('<div class="an-popup-file-content-not-found">File Content not found!</div>');
+                                    }
+                                }, 250);
                             }
                             // Check if source is content ajax request (file)
                             else if (source.match(/\.(html|txt|md|json|js|css|scss|jsx|ts|tsx|xml)/g) && $(this).attr('data-type') !== 'qr-code') {
