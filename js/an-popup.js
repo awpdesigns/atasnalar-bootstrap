@@ -147,7 +147,10 @@ function ANPopUp() {
                             // Check if image more than 1
                             if (images.length > 1) {
                             html += '<span class="an-popup-gallery-prev an-popup-nav-slider" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: currentColor;"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg></span>';
-                            $('.an-popup-title-wrapper').append('<div class="an-popup-gallery-counter">(<span class="an-popup-gallery-counter-current"></span>/<span class="an-popup-gallery-counter-total">' + images.length + '</span>)</div>');
+                                // Check if an-popup-gallery-counter doesn't exists
+                                if ($('.an-popup-gallery-counter').length === 0) {
+                                    $('.an-popup-title-wrapper').append('<div class="an-popup-gallery-counter">(<span class="an-popup-gallery-counter-current"></span>/<span class="an-popup-gallery-counter-total">' + images.length + '</span>)</div>');
+                                }
                             }
                             html += '<div class="an-popup-gallery-inner">';
                             // Loop each image and add class active to the image that equals to clicked image and prevent duplicate image
@@ -463,7 +466,7 @@ function ANPopUp() {
                                         targetClone.removeClass('an-hidden-target');
                                         setTimeout(function () {
                                             // Replace the target with the new content with class .an-hidden-target except cloned content
-                                            $('#' + targetHashId).not(targetClone).replaceWith('<div id="' + targetHashId + '-hidden" class="an-hidden-target"></div>');
+                                            $('#' + targetHashId).not($('.an-popup-file-content-inner').find('#' + targetHashId)).replaceWith('<div id="' + targetHashId + '-hidden" class="an-hidden-target"></div>');
                                             $('.an-popup-footer').remove();
                                         }, 100);
                                         $(document).on('click', '.an-popup-close, .an-popup', function(e) {

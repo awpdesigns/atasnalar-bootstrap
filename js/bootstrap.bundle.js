@@ -7325,9 +7325,14 @@
         } else {
             showCursor = true;
         }
-
-        var typed = new ANTyped(el, typingText, typingSpeed, showCursor);
-        typed.tick();
+        // Check if already initialized
+        if (!el.classList.contains('an-typed-initialized')) {
+          var typed = new ANTyped(el, typingText, typingSpeed, showCursor);
+          typed.tick();
+          el.classList.add('an-typed-initialized');
+        } else {
+          return;
+        }
       });
     }
   }
