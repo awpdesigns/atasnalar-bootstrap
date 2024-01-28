@@ -118,3 +118,364 @@
   background-color: var(--#{$prefix}tooltip-bg);
   @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }
+
+// Tooltip Colors
+.tooltip {
+  &.tooltip-primary {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}primary);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}primary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}primary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}primary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}primary);
+      }
+  }
+  &.tooltip-secondary {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}secondary);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}secondary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}secondary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}secondary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}secondary);
+      }
+  }
+  &.tooltip-tertiary {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}tertiary);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}tertiary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}tertiary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}tertiary);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}tertiary);
+      }
+  }
+  &.tooltip-warning {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}warning);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}warning);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}warning);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}warning);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}warning);
+      }
+  }
+  &.tooltip-success {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}success);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}success);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}success);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}success);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}success);
+      }
+  }
+  &.tooltip-danger {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}danger);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}danger);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}danger);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}danger);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}danger);
+      }
+  }
+  &.tooltip-info {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}info);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}info);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}info);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}info);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}info);
+      }
+  }
+  &.tooltip-blue {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}blue);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}blue);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}blue);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}blue);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}blue);
+      }
+  }
+  &.tooltip-indigo {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}indigo);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}indigo);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}indigo);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}indigo);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}indigo);
+      }
+  }
+  &.tooltip-purple {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}purple);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}purple);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}purple);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}purple);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}purple);
+      }
+  }
+  &.tooltip-pink {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}pink);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}pink);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}pink);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}pink);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}pink);
+      }
+  }
+  &.tooltip-red {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}red);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}red);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}red);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}red);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}red);
+      }
+  }
+  &.tooltip-orange {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}orange);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}orange);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}orange);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}orange);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}orange);
+      }
+  }
+  &.tooltip-yellow {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}yellow);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}yellow);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}yellow);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}yellow);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}yellow);
+      }
+  }
+  &.tooltip-green {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}green);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}green);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}green);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}green);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}green);
+      }
+  }
+  &.tooltip-teal {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}teal);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}teal);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}teal);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}teal);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}teal);
+      }
+  }
+  &.tooltip-cyan {
+      .tooltip-inner {
+          background-color: var(--#{$prefix}cyan);
+          color: var(--#{$prefix}white);
+      }
+      &.tooltip-auto[data-popper-placement^=top] .tooltip-arrow:before,&.tooltip-top .tooltip-arrow:before {
+          border-top-color: var(--#{$prefix}cyan);
+      }
+
+      &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow:before,&.tooltip-end .tooltip-arrow:before {
+          border-right-color: var(--#{$prefix}cyan);
+      }
+
+      &.tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow:before,&.tooltip-bottom .tooltip-arrow:before {
+          border-bottom-color: var(--#{$prefix}cyan);
+      }
+
+      &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow:before,&.tooltip-start .tooltip-arrow:before {
+          border-left-color: var(--#{$prefix}cyan);
+      }
+  }
+}

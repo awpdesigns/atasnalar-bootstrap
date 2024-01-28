@@ -44,6 +44,8 @@ Sass Files:
 - Extend: Text Color (colors & theme colors) with hover state (.text-primary, text-hover-primary, etc.)
 - Extend: Background Color (colors & theme colors) with hover state (.bg-primary, bg-hover-primary, etc.)
 - Extend: Root Variables
+- Extend: Tooltip Color [Usages: add attribute data-custom-class="tooltip-{color}" to the element that has tooltip]
+  (primary, secondary, tertiary, success, info, warning, danger, blue, indigo, purple, pink, red, orange, yellow, green, teal, cyan)
 - Added: New Sass variables (circular progress bar, preloader, box shadow, etc.)
 - Added: New Sass mixins (button, box shadow, text, background, etc.)
 - Added: New Sass Utilities (box shadow, cursor, image width (.img-8 > .img-96, .img-128, .img-256, .img-512))
