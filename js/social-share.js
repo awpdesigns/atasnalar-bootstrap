@@ -102,7 +102,7 @@ var ANShare = function () {
                 socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-print" data-type="print"' + targetPrintElements + ' aria-label="' + prints + '" title="' + prints + '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg></button>';
             }
             if (account === 'copy') {
-                var copyTitle = socialShareElement.getAttribute('data-copy-title') || document.title;
+                var copyTitle = socialShareElement.getAttribute('data-copy-title') || docTitle;
                 socialShareElement.innerHTML += '<input type="hidden" name="copy-link" id="copy-link" value="' + shareUrl + '" />';
                 socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-copy" data-type="copy" aria-label="' + copy + '" title="' + copy + '" data-message="URL ' + copyTitle + ' ' + copysuccess + '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"></path><path d="M6 12h6v2H6zm0 4h6v2H6z"></path></svg></button>';
             }
@@ -120,7 +120,7 @@ var ANShare = function () {
         var shareButtons = document.querySelectorAll('.an-share-button');
         var shareContent = document.querySelector('[data-share-content]');
         shareButtons.forEach(function (button) {
-            var shareType = this.dataset.type;
+            var shareType = socialShareElement.getAttribute('data-type');
             button.addEventListener('click', function () {
                 if (shareType === 'facebook') {
                     var sharelink = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
