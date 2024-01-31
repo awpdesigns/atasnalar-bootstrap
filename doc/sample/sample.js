@@ -5,6 +5,7 @@ let sentences = indexes(words);
 sentences.unshift(words[0]);
 sentences.pop();
 
+// console.log(sentences);
 function indexes(source) {
     let output = [];
 

@@ -9,6 +9,21 @@
 <!--* To change form message, add attribute data-success-message="{your message}" or data-error-message="{your message}" to form element -->
 <!--* Add data-floating-validation="true" to form element to enable floating validation. This will automatically change class of valid/invalid-feedback to valid/invalid-tooltip instead of you change it manually (If there is any validation that you've already set). -->
 <form id="Form-ID" action="" method="post" class="row g-3 an-form" data-success-message="Your message has been sent successfully." data-error-message="I am sorry, there was an error. Please try again." data-floating-validation="true" autocomplete="off">
+    <!-- [Icon on input/textarea] Add class "has-icon" on form-group. then set <i class="{icon-class} icon-control"></i> before input/textarea/ (*Not support for form-floating) -->
+    <div class="col-12">
+        <div class="form-group has-icon">
+            <label for="icon">Input with icon</label>
+            <i class="ri-user-line icon-control"></i>
+            <input type="text" class="form-control" id="icon" name="icon" placeholder="Lorem Ipsum">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group has-icon">
+            <label for="icon-textarea">Textarea with icon</label>
+            <i class="ri-file-text-line icon-control"></i>
+            <textarea class="form-control" id="icon-textarea" name="icon-textarea" placeholder="Lorem Ipsum"></textarea>
+        </div>
+    </div>
     <!-- Text -->
     <div class="col-12">
         <div class="form-group">

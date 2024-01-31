@@ -30,6 +30,22 @@ var ANShare = function () {
     var socialShareElement = document.getElementById('an-social-share');
     if (socialShareElement) {
         var socialAccount = socialShareElement.getAttribute('data-share').split(',');
+        var shareUrl = window.location.href;
+        var docTitle = document.title;
+        var pageTitle = window.location.pathname.split('/').pop().replace('.html', '').replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+        // Check if attribute data-share-url is not set
+        if (socialShareElement.hasAttribute('data-share-url')) {
+            shareUrl = socialShareElement.getAttribute('data-share-url');
+        }
+        // Check if attribute data-share-title is not set
+        if (socialShareElement.hasAttribute('data-share-title')) {
+            docTitle = socialShareElement.getAttribute('data-share-title');
+        }
+        if (pageTitle === '') {
+            pageTitle = docTitle;
+        }
         socialAccount.forEach(function (account) {
             // if social account includes 'facebook'
             if (account === 'facebook') {
@@ -87,7 +103,7 @@ var ANShare = function () {
             }
             if (account === 'copy') {
                 var copyTitle = socialShareElement.getAttribute('data-copy-title') || document.title;
-                socialShareElement.innerHTML += '<input type="hidden" name="copy-link" id="copy-link" value="' + window.location.href + '" />';
+                socialShareElement.innerHTML += '<input type="hidden" name="copy-link" id="copy-link" value="' + shareUrl + '" />';
                 socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-copy" data-type="copy" aria-label="' + copy + '" title="' + copy + '" data-message="URL ' + copyTitle + ' ' + copysuccess + '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"></path><path d="M6 12h6v2H6zm0 4h6v2H6z"></path></svg></button>';
             }
         });
@@ -104,52 +120,45 @@ var ANShare = function () {
         var shareButtons = document.querySelectorAll('.an-share-button');
         var shareContent = document.querySelector('[data-share-content]');
         shareButtons.forEach(function (button) {
+            var shareType = this.dataset.type;
             button.addEventListener('click', function () {
-                var shareType = this.dataset.type;
-                var docTitle = document.title;
-                var pageTitle = window.location.pathname.split('/').pop().replace('.html', '').replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
-                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-                });
-                if (pageTitle === '') {
-                    pageTitle = docTitle;
-                }
                 if (shareType === 'facebook') {
-                    var sharelink = 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
+                    var sharelink = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
                     window.open(sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'twitter') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://twitter.com/intent/tweet?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'x') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://twitter.com/intent/tweet?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'pinterest') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://pinterest.com/pin/create/button/?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'linkedin') {
-                    var sharelink = encodeURIComponent(window.location.href + '&title=' + docTitle + '&source=' + window.location.href);
+                    var sharelink = encodeURIComponent(shareUrl + '&title=' + docTitle + '&source=' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(window.location.href + '&title=' + docTitle + '&summary=' + shareContent.innerHTML + '&source=' + window.location.href);
+                        sharelink = encodeURIComponent(shareUrl + '&title=' + docTitle + '&summary=' + shareContent.innerHTML + '&source=' + shareUrl);
                     }
                     window.open('https://www.linkedin.com/shareArticle/?mini=true&url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                     // window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'whatsapp') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     // window.open('whatsapp://send?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                     window.open('https://api.whatsapp.com/send?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
@@ -157,40 +166,40 @@ var ANShare = function () {
                     // window.open('https://web.whatsapp.com/send?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'telegram') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://telegram.me/share/url?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'line') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     // window.open('https://line.me/R/msg/text/?' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                     // window.open('https://social-plugins.line.me/lineit/share?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                     window.open('https://lineit.line.me/share/ui?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'skype') {
-                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://web.skype.com/share?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
                 else if (shareType === 'email') {
                     var subject = encodeURIComponent(sharepage + ': ' + pageTitle);
-                    var body = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var body = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        body = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        body = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
-                    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+                    shareUrl = 'mailto:?subject=' + subject + '&body=' + body;
                 }
                 else if (shareType === 'gmail') {
-                    var gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + window.location.href);
+                    var gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
                     if (shareContent) {
-                        gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + window.location.href);
+                        gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
                     }
                     window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=' + gmailLink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
                 }
@@ -471,7 +480,7 @@ function copyText(el) {
 }
 
 // Copy to clipboard other element with target id
-// Example: <button class="btn btn-primary onClick="copyThat('#target-id', 'text/html');">Copy</button>
+// Example: <button class="btn btn-primary onClick="copyThat('#target-id', '{text or html}');">Copy</button>
 // <p id="target-id">Content</p>
 function copyThat(target, type) {
     var content, temp;

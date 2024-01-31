@@ -43,6 +43,10 @@
         color: var(--#{$prefix}border-color);
         right: 0;
         cursor: pointer;
+        transition: color .3s ease;
+        &:hover, &:not(.pass-closed) {
+            color: currentColor !important;
+        }
     }
     &:has(.form-control-lg) {
         .form-control,
