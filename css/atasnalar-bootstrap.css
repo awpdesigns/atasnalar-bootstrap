@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Atas Nalar Bootstrap
+ * Atas Nalar Bootstrap v1.0.48
  * Re-implemented for products by Atas Nalar.
  * Removed Prefixes (bs-) from data attributes and (bs.) from script variables and functions to simplify the code and make it more readable for us and to be applied on our project/products.
  *
@@ -4235,6 +4235,10 @@ textarea.form-control-lg {
   color: var(--border-color);
   right: 0;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+.has-icon .toggle-password:hover, .has-icon .toggle-password:not(.pass-closed) {
+  color: currentColor !important;
 }
 .has-icon:has(.form-control-lg) .form-control,
 .has-icon:has(.form-control-lg) .form-select {
