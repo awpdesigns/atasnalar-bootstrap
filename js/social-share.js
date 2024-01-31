@@ -120,7 +120,7 @@ var ANShare = function () {
         var shareButtons = document.querySelectorAll('.an-share-button');
         var shareContent = document.querySelector('[data-share-content]');
         shareButtons.forEach(function (button) {
-            var shareType = socialShareElement.getAttribute('data-type');
+            var shareType = button.getAttribute('data-type');
             button.addEventListener('click', function () {
                 if (shareType === 'facebook') {
                     var sharelink = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
