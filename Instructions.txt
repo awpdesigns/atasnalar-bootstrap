@@ -1,6 +1,6 @@
 By default we set prefix to empty.
 If you set the prefix in your custom Sass file, Add data-prefix="{your-prefix}" to the html tag based on your prefix in your custom Sass file. (ex: data-prefix="bs-").
-This will help you to add custom prefix to the inline style in all html tags (ex: <span style="color: var(--color);"> to <span style="color: var(--bs-color);">).
+This will help you to add custom prefix to the inline style in all html tags (ex: <span style="color: var(--color);"> to <span style="color: var(--bs-color);">)..
 
 /* ==  Toggle Theme - Structure == */
     Default: <div class="toggle-theme"></div>
