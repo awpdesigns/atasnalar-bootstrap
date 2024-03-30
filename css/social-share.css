@@ -8,10 +8,41 @@
 */
 :root {
   --social-share-white: var(--white);
+  --social-share-black: var(--black);
+  --social-share-text: var(--social-share-white);
   --social-share-light: var(--primary-100);
   --social-share-dark: var(--primary);
   --social-share-rgb: var(--primary-rgb);
   --social-share-success: var(--teal);
+  --copy-color: var(--social-share-dark);
+  --copy-bg: var(--social-share-light);
+  --facebook-color: var(--social-share-dark);
+  --facebook-bg: var(--social-share-light);
+  --twitter-color: var(--social-share-dark);
+  --twitter-bg: var(--social-share-light);
+  --x-color: var(--social-share-dark);
+  --x-bg: var(--social-share-light);
+  --pinterest-color: var(--social-share-dark);
+  --pinterest-bg: var(--social-share-light);
+  --linkedin-color: var(--social-share-dark);
+  --linkedin-bg: var(--social-share-light);
+  --whatsapp-color: var(--social-share-dark);
+  --whatsapp-bg: var(--social-share-light);
+  --telegram-color: var(--social-share-dark);
+  --telegram-bg: var(--social-share-light);
+  --line-color: var(--social-share-dark);
+  --line-bg: var(--social-share-light);
+  --skype-color: var(--social-share-dark);
+  --skype-bg: var(--social-share-light);
+  --email-color: var(--social-share-dark);
+  --email-bg: var(--social-share-light);
+  --gmail-color: var(--social-share-dark);
+  --gmail-bg: var(--social-share-light);
+  --print-color: var(--social-share-dark);
+  --print-bg: var(--social-share-light);
+}
+
+[data-share-theme=colorful] {
   --facebook-color: #0050fc;
   --facebook-bg: #c2deff;
   --twitter-color: #1da1f2;
@@ -22,12 +53,12 @@
   --pinterest-bg: #ffc2c2;
   --linkedin-color: #1c3477;
   --linkedin-bg: #afc8e2;
-  --whatsapp-color: #00d44f;
-  --whatsapp-bg: #d7ffd7;
+  --whatsapp-color: #009c39;
+  --whatsapp-bg: #adf1ad;
   --telegram-color: #0088cc;
   --telegram-bg: #c2e8ff;
   --line-color: #00c300;
-  --line-bg: #c2ffc2;
+  --line-bg: #a1f3a1;
   --skype-color: #00aff0;
   --skype-bg: #c2f7ff;
   --email-color: #4c75a3;
@@ -36,8 +67,6 @@
   --gmail-bg: #ffc2c2;
   --print-color: #35465c;
   --print-bg: #e0e0ef;
-  --copy-color: var(--social-share-dark);
-  --copy-bg: var(--social-share-100);
 }
 
 #an-social-share-trigger {
@@ -49,6 +78,17 @@
   border: 0;
   border-radius: var(--border-radius);
   font-size: initial;
+  background-color: var(--light-bg-subtle);
+  color: var(--body-color);
+  transition: all 0.2s ease;
+}
+
+#an-social-share-trigger:hover {
+  background-color: var(--social-share-light);
+  color: var(--social-share-dark);
+}
+
+#an-social-share-trigger.an-dropdown-active {
   background-color: var(--social-share-dark);
   color: var(--social-share-text);
 }
@@ -86,6 +126,7 @@ div#an-social-share {
 #an-social-share .an-social-share-title {
   display: flex;
   align-items: center;
+  justify-content: inherit;
   gap: 0.25rem;
 }
 
@@ -136,7 +177,7 @@ div#an-social-share {
   min-width: 2.25rem;
   min-height: 2.5rem;
   padding: 0 0.75rem;
-  background-color: var(--social-share-100);
+  background-color: var(--social-share-light);
   transition: transform 0.3s ease;
   border-radius: var(--border-radius);
   border: 0;
@@ -166,6 +207,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=facebook] {
   color: var(--facebook-color);
   background-color: var(--facebook-bg);
+  fill: var(--facebook-color);
 }
 
 #an-social-share [class^=an-share-][data-type=facebook]:hover,
@@ -178,6 +220,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=twitter] {
   color: var(--twitter-color);
   background-color: var(--twitter-bg);
+  fill: var(--twitter-color);
 }
 
 #an-social-share [class^=an-share-][data-type=twitter]:hover,
@@ -190,6 +233,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=x] {
   color: var(--x-color);
   background-color: var(--x-bg);
+  fill: var(--x-color);
 }
 
 #an-social-share [class^=an-share-][data-type=x]:hover,
@@ -202,6 +246,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=pinterest] {
   color: var(--pinterest-color);
   background-color: var(--pinterest-bg);
+  fill: var(--pinterest-color);
 }
 
 #an-social-share [class^=an-share-][data-type=pinterest]:hover,
@@ -214,6 +259,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=linkedin] {
   color: var(--linkedin-color);
   background-color: var(--linkedin-bg);
+  fill: var(--linkedin-color);
 }
 
 #an-social-share [class^=an-share-][data-type=linkedin]:hover,
@@ -226,6 +272,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=whatsapp] {
   color: var(--whatsapp-color);
   background-color: var(--whatsapp-bg);
+  fill: var(--whatsapp-color);
 }
 
 #an-social-share [class^=an-share-][data-type=whatsapp]:hover,
@@ -238,6 +285,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=telegram] {
   color: var(--telegram-color);
   background-color: var(--telegram-bg);
+  fill: var(--telegram-color);
 }
 
 #an-social-share [class^=an-share-][data-type=telegram]:hover,
@@ -247,9 +295,15 @@ div#an-social-share {
   background-color: var(--telegram-color);
 }
 
+#an-social-share [class^=an-share-][data-type=line] path {
+  width: 100%;
+  height: 100%;
+}
+
 #an-social-share [class^=an-share-][data-type=line] {
   color: var(--line-color);
   background-color: var(--line-bg);
+  fill: var(--line-color);
 }
 
 #an-social-share [class^=an-share-][data-type=line]:hover,
@@ -262,6 +316,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=skype] {
   color: var(--skype-color);
   background-color: var(--skype-bg);
+  fill: var(--skype-color);
 }
 
 #an-social-share [class^=an-share-][data-type=skype]:hover,
@@ -274,6 +329,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=email] {
   color: var(--email-color);
   background-color: var(--email-bg);
+  fill: var(--email-color);
 }
 
 #an-social-share [class^=an-share-][data-type=email]:hover,
@@ -286,6 +342,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=gmail] {
   color: var(--gmail-color);
   background-color: var(--gmail-bg);
+  fill: var(--gmail-color);
 }
 
 #an-social-share [class^=an-share-][data-type=gmail]:hover,
@@ -298,6 +355,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=print] {
   color: var(--print-color);
   background-color: var(--print-bg);
+  fill: var(--print-color);
 }
 
 #an-social-share [class^=an-share-][data-type=print]:hover,
@@ -310,6 +368,7 @@ div#an-social-share {
 #an-social-share [class^=an-share-][data-type=copy] {
   color: var(--copy-color);
   background-color: var(--copy-bg);
+  fill: var(--copy-color);
 }
 
 #an-social-share [class^=an-share-][data-type=copy]:hover,
@@ -319,16 +378,24 @@ div#an-social-share {
   background-color: var(--copy-color);
 }
 
-[data-theme=dark] #an-social-share [class^=an-share-] {
-  color: var(--social-share-300);
-  fill: var(--social-share-300);
+[data-theme=dark] #an-social-share:not([data-share-theme=colorful]) [class^=an-share-] {
+  color: var(--social-share-light);
+  fill: var(--social-share-light);
   background-color: rgba(var(--social-share-rgb), 0.2);
+}
+
+[data-theme=dark] #an-social-share:not([data-share-theme=colorful]) [class^=an-share-]:hover {
+  color: var(--social-share-text);
+  fill: var(--social-share-text);
+  background-color: var(--social-share-dark);
 }
 
 #an-social-share[data-icon-background=false] [class^=an-share-] {
   --social-share-text: var(--body-color) !important;
   background-color: transparent !important;
+  min-width: -moz-fit-content;
   min-width: fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   padding: 0 0.375rem;
 }
@@ -338,12 +405,13 @@ div#an-social-share {
 }
 
 [data-theme=dark] #an-social-share[data-icon-background=false] [class^=an-share-]:hover {
-  color: var(--social-share-300) !important;
+  color: var(--social-share-light) !important;
 }
 
 /* Type Dropdown */
 #an-social-share-dropdown {
   position: relative;
+  display: inline-block;
 }
 
 #an-social-share-dropdown ul#an-social-share {
@@ -373,6 +441,7 @@ div#an-social-share {
 
 #an-social-share-dropdown ul#an-social-share[data-display=icon] {
   flex-direction: row;
+  width: max-content;
 }
 
 #an-social-share-dropdown ul#an-social-share[data-display=icon][data-icon-background=false] {
@@ -434,6 +503,7 @@ div#an-social-share {
   z-index: 5000;
   background: rgba(var(--social-share-rgb), 0.1);
   box-shadow: 0 4px 30px rgba(28, 31, 38, 0.1);
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
@@ -550,8 +620,8 @@ div#an-social-share {
 
 /* @media (prefers-color-scheme: dark) {
     #an-social-share a {
-        color: var(--social-share-300);
-        fill: var(--social-share-300);
+        color: var(--social-share-light);
+        fill: var(--social-share-light);
         background-color: rgba(var(--social-share-rgb), 0.2);
     }
         ul#an-social-share.show {
@@ -583,6 +653,7 @@ div#an-social-share {
   fill: var(--social-share-text);
   padding: 1rem 1.5rem;
   text-align: center;
+  width: -moz-fit-content;
   width: fit-content;
   position: fixed;
   top: 1.25rem;
@@ -595,6 +666,13 @@ div#an-social-share {
   gap: 0.25rem;
 }
 
+@media only screen and (max-width: 767.98px) {
+  .an-share-alert-copied {
+    width: 90%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
 /* Size */
 #an-social-share[data-size=small]:not([data-icon-background=false]) [class^=an-share-] {
   min-width: 2.25em !important;
@@ -607,6 +685,7 @@ div#an-social-share {
   min-height: 2.25em !important;
   padding: 0.25em 0.5em !important;
 }
+
 #an-social-share[data-size=small] [class^=an-share-] svg {
   width: 14px;
 }
@@ -617,6 +696,7 @@ div#an-social-share {
   min-height: 2.75em !important;
   padding: 0.25em 0.5em !important;
 }
+
 #an-social-share[data-size=large] [class^=an-share-] svg {
   width: 24px;
 }

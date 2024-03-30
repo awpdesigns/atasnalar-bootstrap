@@ -3,37 +3,32 @@
 <!-- [Required] Share Media = Attribute data-share="{facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy}" on the element with id="an-social-share" -->
 <!-- [Required] Attribute data-icon-background="{true/false}" on the element with id="an-social-share" -->
 <!-- [Required] Attribute data-size="{small/medium/large}" on the element with id="an-social-share" -->
+<!-- [Optional] Add attribute data-share-theme="colorful" on the element with id="an-social-share" to use color icon of each social media -->
 <!--^ [Note] For print: you can use "print:{targetClass/Id}" to print specific element. Example: print:#print or print:.print
 
 <!--! Type: Dropdown -->
 <div id="an-social-share-dropdown">
-    <button id="an-social-share-trigger" class="an-social-share-button" type="button">
-        Share
-    </button>
-    <ul id="an-social-share" data-display="both" data-share="facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" class="an-social-share-list" data-icon-background="true" data-size="medium"></ul>
+	<button id="an-social-share-trigger" class="an-social-share-button" type="button">Share</button>
+	<ul id="an-social-share" data-display="both" data-share="facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" class="an-social-share-list" data-icon-background="true" data-size="medium"></ul>
 </div>
-
 
 <!--! Type: Inline -->
 <div id="an-social-share" data-display="icon" data-share="facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" data-icon-background="true" data-size="medium">
-    <div class="an-social-share-title w-100 w-sm-auto">
-        <span>Share</span>
-    </div>
+	<div class="an-social-share-title w-100 w-sm-auto">
+		<span>Share</span>
+	</div>
 </div>
 
-
 <!--! Type: Modal -->
-<button id="an-social-share-trigger" class="an-social-share-button" type="button">
-    Share
-</button>
+<button id="an-social-share-trigger" class="an-social-share-button" type="button">Share</button>
 <div id="an-social-share-modal">
-    <div class="an-social-share-modal-content">
-        <div class="an-social-share-modal-header">
-            <h4 class="an-social-share-title">Share</h4>
-            <button type="button" class="an-social-share-close" aria-label="Close"></button>
-        </div>
-        <div class="an-social-share-modal-body">
-            <div id="an-social-share" data-display="text" data-share="facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" data-icon-background="true" data-size="medium"></div>
-        </div>
-    </div>
+	<div class="an-social-share-modal-content">
+		<div class="an-social-share-modal-header">
+			<h4 class="an-social-share-title">Share</h4>
+			<button type="button" class="an-social-share-close" aria-label="Close"></button>
+		</div>
+		<div class="an-social-share-modal-body">
+			<div id="an-social-share" data-display="text" data-share="facebook,twitter,twitter-x,pinterest,linkedin,whatsapp,telegram,line,skype,email,gmail,print,copy" data-icon-background="true" data-size="medium"></div>
+		</div>
+	</div>
 </div>
