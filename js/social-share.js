@@ -7,24 +7,20 @@
  *  License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 var shareText = 'Share to';
-var sendText = 'Send to';
 var prints = 'Print';
 var copy = 'Copy Link';
 var copied = 'Copied!';
 var copysuccess = 'successfully copied';
 var sharetitle = 'Title';
-var sharecontent = 'Content';
-var sharepage = 'Page';
+var sharecontentText = 'Content';
 if (document.documentElement.lang && document.documentElement.lang === 'id') {
 	shareText = 'Bagikan ke';
-	sendText = 'Kirim ke';
 	prints = 'Cetak';
 	copy = 'Salin Tautan';
 	copied = 'Tersalin!';
 	copysuccess = 'berhasil disalin';
 	sharetitle = 'Judul';
-	sharecontent = 'Konten';
-	sharepage = 'Halaman';
+	sharecontentText = 'Konten';
 }
 var ANShare = function () {
 	var socialShareElement = document.getElementById('an-social-share');
@@ -88,13 +84,17 @@ var ANShare = function () {
 			if (account === 'skype') {
 				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-skype" data-type="skype" aria-label="Skype" title="' + shareText + ' Skype"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M11.857 17.417c-2.947 0-4.294-1.524-4.294-2.641 0-.266.108-.521.298-.705a.946.946 0 0 1 .71-.264c1.261 0 .931 1.92 3.286 1.92 1.203 0 1.91-.736 1.91-1.425 0-.415-.234-.889-1.028-1.079l-2.629-.673c-2.111-.545-2.479-1.737-2.479-2.842 0-2.293 2.068-3.124 4.036-3.124 1.814 0 3.97 1.016 3.97 2.391 0 .592-.488.91-1.055.91-1.078 0-.897-1.536-3.063-1.536-1.077 0-1.645.513-1.645 1.23s.839.96 1.574 1.123l1.941.445c2.126.486 2.691 1.751 2.691 2.963 0 1.865-1.423 3.305-4.226 3.305m8.139-3.942c.086-.49.128-.986.128-1.482a8.472 8.472 0 0 0-2.952-6.474 8.211 8.211 0 0 0-6.788-1.856A4.818 4.818 0 0 0 7.935 3a4.954 4.954 0 0 0-4.27 2.519 5.103 5.103 0 0 0-.015 5.011 8.51 8.51 0 0 0 2.282 7.453 8.23 8.23 0 0 0 7.333 2.355 4.823 4.823 0 0 0 2.443.662 4.954 4.954 0 0 0 4.269-2.518 5.095 5.095 0 0 0 .016-5.009"></path></svg></button>';
 			}
+			// if social account includes 'threads'
+			if (account === 'threads') {
+				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-threads" data-type="threads" aria-label="Threads" title="' + shareText + ' Threads"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M12.1835 1.41016L12.1822 1.41016C9.09012 1.43158 6.70036 2.47326 5.09369 4.51569C3.66581 6.33087 2.93472 8.86436 2.91016 12.0068V12.0082C2.93472 15.1508 3.66586 17.6696 5.09369 19.4847C6.70043 21.5271 9.10257 22.5688 12.1946 22.5902H12.1958C14.944 22.5711 16.8929 21.8504 18.4985 20.2463C20.6034 18.1434 20.5408 15.5048 19.8456 13.8832C19.3163 12.6493 18.2709 11.6618 16.8701 11.0477C16.6891 8.06345 15.0097 6.32178 12.2496 6.30415C10.6191 6.29409 9.14792 7.02378 8.24685 8.39104L9.90238 9.5267C10.4353 8.71818 11.2789 8.32815 12.2371 8.33701C13.6244 8.34586 14.5362 9.11128 14.7921 10.4541C14.02 10.3333 13.1902 10.2982 12.3076 10.3488C9.66843 10.5008 7.9399 12.061 8.05516 14.2244C8.17571 16.4862 10.367 17.7186 12.4476 17.605C14.9399 17.4684 16.4209 15.6292 16.7722 13.2836C17.3493 13.6575 17.7751 14.1344 18.0163 14.6969C18.4559 15.7222 18.4838 17.4132 17.1006 18.7952C15.8838 20.0108 14.4211 20.5407 12.1891 20.5572C9.71428 20.5388 7.85698 19.746 6.65154 18.2136C5.51973 16.7748 4.92843 14.6882 4.90627 12.0002C4.92843 9.31211 5.51973 7.22549 6.65154 5.78673C7.85698 4.25433 9.71424 3.46156 12.189 3.44303C14.6819 3.4617 16.5728 4.25837 17.8254 5.79937C18.5162 6.64934 18.949 7.66539 19.2379 8.71407L21.1776 8.19656C20.8148 6.85917 20.2414 5.58371 19.363 4.50305C17.7098 2.46918 15.2816 1.43166 12.1835 1.41016ZM12.4204 12.3782C13.3044 12.3272 14.1239 12.3834 14.8521 12.5345C14.7114 14.1116 14.0589 15.4806 12.3401 15.575C11.2282 15.6376 10.1031 15.1413 10.0484 14.114C10.0077 13.3503 10.5726 12.4847 12.4204 12.3782Z"></path></svg></button>';
+			}
 			// if social account includes 'email'
 			if (account === 'email') {
-				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-email" data-type="email" aria-label="Email" title="' + sendText + ' Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg></button>';
+				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-email" data-type="email" aria-label="Email" title="' + shareText + ' Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg></button>';
 			}
 			// if social account includes 'gmail'
 			if (account === 'gmail') {
-				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-gmail" data-type="gmail" aria-label="Gmail" title="' + sendText + ' Gmail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="m18.73 5.41-1.28 1L12 10.46 6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64z"></path></svg></button>';
+				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-gmail" data-type="gmail" aria-label="Gmail" title="' + shareText + ' Gmail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="m18.73 5.41-1.28 1L12 10.46 6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64z"></path></svg></button>';
 			}
 			// if social account includes 'print' or 'print:{target class/id}'
 			if (account === 'print' || account.includes('print:')) {
@@ -123,7 +123,30 @@ var ANShare = function () {
 		});
 		// On Click
 		var shareButtons = document.querySelectorAll('.an-share-button');
-		var shareContent = document.querySelector('[data-share-content]');
+		// Check if more than one element that has [data-share-content] then get all elements text
+		var shareContent = document.querySelectorAll('[data-share-content]');
+		var shareContentData = '';
+		if (shareContent.length > 1) {
+			shareContent.forEach(function (content) {
+				if (content.nodeType === 3) {
+					shareContentData += content.textContent + '.\n\n';
+				} else {
+					// Get all tex
+					shareContentData += content.textContent + '.\n\n';
+				}
+			});
+		} else if (shareContent.length === 1) {
+			if (shareContent.nodeType === 3) {
+				shareContentData = shareContent[0].textContent;
+			} else {
+				shareContentData = shareContent[0].textContent;
+			}
+		} else {
+			var singleShareContent = document.querySelector('[data-share-content]');
+			if (singleShareContent) {
+				shareContentData = singleShareContent.textContent;
+			}
+		}
 		shareButtons.forEach(function (button) {
 			var shareType = button.getAttribute('data-type');
 			button.addEventListener('click', function () {
@@ -133,32 +156,32 @@ var ANShare = function () {
 				} else if (shareType === 'twitter') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://twitter.com/intent/tweet?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'x') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://twitter.com/intent/tweet?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'pinterest') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://pinterest.com/pin/create/button/?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'linkedin') {
 					var sharelink = encodeURIComponent(shareUrl + '&title=' + docTitle + '&source=' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(shareUrl + '&title=' + docTitle + '&summary=' + shareContent.innerHTML + '&source=' + shareUrl);
+						sharelink = encodeURIComponent(shareUrl + '&title=' + docTitle + '&summary=' + shareContentData + '&source=' + shareUrl);
 					}
 					window.open('https://www.linkedin.com/shareArticle/?mini=true&url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 					// window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'whatsapp') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					// window.open('whatsapp://send?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 					window.open('https://api.whatsapp.com/send?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
@@ -167,13 +190,13 @@ var ANShare = function () {
 				} else if (shareType === 'telegram') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://telegram.me/share/url?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'line') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					// window.open('https://line.me/R/msg/text/?' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 					// window.open('https://social-plugins.line.me/lineit/share?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
@@ -181,20 +204,26 @@ var ANShare = function () {
 				} else if (shareType === 'skype') {
 					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://web.skype.com/share?url=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
+				} else if (shareType === 'threads') {
+					var sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
+					if (shareContent) {
+						sharelink = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
+					}
+					window.open('https://threads.net/intent/post?text=' + sharelink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'email') {
-					var subject = encodeURIComponent(sharepage + ': ' + pageTitle);
+					var subject = encodeURIComponent(pageTitle);
 					var body = encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						body = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						body = encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					shareUrl = 'mailto:?subject=' + subject + '&body=' + body;
 				} else if (shareType === 'gmail') {
-					var gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
+					var gmailLink = encodeURIComponent(pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\nLink url: ' + shareUrl);
 					if (shareContent) {
-						gmailLink = encodeURIComponent(sharepage + ': ' + pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontent + ': ' + shareContent.innerHTML + '\nLink url: ' + shareUrl);
+						gmailLink = encodeURIComponent(pageTitle) + '&body=' + encodeURIComponent(sharetitle + ': ' + docTitle + '\n' + sharecontentText + ': ' + shareContentData + '\nLink url: ' + shareUrl);
 					}
 					window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=' + gmailLink, '_blank', 'width=626,height=436,scrollbars=yes,resizable=yes');
 				} else if (shareType === 'print') {
@@ -244,98 +273,80 @@ var ANShare = function () {
 			});
 		});
 	}
-};
-window.addEventListener('load', function () {
-	ANShare();
-});
 
-// Get Dropdown
-const dropdown = document.getElementById('an-social-share-dropdown');
-// Check if Dropdown exists
-if (dropdown) {
-	// Get Dropdown Trigger
-	const dropdownTrigger = document.getElementById('an-social-share-trigger');
-	// Get Dropdown List
-	const dropdownList = document.querySelector('.an-social-share-list');
-	// Get Share Copy Button
-	const shareCopy = document.querySelector('.an-share-copy');
+	// Get Dropdown
+	const dropdown = document.getElementById('an-social-share-dropdown');
+	// Check if Dropdown exists
+	if (dropdown) {
+		// Get Dropdown Trigger
+		const dropdownTrigger = document.getElementById('an-social-share-trigger');
+		// Get Dropdown List
+		const dropdownList = document.querySelector('.an-social-share-list');
+		// Get Share Copy Button
+		const shareCopy = document.querySelector('.an-share-copy');
 
-	// Set Dropdown position to left/right/top/bottom if it's not in view
-	function setDropdownPosition() {
-		var dropdownLeft = dropdown.getBoundingClientRect().left;
-		var dropdownTop = dropdown.getBoundingClientRect().top;
-		var dropdownWidth = dropdown.offsetWidth + 110;
-		var dropdownHeight = dropdown.offsetHeight + 110;
-		var anData = document.querySelector('[data-an-scroll]') || document.getElementById('an-data') || '';
-		var windowWidth = anData.clientWidth || window.innerWidth;
-		var windowHeight = anData.clientHeight || window.innerHeight;
+		// Set Dropdown position to left/right/top/bottom if it's not in view
+		function setDropdownPosition() {
+			var dropdownLeft = dropdown.getBoundingClientRect().left;
+			var dropdownTop = dropdown.getBoundingClientRect().top;
+			var dropdownWidth = dropdown.offsetWidth + 110;
+			var dropdownHeight = dropdown.offsetHeight + 110;
+			var anData = document.querySelector('[data-an-scroll]') || document.getElementById('an-data') || '';
+			var windowWidth = anData.clientWidth || window.innerWidth;
+			var windowHeight = anData.clientHeight || window.innerHeight;
 
-		// Set Dropdown position to left if it's not in view
-		if (dropdownLeft < windowWidth / 2) {
-			dropdownList.classList.add('an-dropdown-right');
-		} else {
-			dropdownList.classList.remove('an-dropdown-right');
-		}
-		// Set Dropdown position to right if it's not in view
-		if (dropdownLeft + dropdownWidth > windowWidth) {
-			dropdownList.classList.add('an-dropdown-left');
-		} else {
-			dropdownList.classList.remove('an-dropdown-left');
-		}
-		// Set Dropdown position to top if it's not in view
-		if (dropdownTop < windowHeight / 2) {
-			dropdownList.classList.add('an-dropdown-bottom');
-		} else {
-			dropdownList.classList.remove('an-dropdown-bottom');
-		}
-		// Set Dropdown position to bottom if it's not in view
-		if (dropdownTop + dropdownHeight > windowHeight) {
-			dropdownList.classList.add('an-dropdown-top');
-		} else {
-			dropdownList.classList.remove('an-dropdown-top');
-		}
-	}
-	setDropdownPosition();
-
-	// Set Dropdown position on resize and orientation change and scroll
-	window.addEventListener('resize', function () {
-		setDropdownPosition();
-	});
-	window.addEventListener('orientationchange', function () {
-		setDropdownPosition();
-	});
-	window.addEventListener('scroll', function () {
-		setDropdownPosition();
-	});
-
-	if (dropdownTrigger) {
-		// Open List and set position
-		dropdownTrigger.addEventListener('click', function () {
-			// Add active class to trigger
-			dropdownTrigger.classList.toggle('an-dropdown-active');
-			dropdownList.classList.toggle('an-dropdown-show');
-			document.body.classList.toggle('an-dropdown-open');
-			setDropdownPosition();
-		});
-	}
-
-	// Close list when click outside
-	document.addEventListener('click', function (e) {
-		if (dropdownList && !dropdown.contains(e.target)) {
-			// Remove class from list and body
-			dropdownList.classList.remove('an-dropdown-show');
-			document.body.classList.remove('an-dropdown-open');
-			// Remove class from trigger
-			if (dropdownTrigger) {
-				dropdownTrigger.classList.remove('an-dropdown-active');
+			// Set Dropdown position to left if it's not in view
+			if (dropdownLeft < windowWidth / 2) {
+				dropdownList.classList.add('an-dropdown-right');
+			} else {
+				dropdownList.classList.remove('an-dropdown-right');
+			}
+			// Set Dropdown position to right if it's not in view
+			if (dropdownLeft + dropdownWidth > windowWidth) {
+				dropdownList.classList.add('an-dropdown-left');
+			} else {
+				dropdownList.classList.remove('an-dropdown-left');
+			}
+			// Set Dropdown position to top if it's not in view
+			if (dropdownTop < windowHeight / 2) {
+				dropdownList.classList.add('an-dropdown-bottom');
+			} else {
+				dropdownList.classList.remove('an-dropdown-bottom');
+			}
+			// Set Dropdown position to bottom if it's not in view
+			if (dropdownTop + dropdownHeight > windowHeight) {
+				dropdownList.classList.add('an-dropdown-top');
+			} else {
+				dropdownList.classList.remove('an-dropdown-top');
 			}
 		}
-	});
+		setDropdownPosition();
 
-	// Close list when press ESC
-	document.addEventListener('keydown', function (e) {
-		if (e.keyCode === 27) {
-			if (dropdownList) {
+		// Set Dropdown position on resize and orientation change and scroll
+		window.addEventListener('resize', function () {
+			setDropdownPosition();
+		});
+		window.addEventListener('orientationchange', function () {
+			setDropdownPosition();
+		});
+		window.addEventListener('scroll', function () {
+			setDropdownPosition();
+		});
+
+		if (dropdownTrigger) {
+			// Open List and set position
+			dropdownTrigger.addEventListener('click', function () {
+				// Add active class to trigger
+				dropdownTrigger.classList.toggle('an-dropdown-active');
+				dropdownList.classList.toggle('an-dropdown-show');
+				document.body.classList.toggle('an-dropdown-open');
+				setDropdownPosition();
+			});
+		}
+
+		// Close list when click outside
+		document.addEventListener('click', function (e) {
+			if (dropdownList && !dropdown.contains(e.target)) {
 				// Remove class from list and body
 				dropdownList.classList.remove('an-dropdown-show');
 				document.body.classList.remove('an-dropdown-open');
@@ -344,60 +355,79 @@ if (dropdown) {
 					dropdownTrigger.classList.remove('an-dropdown-active');
 				}
 			}
-		}
-	});
-}
-// Get Modal
-const modal = document.getElementById('an-social-share-modal');
+		});
 
-// Check if modal exists
-if (modal) {
-	// Get Modal Trigger
-	const modalTrigger = document.getElementById('an-social-share-trigger');
-	// Get Close Button
-	const closeBtn = document.querySelector('.an-social-share-close');
-
-	// On load
-	window.addEventListener('load', function () {
-		// Move modal to body and prevent duplicate modal
-		document.body.appendChild(modal);
-	});
-
-	if (modalTrigger) {
-		// Open Modal
-		modalTrigger.addEventListener('click', function () {
-			// Add class to modal and body
-			modal.classList.add('an-modal-show');
-			document.body.classList.add('an-modal-open');
+		// Close list when press ESC
+		document.addEventListener('keydown', function (e) {
+			if (e.keyCode === 27) {
+				if (dropdownList) {
+					// Remove class from list and body
+					dropdownList.classList.remove('an-dropdown-show');
+					document.body.classList.remove('an-dropdown-open');
+					// Remove class from trigger
+					if (dropdownTrigger) {
+						dropdownTrigger.classList.remove('an-dropdown-active');
+					}
+				}
+			}
 		});
 	}
-	if (closeBtn) {
-		// Close Modal
-		closeBtn.addEventListener('click', function () {
-			// Remove class from modal and body
-			modal.classList.remove('an-modal-show');
-			document.body.classList.remove('an-modal-open');
+	// Get Modal
+	const modal = document.getElementById('an-social-share-modal');
+
+	// Check if modal exists
+	if (modal) {
+		// Get Modal Trigger
+		const modalTrigger = document.getElementById('an-social-share-trigger');
+		// Get Close Button
+		const closeBtn = document.querySelector('.an-social-share-close');
+
+		// On load
+		window.addEventListener('load', function () {
+			// Move modal to body and prevent duplicate modal
+			document.body.appendChild(modal);
+		});
+
+		if (modalTrigger) {
+			// Open Modal
+			modalTrigger.addEventListener('click', function () {
+				// Add class to modal and body
+				modal.classList.add('an-modal-show');
+				document.body.classList.add('an-modal-open');
+			});
+		}
+		if (closeBtn) {
+			// Close Modal
+			closeBtn.addEventListener('click', function () {
+				// Remove class from modal and body
+				modal.classList.remove('an-modal-show');
+				document.body.classList.remove('an-modal-open');
+			});
+		}
+
+		// Close modal when click outside modal
+		document.addEventListener('click', function (e) {
+			if (e.target === modal) {
+				// Remove class from modal and body
+				modal.classList.remove('an-modal-show');
+				document.body.classList.remove('an-modal-open');
+			}
+		});
+
+		// Close modal when press ESC
+		document.addEventListener('keydown', function (e) {
+			if (e.keyCode === 27) {
+				// Remove class from modal and body
+				modal.classList.remove('an-modal-show');
+				document.body.classList.remove('an-modal-open');
+			}
 		});
 	}
-
-	// Close modal when click outside modal
-	document.addEventListener('click', function (e) {
-		if (e.target === modal) {
-			// Remove class from modal and body
-			modal.classList.remove('an-modal-show');
-			document.body.classList.remove('an-modal-open');
-		}
-	});
-
-	// Close modal when press ESC
-	document.addEventListener('keydown', function (e) {
-		if (e.keyCode === 27) {
-			// Remove class from modal and body
-			modal.classList.remove('an-modal-show');
-			document.body.classList.remove('an-modal-open');
-		}
-	});
-}
+};
+// Run ANShare function On Load
+window.addEventListener('load', function () {
+	ANShare();
+});
 
 // Print Specific Element
 printElement = function (elementHtml) {

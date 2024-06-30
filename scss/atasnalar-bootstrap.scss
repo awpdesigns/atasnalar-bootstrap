@@ -1,66 +1,65 @@
-@import "mixins/banner";
-@include Banner("");
-
+@import 'mixins/banner';
+@include Banner('');
 
 // scss-docs-start import-stack
 // Configuration
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "utilities";
+@import 'functions';
+@import 'variables';
+@import 'variables-dark';
+@import 'maps';
+@import 'mixins';
+@import 'utilities';
 
 // Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "button-icon-social"; // Atas Nalar
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "accordion";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "alert";
-@import "progress";
-@import "progress-circular"; // Atas Nalar
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "typed-text"; // Atas Nalar
-@import "popover";
-@import "carousel";
-@import "spinners";
-@import "offcanvas";
-@import "placeholders";
-@import "input-slider"; // Atas Nalar
-@import "pre-blockquotes"; // Atas Nalar
-@import "broken-image"; // Atas Nalar
-@import "excerpt"; // Atas Nalar
-@import "floating"; // Atas Nalar
-@import "pseudo"; // Atas Nalar
-@import "strike"; // Atas Nalar
-@import "preloader"; // Atas Nalar
-@import "theme-toggle"; // Atas Nalar
-@import "animation"; // Atas Nalar
-@import "scrollbar"; // Atas Nalar
+@import 'root';
+@import 'reboot';
+@import 'type';
+@import 'images';
+@import 'containers';
+@import 'grid';
+@import 'tables';
+@import 'forms';
+@import 'buttons';
+@import 'button-icon-social'; // Atas Nalar
+@import 'transitions';
+@import 'dropdown';
+@import 'button-group';
+@import 'nav';
+@import 'navbar';
+@import 'card';
+@import 'accordion';
+@import 'breadcrumb';
+@import 'pagination';
+@import 'badge';
+@import 'alert';
+@import 'progress';
+@import 'progress-circular'; // Atas Nalar
+@import 'list-group';
+@import 'close';
+@import 'toasts';
+@import 'modal';
+@import 'tooltip';
+@import 'typed-text'; // Atas Nalar
+@import 'popover';
+@import 'carousel';
+@import 'spinners';
+@import 'offcanvas';
+@import 'placeholders';
+@import 'input-slider'; // Atas Nalar
+@import 'pre-blockquotes'; // Atas Nalar
+@import 'broken-image'; // Atas Nalar
+@import 'excerpt'; // Atas Nalar
+@import 'floating'; // Atas Nalar
+@import 'pseudo'; // Atas Nalar
+@import 'strike'; // Atas Nalar
+@import 'preloader'; // Atas Nalar
+@import 'theme-toggle'; // Atas Nalar
+@import 'animation'; // Atas Nalar
+@import 'scrollbar'; // Atas Nalar
 
 // Helpers
-@import "helpers";
+@import 'helpers';
 
 // Utilities
-@import "utilities/api";
+@import 'utilities/api';
 // scss-docs-end import-stack
