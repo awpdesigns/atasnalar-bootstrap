@@ -7,16 +7,16 @@
   *  License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 :root {
-  --social-share-border-radius: var(--prefixborder-radius);
-  --social-share-white: var(--prefixwhite);
-  --social-share-black: var(--prefixdark);
+  --social-share-border-radius: var(--border-radius);
+  --social-share-white: var(--white);
+  --social-share-black: var(--dark);
   --social-share-text: var(--social-share-white);
-  --social-share-border: var(--prefixborder-color);
-  --social-share-light: var(--prefixprimary-100);
-  --social-share-dark: var(--prefixprimary);
-  --social-share-rgb: var(--prefixprimary-rgb);
-  --social-share-success: var(--prefixteal);
-  --social-share-trigger-bg: var(--prefixlight-bg-subtle);
+  --social-share-border: var(--border-color);
+  --social-share-light: var(--primary-100);
+  --social-share-dark: var(--primary);
+  --social-share-rgb: var(--primary-rgb);
+  --social-share-success: var(--teal);
+  --social-share-trigger-bg: var(--light-bg-subtle);
   --social-share-trigger-color: var(--social-share-black);
   --social-share-trigger-hover-bg: var(--social-share-light);
   --social-share-trigger-hover-color: var(--social-share-dark);

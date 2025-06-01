@@ -479,3 +479,20 @@
       }
   }
 }
+
+[dir="rtl"] {
+    // Change the direction of the tooltip arrow
+    .tooltip {
+        &.tooltip-auto[data-popper-placement^=right] .tooltip-arrow,&.tooltip-end .tooltip-arrow {
+            left: auto !important;
+            right: 0 !important;
+            transform: translate(0px, 15px) rotate(180deg) !important;
+        }
+
+        &.tooltip-auto[data-popper-placement^=left] .tooltip-arrow,&.tooltip-start .tooltip-arrow {
+            left: 0 !important;
+            right: auto !important;
+            transform: translate(0px, 15px) rotate(180deg) !important;
+        }
+    }
+}

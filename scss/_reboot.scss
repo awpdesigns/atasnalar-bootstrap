@@ -330,6 +330,13 @@ figure {
   max-width: 100%;
 }
 
+.figure {
+    width: 100%;
+    .figure-img {
+        width: 100%;
+    }
+}
+
 
 // Images and content
 

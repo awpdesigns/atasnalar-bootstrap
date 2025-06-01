@@ -16,16 +16,16 @@
 @import 'mixins';
 
 :root {
-	--social-share-border-radius: var(--#{prefix}border-radius);
-	--social-share-white: var(--#{prefix}white);
-	--social-share-black: var(--#{prefix}dark);
+	--social-share-border-radius: var(--#{$prefix}border-radius);
+	--social-share-white: var(--#{$prefix}white);
+	--social-share-black: var(--#{$prefix}dark);
 	--social-share-text: var(--social-share-white);
-	--social-share-border: var(--#{prefix}border-color);
-	--social-share-light: var(--#{prefix}primary-100);
-	--social-share-dark: var(--#{prefix}primary);
-	--social-share-rgb: var(--#{prefix}primary-rgb);
-	--social-share-success: var(--#{prefix}teal);
-	--social-share-trigger-bg: var(--#{prefix}light-bg-subtle);
+	--social-share-border: var(--#{$prefix}border-color);
+	--social-share-light: var(--#{$prefix}primary-100);
+	--social-share-dark: var(--#{$prefix}primary);
+	--social-share-rgb: var(--#{$prefix}primary-rgb);
+	--social-share-success: var(--#{$prefix}teal);
+	--social-share-trigger-bg: var(--#{$prefix}light-bg-subtle);
 	--social-share-trigger-color: var(--social-share-black);
 	--social-share-trigger-hover-bg: var(--social-share-light);
 	--social-share-trigger-hover-color: var(--social-share-dark);
