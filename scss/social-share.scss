@@ -26,7 +26,7 @@
 	--social-share-rgb: var(--#{$prefix}primary-rgb);
 	--social-share-success: var(--#{$prefix}teal);
 	--social-share-trigger-bg: var(--#{$prefix}light-bg-subtle);
-	--social-share-trigger-color: var(--social-share-black);
+	--social-share-trigger-color: var(--#{$prefix}body-color);
 	--social-share-trigger-hover-bg: var(--social-share-light);
 	--social-share-trigger-hover-color: var(--social-share-dark);
 	--social-share-trigger-active-bg: var(--social-share-dark);
@@ -192,7 +192,7 @@
 	color: var(--social-share-trigger-active-color);
 }
 
-#an-social-share-trigger::before {
+#an-social-share-trigger::before, .an-social-share-title::before {
 	content: '';
 	display: inline-block;
 	line-height: 1;

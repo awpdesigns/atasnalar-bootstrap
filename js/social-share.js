@@ -78,7 +78,7 @@ var ANShare = function () {
 			}
 			// if social account includes 'line'
 			if (account === 'line') {
-				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-line" data-type="line" aria-label="Line" title="' + shareText + ' Line"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" style="fill: currentColor;"><path d="M8.5 0C3.825 0 0 3.236 0 7.253c0 3.571 2.975 6.584 7.119 7.142.319.112.637.223.744.446a.997.997 0 0 1 0 .781l-.107.782c0 .223-.106.892.744.446.956-.447 4.887-3.013 6.694-5.133C16.469 10.267 17 8.815 17 7.253 17 3.236 13.175 0 8.5 0ZM5.525 9.373c0 .112-.106.224-.213.224H2.87v-4.13c0-.11.106-.222.212-.222h.638c.106 0 .212.111.212.223v3.124h1.381c.107 0 .213.112.213.223v.558Zm1.381 0c0 .112-.106.224-.212.224h-.532c-.106 0-.212-.112-.212-.224V5.468c0-.112.106-.223.212-.223H6.8c.106 0 .213.111.213.223v3.905h-.107Zm4.144 0c0 .112-.106.224-.213.224h-.53L8.393 7.03v2.343c0 .112-.107.224-.213.224h-.53c-.106 0-.213-.112-.213-.224V5.468c0-.112.107-.223.213-.223h.637l1.807 2.566V5.468c0-.112.106-.223.212-.223h.638c.106 0 .212.111.212.223v3.905h-.106Zm3.294-3.236c0 .112-.106.224-.213.224h-1.594v.67h1.594c.107 0 .213.11.213.222v.67c0 .111-.106.223-.213.223h-1.594v.67h1.594c.107 0 .213.111.213.223v.67c0 .11-.106.222-.213.222h-2.444V5.356h2.444c.107 0 .213.112.213.223v.558Z"></path></svg></button>';
+				socialShareElement.innerHTML += '<button type="button" class="an-share-button an-share-line" data-type="line" aria-label="Line" title="' + shareText + ' Line"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" style="fill: currentColor;"><path d="M8.5 0C3.825 0 0 3.236 0 7.253c0 3.571 2.975 6.584 7.119 7.142.319.112.637.223.744.446a.997.997 0 0 1 0 .781l-.107.782c0 .223-.106.892.744.446.956-.447 4.887-3.013 6.694-5.133C16.469 10.267 17 8.815 17 7.253 17 3.236 13.175 0 8.5 0ZM5.525 9.373c0 .112-.106.224-.213.224H2.87v-4.13c0-.11.106-.222.212-.222h.638c.106 0 .212.111.212.223v3.124h1.381c.107 0 .213.112.213.223v.558Zm1.381 0c0 .112-.106.224-.212.224h-.532c-.106 0-.212-.112-.212-.224V5.468c0-.112.106-.223.212-.223H6.8c.106 0 .213.111.213.223v3.905h-.107Zm4.144 0c0 .112-.106.224-.213.224h-.53L8.393 7.03v2.343c0 .112-.107.224-.213.224h-.53c-.106 0-.213-.112-.213-.224V5.468c0-.112.107-.223.213-.223h.637l1.807 2.566V5.468c0-.112.106-.223.212-.223h.638c.106 0 .212.111.212.223v3.905h-.106Zm3.294-3.236c0 .112-.106.224-.213.224h-1.594v.67h1.594c.107 0 .213.11.213.222v.67c0 .111-.106.223-.213.223h-1.594v.67h1.594c.107 0 .213.111.213.223v.67c0 .11-.106.222-.213.222h-2.444V5.356h2.444c.107 0 .213.112.213.223v.558Z"></path></svg></button>';
 			}
 			// if social account includes 'skype'
 			if (account === 'skype') {
@@ -263,6 +263,23 @@ var ANShare = function () {
 						// Print elementHtml
 						printElement(elementHtml);
 					} else {
+                        // Get Dropdown Trigger
+                        const dropdownTrigger = document.getElementById('an-social-share-trigger');
+                        // Get Dropdown List
+                        const dropdownList = document.querySelector('.an-social-share-list');
+                        // Get Modal
+                        const modal = document.getElementById('an-social-share-modal');
+                        if (dropdownTrigger && dropdownList) {
+                            // Toggle Active
+                            dropdownTrigger.classList.toggle('an-dropdown-active');
+                            dropdownList.classList.toggle('an-dropdown-show');
+                            document.body.classList.toggle('an-dropdown-open');
+                        }
+                        if (modal) {
+                            // Remove class from modal and body
+                            modal.classList.remove('an-modal-show');
+                            document.body.classList.remove('an-modal-open');
+                        }
 						// Print page
 						window.print();
 					}
@@ -332,6 +349,20 @@ var ANShare = function () {
 		window.addEventListener('scroll', function () {
 			setDropdownPosition();
 		});
+
+        var anData = document.querySelector('[data-an-scroll]') || document.getElementById('an-data') || '';
+        if (anData) {
+            // Set Dropdown position on resize and orientation change and scroll
+            anData.addEventListener('resize', function () {
+                setDropdownPosition();
+            });
+            anData.addEventListener('orientationchange', function () {
+                setDropdownPosition();
+            });
+            anData.addEventListener('scroll', function () {
+                setDropdownPosition();
+            });
+        }
 
 		if (dropdownTrigger) {
 			// Open List and set position
