@@ -4933,6 +4933,38 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px var(--body-bg) inset;
   transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--body-color);
+}
+input:-webkit-autofill::placeholder,
+input:-webkit-autofill:hover::placeholder,
+input:-webkit-autofill:focus::placeholder,
+textarea:-webkit-autofill::placeholder,
+textarea:-webkit-autofill:hover::placeholder,
+textarea:-webkit-autofill:focus::placeholder,
+select:-webkit-autofill::placeholder,
+select:-webkit-autofill:hover::placeholder,
+select:-webkit-autofill:focus::placeholder {
+  font-size: var(--body-font-size);
+  color: var(--input-placeholder-color);
+}
+input:-webkit-autofill[data-toggle-password=true]:valid ~ .toggle-password, input:-webkit-autofill[data-toggle-password=true].is-valid ~ .toggle-password,
+input:-webkit-autofill:hover[data-toggle-password=true]:valid ~ .toggle-password,
+input:-webkit-autofill:hover[data-toggle-password=true].is-valid ~ .toggle-password,
+input:-webkit-autofill:focus[data-toggle-password=true]:valid ~ .toggle-password,
+input:-webkit-autofill:focus[data-toggle-password=true].is-valid ~ .toggle-password,
+textarea:-webkit-autofill[data-toggle-password=true]:valid ~ .toggle-password,
+textarea:-webkit-autofill[data-toggle-password=true].is-valid ~ .toggle-password,
+textarea:-webkit-autofill:hover[data-toggle-password=true]:valid ~ .toggle-password,
+textarea:-webkit-autofill:hover[data-toggle-password=true].is-valid ~ .toggle-password,
+textarea:-webkit-autofill:focus[data-toggle-password=true]:valid ~ .toggle-password,
+textarea:-webkit-autofill:focus[data-toggle-password=true].is-valid ~ .toggle-password,
+select:-webkit-autofill[data-toggle-password=true]:valid ~ .toggle-password,
+select:-webkit-autofill[data-toggle-password=true].is-valid ~ .toggle-password,
+select:-webkit-autofill:hover[data-toggle-password=true]:valid ~ .toggle-password,
+select:-webkit-autofill:hover[data-toggle-password=true].is-valid ~ .toggle-password,
+select:-webkit-autofill:focus[data-toggle-password=true]:valid ~ .toggle-password,
+select:-webkit-autofill:focus[data-toggle-password=true].is-valid ~ .toggle-password {
+  padding-right: 0 !important;
 }
 
 .btn {
