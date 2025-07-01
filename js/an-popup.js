@@ -1,3 +1,14 @@
+/*=================================================================
+    File Existance Checker
+==================================================================*/
+function fileExists(url) {
+    // Use async
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, true);
+    http.send();
+    return http.status !== 404;
+}
+
 /*!
  *  Name: AN Popup
  *  Description: AN Popup is a simple and lightweight jquery plugin that allows you to create a popup with multiple content type (Image, Video, Google Map, File, etc) and responsive.
@@ -350,7 +361,6 @@ function ANPopUp() {
 							}
 						}
 						// Check if source is youtube url
-						// var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|playlist\?list=))((\w|-){11})(?:\S+)?$/;
 						else if (source.match(/youtu.be/g) || source.match(/youtube/g)) {
 							// Check if is youtube share url
 							if (source.match(/youtu.be/g)) {
@@ -642,7 +652,7 @@ function ANPopUp() {
 						}
 						html += '<div class="an-popup-footer animated fadeInUp">';
 						html += '<div class="an-popup-description">';
-						html += '<small class="excerpt-2 fs-sm">' + description + '</small>';
+						html += '<small>' + description + '</small>';
 						html += '</div>';
 						// If Description character more than 130 then add "readmore" button
 						if (description.length > 130) {
@@ -804,19 +814,8 @@ function ANPopUp() {
 		$(document).on('click', '.an-popup-close', function () {
 			$('body').removeClass('an-popup-open');
 			$('.an-popup').addClass('animated fadeOut');
-			// // Play audio when popup is close
-			// $('audio.active').each(function () {
-			//     // Check if audio is paused
-			//     if (this.paused) {
-			//         // Play audio
-			//         this.play();
-			//     }
-			// });
 			setTimeout(function () {
 				$('.an-popup').removeClass('an-popup-show').remove();
-				// $('.an-prism').each(function() {
-				//     $(this).remove();
-				// });
 			}, 500);
 		});
 		// On click event for .readmore
@@ -824,19 +823,8 @@ function ANPopUp() {
 			var parent = $(this).data('parent');
 			$('body').removeClass('an-popup-open');
 			$('.an-popup').addClass('animated fadeOut');
-			// // Play audio when popup is close
-			// $('audio.active').each(function () {
-			//     // Check if audio is paused
-			//     if (this.paused) {
-			//         // Play audio
-			//         this.play();
-			//     }
-			// });
 			setTimeout(function () {
 				$('.an-popup').removeClass('an-popup-show').remove();
-				// $('.an-prism').each(function() {
-				//     $(this).remove();
-				// });
 			}, 500);
 			if (parent === 'an-profile') {
 				// Scroll to about section or to top
@@ -885,19 +873,8 @@ function ANPopUp() {
 		$(document).on('click', '.an-popup-content a[data-target]', function () {
 			$('body').removeClass('an-popup-open');
 			$('.an-popup').addClass('animated fadeOut');
-			// // Play audio when popup is close
-			// $('audio.active').each(function () {
-			//     // Check if audio is paused
-			//     if (this.paused) {
-			//         // Play audio
-			//         this.play();
-			//     }
-			// });
 			setTimeout(function () {
 				$('.an-popup').removeClass('an-popup-show').remove();
-				// $('.an-prism').each(function() {
-				//     $(this).remove();
-				// });
 			}, 500);
 			var target = $(this).data('target');
 			if ($('#' + target).length) {
@@ -914,19 +891,8 @@ function ANPopUp() {
 			if (!$(e.target).closest('.an-popup-content').length) {
 				$('body').removeClass('an-popup-open');
 				$('.an-popup').addClass('animated fadeOut');
-				// // Play audio when popup is close
-				// $('audio.active').each(function () {
-				//     // Check if audio is paused
-				//     if (this.paused) {
-				//         // Play audio
-				//         this.play();
-				//     }
-				// });
 				setTimeout(function () {
 					$('.an-popup').removeClass('an-popup-show').remove();
-					// $('.an-prism').each(function() {
-					//     $(this).remove();
-					// });
 				}, 500);
 			}
 		});

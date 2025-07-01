@@ -4,8 +4,9 @@ Example: <div id="alert-{form-id}" class="alert-an-form" role="alert" hidden ari
 /* ==  Form | Submit Form PHP: https://drive.google.com/file/d/18FaHaqWb0ir1Q_0g1h4qlkAwYkiSN0dK/view?usp=sharing | Form Example: https://drive.google.com/file/d/1_Ad58nMKYmS6FuZAy0rIumiqx_Oaz7uR/view?usp=sharing == */
 ! Required form class: an-form, and must have attribute id="{string}" or will automatically generated (an-form-{randomnumber})
 ! Each form element (except [type="submit"]) must be wrapped with class "form-group" and must have attribute "name" (field name)
-! Required field name: an-send-copy, an-submit. If you change these field name value, you must change it in /php/submit-form.php too
+! Required field name: an-submit. If you change these field name value, you must change it in /php/submit-form.php too
 ! Required [type="submit"], add attribute onclick="uploadForm(this)" to submit button
+* (Optional) field name: an-send-copy. If you want the submitted form to be sent to the email address of the sender. [Note: If you change these field name value, you must change it in /php/submit-form.php too]
 * (Optional) [type="submit"], add attribute data-progress-text={string} to set progress text. Default: Sending...
 ^ To change form message, add attribute data-success-message="{your message}" or data-error-message="{your message}" to form element
 ^ Add data-floating-validation="true" to form element to enable floating validation. This will automatically change class of valid/invalid-feedback to valid/invalid-tooltip instead of you change it manually (If there is any validation that you've already set).

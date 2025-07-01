@@ -25,4 +25,13 @@ select:-webkit-autofill:focus {
     // -webkit-text-fill-color: var(--#{$prefix}body-color);
     -webkit-box-shadow: 0 0 0px 1000px var(--#{$prefix}body-bg) inset;
     transition: background-color 5000s ease-in-out 0s;
+    // Placeholder font size
+    &::placeholder {
+        font-size: var(--#{$prefix}body-font-size);
+        color: var(--#{$prefix}input-placeholder-color);
+    }
+    -webkit-text-fill-color: var(--#{$prefix}body-color);
+    &[data-toggle-password="true"]:valid ~ .toggle-password, &[data-toggle-password="true"].is-valid ~ .toggle-password {
+        padding-right: 0 !important;
+    }
 }

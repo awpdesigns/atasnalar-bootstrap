@@ -7111,16 +7111,12 @@
 
   function checkPrefix() {
     var prefix = document.querySelector('html').getAttribute('data-prefix') || '';
-    // Check if prefix is set, and if it is, add it to all variables
     if (prefix !== '' && prefix !== null && prefix !== undefined) {
-      var any = document.querySelectorAll('*');
-
-      // Sample prefix value: bs-
-      // Find var(--*), replace with var(--bs-*)
-      any.forEach((item) => {
+      var elements = document.querySelectorAll('*');
+      elements.forEach(function(item) {
         var style = item.getAttribute('style');
-        if (style !== null && style !== undefined) {
-          item.setAttribute('style', style.replace(/var\(--/g, `var(--${prefix}`));
+        if (style) {
+          item.setAttribute('style', style.replace(/var\(--/g, 'var(--' + prefix));
         }
       });
     }
@@ -7182,7 +7178,7 @@
             // If progress color is set
             if (progressColor !== null && progressColor !== undefined) {
                 progressBars.forEach((item) => {
-                  item.style.background = `var(--${progressColor})`;
+                  item.style.backgroundColor = `var(--${progressColor})`;
                 });
             }
 

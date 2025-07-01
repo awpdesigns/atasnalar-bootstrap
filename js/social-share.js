@@ -231,6 +231,23 @@ var ANShare = function () {
 					var target = this.dataset.printTarget;
 					// Target can be multiple elements if it's a class, then combine all elements html
 					if (target) {
+                        // Get Dropdown Trigger
+                        const dropdownTrigger = document.getElementById('an-social-share-trigger');
+                        // Get Dropdown List
+                        const dropdownList = document.querySelector('.an-social-share-list');
+                        // Get Modal
+                        const modal = document.getElementById('an-social-share-modal');
+                        if (dropdownTrigger && dropdownList) {
+                            // Toggle Active
+                            dropdownTrigger.classList.toggle('an-dropdown-active');
+                            dropdownList.classList.toggle('an-dropdown-show');
+                            document.body.classList.toggle('an-dropdown-open');
+                        }
+                        if (modal) {
+                            // Remove class from modal and body
+                            modal.classList.remove('an-modal-show');
+                            document.body.classList.remove('an-modal-open');
+                        }
 						var targetElements = document.querySelectorAll(target);
 						var targetElementsHtml = '';
 						targetElements.forEach(function (element) {

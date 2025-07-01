@@ -676,7 +676,7 @@
 						// Validate this value must same with other input[type=password] that are not #an-confirm-password or .an-confirm-password
 						$(this).on('keyup', function () {
 							if ($(this).val() !== '') {
-								if ($(this).val() === $('.an-password').val()) {
+								if ($(this).val() === $('.an-password').val() && $('.an-password').hasClass('is-valid')) {
 									$(this).removeClass('is-invalid');
 									$(this).addClass('is-valid');
 									// If not required
@@ -734,7 +734,11 @@
 							// Disable submit button
 							buttonSubmit.attr('disabled', true);
 							password_validations.css('background-color', dangerBg);
-							password_validations.text('Not Match');
+							if ($('.an-password').hasClass('is-invalid')){
+								password_validations.text('Require valid password!');
+							} else {
+								password_validations.text('Not Match');
+							}
 							password_validations.show();
 						} else {
 							password_validations.css('background-color', defaultBg);
@@ -861,7 +865,7 @@
 											// Check if there is confirmation password
 											if (form.find('.an-confirm-password').length > 0) {
 												// Check if confirmation password is valid
-												if ($('.an-confirm-password').val() === $(this).val()) {
+												if ($('.an-confirm-password').val() === $(this).val() && $(this).hasClass('is-valid')) {
 													// Enable submit button
 													buttonSubmit.attr('disabled', false);
 													// Add success class to confirmation password
