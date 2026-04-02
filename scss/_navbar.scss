@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Navbar
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -5,7 +7,11 @@
 
 .navbar {
   // scss-docs-start navbar-css-vars
-  --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
+  $_navbar-padding-x-val: 0;
+  @if $navbar-padding-x != null {
+    $_navbar-padding-x-val: $navbar-padding-x;
+  }
+  --#{$prefix}navbar-padding-x: #{$_navbar-padding-x-val};
   --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
   --#{$prefix}navbar-color: #{$navbar-light-color};
   --#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};
@@ -68,13 +74,17 @@
   margin-right: var(--#{$prefix}navbar-brand-margin-end);
   @include font-size(var(--#{$prefix}navbar-brand-font-size));
   color: var(--#{$prefix}navbar-brand-color);
-  text-decoration: if($link-decoration == none, null, none);
+  @if $link-decoration != none {
+    text-decoration: none;
+  }
   white-space: nowrap;
 
   &:hover,
   &:focus {
     color: var(--#{$prefix}navbar-brand-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    @if $link-hover-decoration == underline {
+      text-decoration: none;
+    }
   }
 }
 
@@ -188,7 +198,7 @@
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
 

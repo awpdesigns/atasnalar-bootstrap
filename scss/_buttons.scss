@@ -1,3 +1,5 @@
+@use "sass:color";
+
 //
 // Base styles
 //
@@ -29,10 +31,14 @@
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);
   text-align: center;
-  text-decoration: if($link-decoration == none, null, none);
+  @if $link-decoration != none {
+    text-decoration: none;
+  }
   white-space: $btn-white-space;
   vertical-align: middle;
-  cursor: if($enable-button-pointers, pointer, null);
+  @if $enable-button-pointers {
+    cursor: pointer;
+  }
   user-select: none;
   border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
   @include border-radius(var(--#{$prefix}btn-border-radius));
@@ -42,7 +48,9 @@
 
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    @if $link-hover-decoration == underline {
+      text-decoration: none;
+    }
     background-color: var(--#{$prefix}btn-hover-bg);
     border-color: var(--#{$prefix}btn-hover-border-color);
   }
@@ -86,7 +94,9 @@
     color: var(--#{$prefix}btn-active-color);
     background-color: var(--#{$prefix}btn-active-bg);
     // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
+    @if $enable-gradients {
+      background-image: none;
+    }
     border-color: var(--#{$prefix}btn-active-border-color);
     @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
@@ -106,7 +116,9 @@
     color: var(--#{$prefix}btn-disabled-color);
     pointer-events: none;
     background-color: var(--#{$prefix}btn-disabled-bg);
-    background-image: if($enable-gradients, none, null);
+    @if $enable-gradients {
+      background-image: none;
+    }
     border-color: var(--#{$prefix}btn-disabled-border-color);
     opacity: var(--#{$prefix}btn-disabled-opacity);
     @include box-shadow(none);
@@ -202,7 +214,7 @@
   --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
   --#{$prefix}btn-disabled-border-color: transparent;
   --#{$prefix}btn-box-shadow: none;
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(color.mix(color-contrast($primary), $primary, 15%))};
 
   text-decoration: $link-decoration;
   @if $enable-gradients {

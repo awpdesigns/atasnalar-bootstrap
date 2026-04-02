@@ -1,3 +1,5 @@
+@use "sass:math";
+
 //
 // General form controls (plus a few specific high-level interventions)
 //
@@ -49,7 +51,11 @@
   // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
   &::-webkit-date-and-time-value {
     // Multiply line-height by 1em if it has no unit
-    height: if(unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+    @if math.unit($input-line-height) == "" {
+      height: $input-line-height * 1em;
+    } @else {
+      height: $input-line-height;
+    }
   }
 
   // Prevent excessive date input height in Webkit

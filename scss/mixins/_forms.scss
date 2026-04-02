@@ -1,15 +1,19 @@
-// This mixin uses an `if()` technique to be compatible with Dart Sass
+// This mixin uses a parent selector check to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
 
 // scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
+  $_parent: "";
+  @if & {
+    $_parent: "&";
+  }
   @if ($state == "valid" or $state == "invalid") {
-    .was-validated #{if(&, "&", "")}:#{$state},
-    #{if(&, "&", "")}.is-#{$state} {
+    .was-validated #{$_parent}:#{$state},
+    #{$_parent}.is-#{$state} {
       @content;
     }
   } @else {
-    #{if(&, "&", "")}.is-#{$state} {
+    #{$_parent}.is-#{$state} {
       @content;
     }
   }

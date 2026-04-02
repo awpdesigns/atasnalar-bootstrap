@@ -118,13 +118,17 @@
         return false;
       }
 
+      if (typeof object.jquery !== 'undefined') {
+        object = object[0];
+      }
+
       return typeof object.nodeType !== 'undefined';
     };
 
     const getElement = object => {
-      // it's a node element
+      // it's a jQuery object or a node element
       if (isElement$1(object)) {
-        return object;
+        return object.jquery ? object[0] : object;
       }
 
       if (typeof object === 'string' && object.length > 0) {
@@ -216,6 +220,14 @@
       element.offsetHeight; // eslint-disable-line no-unused-expressions
     };
 
+    const getjQuery = () => {
+      if (window.jQuery && !document.body.hasAttribute('data-no-jquery')) {
+        return window.jQuery;
+      }
+
+      return null;
+    };
+
     const DOMContentLoadedCallbacks = [];
 
     const onDOMContentLoaded = callback => {
@@ -236,6 +248,25 @@
     };
 
     const isRTL = () => document.documentElement.dir === 'rtl';
+
+    const defineJQueryPlugin = plugin => {
+      onDOMContentLoaded(() => {
+        const $ = getjQuery();
+        /* istanbul ignore if */
+
+        if ($) {
+          const name = plugin.NAME;
+          const JQUERY_NO_CONFLICT = $.fn[name];
+          $.fn[name] = plugin.jQueryInterface;
+          $.fn[name].Constructor = plugin;
+
+          $.fn[name].noConflict = () => {
+            $.fn[name] = JQUERY_NO_CONFLICT;
+            return plugin.jQueryInterface;
+          };
+        }
+      });
+    };
 
     const execute = callback => {
       if (typeof callback === 'function') {
@@ -513,10 +544,21 @@
           return null;
         }
 
+        const $ = getjQuery();
         const typeEvent = getTypeEvent(event);
+        const inNamespace = event !== typeEvent;
+        let jQueryEvent = null;
         let bubbles = true;
         let nativeDispatch = true;
         let defaultPrevented = false;
+
+        if (inNamespace && $) {
+          jQueryEvent = $.Event(event, args);
+          $(element).trigger(jQueryEvent);
+          bubbles = !jQueryEvent.isPropagationStopped();
+          nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
+          defaultPrevented = jQueryEvent.isDefaultPrevented();
+        }
 
         let evt = new Event(event, {
           bubbles,
@@ -530,6 +572,10 @@
 
         if (nativeDispatch) {
           element.dispatchEvent(evt);
+        }
+
+        if (evt.defaultPrevented && jQueryEvent) {
+          jQueryEvent.preventDefault();
         }
 
         return evt;
@@ -898,6 +944,23 @@
 
         EventHandler.trigger(this._element, EVENT_CLOSED);
         this.dispose();
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Alert.getOrCreateInstance(this);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config](this);
+        });
       }
 
     }
@@ -907,6 +970,11 @@
 
 
     enableDismissTrigger(Alert, 'close');
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Alert);
 
     /**
      * --------------------------------------------------------------------------
@@ -940,6 +1008,17 @@
       toggle() {
         // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
         this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Button.getOrCreateInstance(this);
+
+          if (config === 'toggle') {
+            data[config]();
+          }
+        });
       }
 
     }
@@ -954,6 +1033,11 @@
       const data = Button.getOrCreateInstance(button);
       data.toggle();
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Button);
 
     /**
      * --------------------------------------------------------------------------
@@ -1541,6 +1625,26 @@
         }
 
         return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Carousel.getOrCreateInstance(this, config);
+
+          if (typeof config === 'number') {
+            data.to(config);
+            return;
+          }
+
+          if (typeof config === 'string') {
+            if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+              throw new TypeError(`No method named "${config}"`);
+            }
+
+            data[config]();
+          }
+        });
       }
 
     }
@@ -1587,6 +1691,11 @@
         Carousel.getOrCreateInstance(carousel);
       }
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Carousel);
 
     /**
      * --------------------------------------------------------------------------
@@ -1829,6 +1938,27 @@
           element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
           element.setAttribute('aria-expanded', isOpen);
         }
+      } // Static
+
+
+      static jQueryInterface(config) {
+        const _config = {};
+
+        if (typeof config === 'string' && /show|hide/.test(config)) {
+          _config.toggle = false;
+        }
+
+        return this.each(function () {
+          const data = Collapse.getOrCreateInstance(this, _config);
+
+          if (typeof config === 'string') {
+            if (typeof data[config] === 'undefined') {
+              throw new TypeError(`No method named "${config}"`);
+            }
+
+            data[config]();
+          }
+        });
       }
 
     }
@@ -1852,6 +1982,11 @@
         }).toggle();
       }
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Collapse);
 
     var top = 'top';
     var bottom = 'bottom';
@@ -4018,6 +4153,23 @@
 
 
         getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Dropdown.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config]();
+        });
       }
 
       static clearMenus(event) {
@@ -4109,6 +4261,11 @@
       event.preventDefault();
       Dropdown.getOrCreateInstance(this).toggle();
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Dropdown);
 
     /**
      * --------------------------------------------------------------------------
@@ -4803,6 +4960,23 @@
       _resetAdjustments() {
         this._element.style.paddingLeft = '';
         this._element.style.paddingRight = '';
+      } // Static
+
+
+      static jQueryInterface(config, relatedTarget) {
+        return this.each(function () {
+          const data = Modal.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config](relatedTarget);
+        });
       }
 
     }
@@ -4841,6 +5015,11 @@
       data.toggle(this);
     });
     enableDismissTrigger(Modal);
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Modal);
 
     /**
      * --------------------------------------------------------------------------
@@ -5046,6 +5225,23 @@
 
           this.hide();
         });
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Offcanvas.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config](this);
+        });
       }
 
     }
@@ -5094,6 +5290,11 @@
       }
     });
     enableDismissTrigger(Offcanvas);
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Offcanvas);
 
     /**
      * --------------------------------------------------------------------------
@@ -5941,10 +6142,33 @@
           this.tip.remove();
           this.tip = null;
         }
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Tooltip.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config]();
+        });
       }
 
     }
     /**
+     * jQuery
+     */
+
+
+    defineJQueryPlugin(Tooltip);
+
     /**
      * --------------------------------------------------------------------------
      * Bootstrap (v5.3.0): popover.js
@@ -6002,9 +6226,32 @@
 
       _getContent() {
         return this._resolvePossibleFunction(this._config.content);
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Popover.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config]();
+        });
       }
 
     }
+    /**
+     * jQuery
+     */
+
+
+    defineJQueryPlugin(Popover);
 
     /**
      * --------------------------------------------------------------------------
@@ -6262,6 +6509,23 @@
         for (const node of activeNodes) {
           node.classList.remove(CLASS_NAME_ACTIVE$1);
         }
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = ScrollSpy.getOrCreateInstance(this, config);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config]();
+        });
       }
 
     }
@@ -6275,6 +6539,11 @@
         ScrollSpy.getOrCreateInstance(spy);
       }
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(ScrollSpy);
 
     /**
      * --------------------------------------------------------------------------
@@ -6539,6 +6808,23 @@
 
       _getOuterElement(elem) {
         return elem.closest(SELECTOR_OUTER) || elem;
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Tab.getOrCreateInstance(this);
+
+          if (typeof config !== 'string') {
+            return;
+          }
+
+          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+            throw new TypeError(`No method named "${config}"`);
+          }
+
+          data[config]();
+        });
       }
 
     }
@@ -6567,6 +6853,11 @@
         Tab.getOrCreateInstance(element);
       }
     });
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Tab);
 
     /**
      * --------------------------------------------------------------------------
@@ -6760,6 +7051,21 @@
       _clearTimeout() {
         clearTimeout(this._timeout);
         this._timeout = null;
+      } // Static
+
+
+      static jQueryInterface(config) {
+        return this.each(function () {
+          const data = Toast.getOrCreateInstance(this, config);
+
+          if (typeof config === 'string') {
+            if (typeof data[config] === 'undefined') {
+              throw new TypeError(`No method named "${config}"`);
+            }
+
+            data[config](this);
+          }
+        });
       }
 
     }
@@ -6769,6 +7075,12 @@
 
 
     enableDismissTrigger(Toast);
+    /**
+     * jQuery
+     */
+
+    defineJQueryPlugin(Toast);
+
     /**
      * --------------------------------------------------------------------------
      * Bootstrap (v5.3.0): index.umd.js

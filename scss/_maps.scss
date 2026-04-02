@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Re-assigned maps
 //
 // Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
@@ -99,7 +101,7 @@ $all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oran
 $utilities-all-colors: $all-colors !default;
 
 // scss-docs-start utilities-text-colors
-$utilities-text: map-merge(
+$utilities-text: map.merge(
   $utilities-colors,
   (
     "black": to-rgb($black),
@@ -133,7 +135,7 @@ $utilities-text-emphasis-colors: (
 // scss-docs-end utilities-text-colors
 
 // scss-docs-start utilities-bg-colors
-$utilities-bg: map-merge(
+$utilities-bg: map.merge(
   $utilities-colors,
   (
     "black": to-rgb($black),
@@ -168,7 +170,7 @@ $utilities-bg-subtle: (
 // scss-docs-end utilities-bg-colors
 
 // scss-docs-start utilities-border-colors
-$utilities-border: map-merge(
+$utilities-border: map.merge(
   $utilities-colors,
   (
     "white": to-rgb($white)
@@ -199,6 +201,10 @@ $utilities-border-subtle: (
 ) !default;
 // scss-docs-end utilities-border-colors
 
-$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+$_negative-spacers-default: null;
+@if $enable-negative-margins {
+  $_negative-spacers-default: negativify-map($spacers);
+}
+$negative-spacers: $_negative-spacers-default !default;
 
 $gutters: $spacers !default;

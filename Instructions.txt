@@ -130,13 +130,6 @@ Note: Data Progress Color only support variable color name (blue, indigo, etc) o
 /* ==  User Info - Detection == */
     Add script on footer or before closing body tag:
     <script src="{path/to/js/user-detection.min.js}"></script>
-    Use jQuery:
-    <script>
-        $(document).ready(function() {
-            ANDetection();
-        });
-    </script>
-    Use Vanilla JS:
     <script>
         window.onload = function() {
             ANDetection();

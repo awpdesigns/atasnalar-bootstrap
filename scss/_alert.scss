@@ -1,3 +1,5 @@
+@use "sass:map";
+
 //
 // Base styles
 //
@@ -115,7 +117,7 @@
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert
-@each $state in map-keys($colors) {
+@each $state in map.keys($colors) {
   .alert-#{$state} {
     --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text);
     --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
@@ -123,7 +125,7 @@
     --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text);
   }
 }
-@each $state in map-keys($theme-colors) {
+@each $state in map.keys($theme-colors) {
   .alert-#{$state} {
     --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text);
     --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
